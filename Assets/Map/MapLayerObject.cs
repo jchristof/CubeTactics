@@ -8,7 +8,7 @@ namespace Assets.Map {
         public class Properties {
             public string Conditions { get; set; }
             public string Name { get; set; }
-            public string Descriptions { get; set; }
+            public string Description { get; set; }
         }
 
         public int height { get; set; }
