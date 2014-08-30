@@ -11,7 +11,6 @@ using Assets;
 
 public class PlayfieldScript : MonoBehaviour {
 
-    [SerializeField]
     private bool _clampToRectBounds;
     public bool ClampToRectBounds {
         get { return _clampToRectBounds; }
@@ -20,6 +19,7 @@ public class PlayfieldScript : MonoBehaviour {
 
     public bool _crossEmptyTile;
     public bool _crossMyPath;
+    public bool CreateTrail { get; set; }
 
     Vector3 _spawnPoint;
     List<Tuple<Vector3, GameObject>> playfiedGrid = new List<Tuple<Vector3, GameObject>>();
@@ -32,7 +32,6 @@ public class PlayfieldScript : MonoBehaviour {
         _map.ForeachTile(new Action<int, int, int>(PerTileMapSetup), MapLayerName.Board);
         _map.ForeachTile(new Action<int, int, int>(PerTileObjectSetup), MapLayerName.Object);
 
-        //CompositionRoot.Map = _map;
         CompositionRoot.PlayerController.SpawnAt(_spawnPoint);
 	}
 
@@ -159,13 +158,15 @@ public class PlayfieldScript : MonoBehaviour {
     }
 
     void ExecuteNewPosition(Vector3 newPlayerPosition) {
-        GameObject quad = GameObject.Find("Quad2");
+        if (CreateTrail) {
+            GameObject quad = GameObject.Find("Quad2");
 
-        Vector3 quadPosition = newPlayerPosition;
-        quadPosition.y = 0;
+            Vector3 quadPosition = newPlayerPosition;
+            quadPosition.y = 0;
 
-        GameObject newQuad = Instantiate(quad, quadPosition, quad.transform.rotation) as GameObject;
-        playfiedGrid.Add(Tuple<Vector3, GameObject>.Create(newPlayerPosition, newQuad));
+            GameObject newQuad = Instantiate(quad, quadPosition, quad.transform.rotation) as GameObject;
+            playfiedGrid.Add(Tuple<Vector3, GameObject>.Create(newPlayerPosition, newQuad));
+        }
 
         CompositionRoot.Game.ExecutePlayerMove(newPlayerPosition);
     }

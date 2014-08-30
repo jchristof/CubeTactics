@@ -9,6 +9,7 @@ namespace Assets.Map {
             public string Conditions { get; set; }
             public string Name { get; set; }
             public string Description { get; set; }
+            public string Trail { get; set; }
         }
 
         public int height { get; set; }

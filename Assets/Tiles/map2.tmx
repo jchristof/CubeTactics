@@ -215,6 +215,7 @@
     <property name="Conditions" value="DemoLevelConditions"/>
     <property name="Description" value="Level Rules: \nCross the numbered tiles in order \nMake it to the goal\nDon't cross your own path"/>
     <property name="Name" value="Demo Level"/>
+    <property name="Trail" value="Solid"/>
    </properties>
   </object>
  </objectgroup>

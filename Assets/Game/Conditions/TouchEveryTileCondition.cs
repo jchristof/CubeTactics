@@ -13,14 +13,18 @@ namespace Assets.Game.Conditions {
             : base() {
                 _unvisitedTiles = new List<Point<int>>();
                 CompositionRoot.Map.ForeachTile(new Action<int, int, int>(InspectBoard), MapLayerName.Board);
+                //CompositionRoot.Map.ForeachTile(new Action<int, int, Tile>(RemoveSpecialTiles), MapLayerName.Object);
                 Instructions = "Touch every tile";
         }
 
         List<Point<int>> _unvisitedTiles;
 
         void InspectBoard(int x, int y, int tileIndex) {
-            _unvisitedTiles.Add(new Point<int>(x, y));
+            if(tileIndex != -1)
+                _unvisitedTiles.Add(new Point<int>(x, y));
         }
+
+
         public override bool Required {
             get { return true; }
         }

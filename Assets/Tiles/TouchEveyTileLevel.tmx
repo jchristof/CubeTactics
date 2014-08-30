@@ -3,7 +3,7 @@
  <tileset firstgid="1" source="tilemap.tsx"/>
  <layer name="Board" width="10" height="10" visible="0">
   <data encoding="base64" compression="zlib">
-   eJzjYWBg4GHAD3iIwNjUETKHkB0MaOqIsZsBB02KOlxuoCaNK9wAQv4C6Q==
+   eJzjYWBg4GHAD3iIwNjUETKHkB0MaOqIsZsBB02KOlxuoJTmwmIPOh8AQrYC5w==
   </data>
  </layer>
  <layer name="Object" width="10" height="10" visible="0">
@@ -17,6 +17,7 @@
     <property name="Conditions" value="TouchEveryTileLevelConditions"/>
     <property name="Description" value="Touch every tile only once"/>
     <property name="Name" value="Touch Every Tile"/>
+    <property name="Trail" value="Solid"/>
    </properties>
   </object>
  </objectgroup>

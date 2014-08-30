@@ -109,13 +109,26 @@ namespace Assets.Map {
         }
 
         public void ForeachTile(Action<int, int, int> perTileAction, MapLayerName layerName) {
+            MapLayer layer = GetLayerByName(layerName);
+
             for (int y = 0; y < _mapModel.height; y++) {
                 for (int x = 0; x < _mapModel.width; x++) {
-                    int flatIndex = (y * _mapModel.width) + x;
-                    MapLayer layer = GetLayerByName(layerName);
+                    int flatIndex = (y * _mapModel.width) + x;                    
                     int tileSetIndex = layer.data[flatIndex] - 1;
 
                     perTileAction(x, y, tileSetIndex);
+                }
+            }
+        }
+
+        public void ForeachTile(Action<int, int, Tile> perTileAction, MapLayerName layerName) {
+            MapLayer layer = GetLayerByName(layerName);
+
+            for (int y = 0; y < _mapModel.height; y++) {
+                for (int x = 0; x < _mapModel.width; x++) {
+
+                    Tile t = TileAtMapPosition(x, y, layerName);
+                    perTileAction(x, y, t);
                 }
             }
         }

@@ -16,16 +16,7 @@ namespace Assets.Game.Conditions {
             SpecificTileCondition s = new SpecificTileCondition("trigger", "goal");
             s.Instructions = "Make it to the goal";
             Conditions.Add(s);
-
-            t.OnComplete = new Action(()=>{
-                t.Inactivate();        
-                s.Activate();                
-            });
-
-            t.OnFail = new Action(() => {
-                t.Inactivate();
-                s.Activate();
-            });     
+            s.Activate(); 
         }
 
         public override void ExecutePlayerMove(Vector3 position) {

@@ -30,6 +30,7 @@ namespace Assets.Game {
                 string.Format("Assets.Game.Conditions.{0}, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null", levelConditionsClassName));
 
             _levelConditions = (LevelConditions)Activator.CreateInstance(elementType);
+            CompositionRoot.Playfield.CreateTrail = CompositionRoot.Map.MapMeta.properties.Trail == "Solid";
         }
 
         GameState GameState { 
