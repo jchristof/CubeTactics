@@ -37,7 +37,7 @@ public class InstructionsGUI : MonoBehaviour {
 
         yPos += 30;
         if (GUI.Button(new Rect(20, yPos, 110, 20), "Quit")) {
-            Application.Quit();
+            Application.LoadLevel("loadmenu");
         }
     }
 }

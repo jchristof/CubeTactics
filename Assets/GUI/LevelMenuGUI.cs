@@ -17,5 +17,8 @@ public class LevelMenuGUI : MonoBehaviour {
                 Game.levelToLoad = (LevelName)e;
             }
         }
+        yPos += 50;
+        if (GUI.Button(new Rect(20, yPos, 200, 30), "Quit"))
+                Application.Quit();
     }
 }
