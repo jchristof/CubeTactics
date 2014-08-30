@@ -66,6 +66,7 @@
     <Compile Include="Assets\GoalBehavior.cs" />
     <Compile Include="Assets\GUI\InstructionsGUI.cs" />
     <Compile Include="Assets\GUI\IntroInstructionsGUI.cs" />
+    <Compile Include="Assets\GUI\LevelMenuGUI.cs" />
     <Compile Include="Assets\JsonDotNet\Examples\Serialization\1-BasicSerialization\JNSimpleObjectSample.cs" />
     <Compile Include="Assets\JsonDotNet\Examples\Serialization\2-Polymorphism\JNPolymorphismSample.cs" />
     <Compile Include="Assets\JsonDotNet\Examples\Serialization\3-BSON\JNBsonSample.cs" />
@@ -394,6 +395,7 @@
     <Compile Include="Assets\JsonDotNet\Source\WinRT\Utilities\RT_ValidationUtils.cs" />
     <Compile Include="Assets\Language\Point.cs" />
     <Compile Include="Assets\Language\Tuple.cs" />
+    <Compile Include="Assets\Level\LevelName.cs" />
     <Compile Include="Assets\Map\Direction.cs" />
     <Compile Include="Assets\Map\Map.cs" />
     <Compile Include="Assets\Map\MapLayer.cs" />

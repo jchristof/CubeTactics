@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets;
+using System.Linq;
 
 public class InstructionsGUI : MonoBehaviour {
 
     void OnGUI() {
+
+        //TextAsset[] textAssets = Resources.FindObjectsOfTypeAll<TextAsset>();
+        //foreach(var a in textAssets)
+        //    print(a.name);
 
         int yPos = 10;
         GUI.Box(new Rect(10, yPos, 300, 30), CompositionRoot.Map.MapMeta.properties.Name);

@@ -1,4 +1,5 @@
 ﻿using Assets.Game.Conditions;
+using Assets.Level;
 using Assets.Map;
 using System;
 using System.Collections.Generic;
@@ -13,11 +14,7 @@ namespace Assets.Game {
         protected LevelConditions _levelConditions;
         Action _initializeAction;
 
-        public enum Level {
-            TouchEveryTileLevel,
-            map2,
-        }
-        public Level levelToLoad;
+        public static LevelName levelToLoad;
 
         public void Awake() {
 
