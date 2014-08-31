@@ -69,7 +69,8 @@ public class PlayfieldScript : MonoBehaviour {
         if (t.type == "wall" && t.value == "block") {
             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             cube.transform.position = new Vector3(xPosition, 0.5F, yPosition);
-            cube.transform.localScale = new Vector3(0.9f, 1.0f, 0.9f);
+            cube.renderer.material = Resources.Load("CubeWall", typeof(Material)) as Material;
+            //cube.transform.localScale = new Vector3(0.9f, 1.0f, 0.9f);
 
         }
         else {
