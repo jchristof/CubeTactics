@@ -1,7 +1,7 @@
 { "height":10,
  "layers":[
         {
-         "data":[12, 12, 12, 31, 12, 12, 12, 31, 31, 31, 12, 31, 12, 31, 12, 31, 12, 12, 12, 12, 28, 31, 31, 31, 12, 12, 31, 12, 31, 12, 31, 31, 12, 31, 31, 12, 31, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 31, 12, 31, 12, 31, 31, 12, 31, 31, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 31, 31, 31, 12, 31, 12, 31, 31, 12, 31, 12, 12, 12, 12, 12, 12, 31, 12, 12, 31, 12, 31, 12, 31, 29, 12, 12, 12, 31, 29, 12, 12, 12],
+         "data":[12, 12, 12, 31, 12, 12, 12, 31, 31, 31, 12, 31, 29, 31, 12, 31, 12, 12, 12, 12, 28, 31, 31, 31, 12, 12, 31, 12, 31, 12, 31, 31, 12, 31, 31, 12, 31, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 31, 12, 31, 12, 31, 31, 12, 31, 31, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 31, 31, 31, 12, 31, 12, 31, 31, 12, 31, 12, 12, 12, 12, 12, 12, 31, 12, 12, 31, 12, 31, 31, 31, 29, 12, 12, 12, 31, 31, 12, 12, 10],
          "height":10,
          "name":"Board",
          "opacity":1,
@@ -20,8 +20,8 @@
                  "name":"LevelTag",
                  "properties":
                     {
-                     "Conditions":"DemoWallsTeleportsPressurePlates",
-                     "Desciption":"Test out portals, pressure plates, block walls",
+                     "Conditions":"DemoWallsTeleportsPressurePlatesConditions",
+                     "Description":"Test out portals, pressure plates, block walls",
                      "Name":"Block out!"
                     },
                  "type":"",
@@ -31,15 +31,15 @@
                  "y":-18
                 }, 
                 {
-                 "height":31,
+                 "height":32,
                  "name":"spawnpoint",
                  "properties":
                     {
 
                     },
-                 "type":"player",
+                 "type":"spawnplayer",
                  "visible":true,
-                 "width":42,
+                 "width":41,
                  "x":265,
                  "y":276
                 }],
@@ -99,18 +99,18 @@
                 },
              "27":
                 {
-                 "type":"number",
-                 "value":"4"
+                 "type":"trigger",
+                 "value":"pressureplate"
                 },
              "28":
                 {
-                 "type":"number",
-                 "value":"4"
+                 "type":"portal",
+                 "value":""
                 },
              "30":
                 {
-                 "type":"number",
-                 "value":"4"
+                 "type":"wall",
+                 "value":"block"
                 },
              "8":
                 {

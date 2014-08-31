@@ -108,11 +108,11 @@
  <objectgroup name="Object" width="10" height="10">
   <object name="LevelTag" x="-114" y="-18" width="87" height="65">
    <properties>
-    <property name="Conditions" value="DemoWallsTeleportsPressurePlates"/>
-    <property name="Desciption" value="Test out portals, pressure plates, block walls"/>
+    <property name="Conditions" value="DemoWallsTeleportsPressurePlatesConditions"/>
+    <property name="Description" value="Test out portals, pressure plates, block walls"/>
     <property name="Name" value="Block out!"/>
    </properties>
   </object>
-  <object name="spawnpoint" type="player" x="265" y="276" width="42" height="31"/>
+  <object name="spawnpoint" type="spawnplayer" x="265" y="276" width="41" height="32"/>
  </objectgroup>
 </map>

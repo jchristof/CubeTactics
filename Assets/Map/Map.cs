@@ -39,23 +39,30 @@ namespace Assets.Map {
                     _mapModel.tilesets[0].imageheight,
                     _mapModel.tilesets[0].tileheight));
 
-            _imageTileWidth = _mapModel.tilesets[0].imagewidth / _mapModel.tilesets[0].tilewidth;
-            _imageTileHeight = _mapModel.tilesets[0].imageheight / _mapModel.tilesets[0].tileheight;
+            ImageWidthInTiles = _mapModel.tilesets[0].imagewidth / _mapModel.tilesets[0].tilewidth;
+            ImageHeightInTiles = _mapModel.tilesets[0].imageheight / _mapModel.tilesets[0].tileheight;
+
+            TileWidth = _mapModel.tilesets[0].tilewidth;
+            TileHeight = _mapModel.tilesets[0].tileheight;
         }
 
-        int _imageTileWidth;
-        int ImageTileWidth {
-            get { return _imageTileWidth; }
+        int ImageWidthInTiles {get; set;}
+        int ImageHeightInTiles { get; set;}
+
+        int TileWidth { get; set; }
+        int TileHeight { get; set; }
+
+        public int PixelXToTileX(int x) {
+            return x / TileWidth;
         }
 
-        int _imageTileHeight;
-        int ImageTileHeight {
-            get { return _imageTileHeight; }
+        public int PixelYToTileY(int y) {
+            return y / TileHeight;
         }
-
         public MapLayerObject MapMeta {
             get {
-                return _mapModel.layers[2].objects[0];
+                return _mapModel.layers.First(x => x.name == "Object")
+                    .objects.First(x=>x.name == "LevelTag");
             }
         }
 
@@ -63,8 +70,8 @@ namespace Assets.Map {
 
             Vector2[] uvs = new Vector2[mesh.vertices.Length];
             int i = 0;
-            int xIndex = tileIndex % ImageTileWidth;
-            int yIndex = tileIndex / ImageTileHeight;
+            int xIndex = tileIndex % ImageWidthInTiles;
+            int yIndex = tileIndex / ImageHeightInTiles;
             while (i < uvs.Length) {
                 uvs[i] = new Vector2(((mesh.vertices[i].x + .5f) * .125f) + (.125f * xIndex), ((mesh.vertices[i].y + .5f) * -.125f) + (-.125f * yIndex));
                 i++;
@@ -106,6 +113,12 @@ namespace Assets.Map {
 
         MapLayer GetLayerByName(MapLayerName layerName) {
             return _mapModel.layers.First(x => x.name == layerName.ToString());
+        }
+
+        public void ForeachObject(Action<MapLayerObject> perObjectAction){
+            MapLayer layer = GetLayerByName(MapLayerName.Object);
+            foreach(var o in layer.objects)
+                perObjectAction(o);
         }
 
         public void ForeachTile(Action<int, int, int> perTileAction, MapLayerName layerName) {

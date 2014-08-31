@@ -30,13 +30,23 @@ public class PlayfieldScript : MonoBehaviour {
         _map = CompositionRoot.Map;
 
         _map.ForeachTile(new Action<int, int, int>(PerTileMapSetup), MapLayerName.Board);
-        _map.ForeachTile(new Action<int, int, int>(PerTileObjectSetup), MapLayerName.Object);
+        //_map.ForeachTile(new Action<int, int, int>(PerTileObjectSetup), MapLayerName.Object);
+        _map.ForeachObject(new Action<MapLayerObject> (PerObjectSetup));
 
         CompositionRoot.PlayerController.SpawnAt(_spawnPoint);
 	}
 
      Vector3 PlayerPositionFromXY(int x, int y) {
         return new Vector3(x, 0.5f, y);
+    }
+
+     void PerObjectSetup(MapLayerObject layerObject) {
+         if (layerObject.name == "spawnpoint") {
+             if (layerObject.type == "spawnplayer")
+                 _spawnPoint = PlayerPositionFromXY(_map.PixelXToTileX(layerObject.x), _map.PixelYToTileY(layerObject.y));
+             if (layerObject.name == "goal") {
+             }
+         }  
     }
 
     void PerTileObjectSetup(int xPosition, int yPosition, int tileSetIndex) {
@@ -47,17 +57,27 @@ public class PlayfieldScript : MonoBehaviour {
                 _spawnPoint = PlayerPositionFromXY(xPosition, yPosition);
             if (t.value == "goal") {
             }
-        }
+        }            
     }
 
     void PerTileMapSetup(int xPosition, int yPosition, int tileSetIndex){
         if (tileSetIndex == -1)
             return;
-    
-        GameObject quad = NewTileAt(new Vector3(xPosition, 0, yPosition));
-                
-        Mesh mesh = quad.GetComponent<MeshFilter>().mesh;
-        mesh.uv = _map.UVForTileType(tileSetIndex, mesh);
+
+        Tile t = _map.TileAtTileSetIndex(tileSetIndex);
+
+        if (t.type == "wall" && t.value == "block") {
+            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.transform.position = new Vector3(xPosition, 0.5F, yPosition);
+            cube.transform.localScale = new Vector3(0.9f, 1.0f, 0.9f);
+
+        }
+        else {
+            GameObject quad = NewTileAt(new Vector3(xPosition, 0, yPosition));
+
+            Mesh mesh = quad.GetComponent<MeshFilter>().mesh;
+            mesh.uv = _map.UVForTileType(tileSetIndex, mesh);
+        }
     }
 
 	void Update () {}
@@ -83,6 +103,9 @@ public class PlayfieldScript : MonoBehaviour {
             if (_map.TileIndexAt(position, MapLayerName.Board) == -1)
                 return false;
         }
+
+        if (_map.TileAtMapPosition(position, MapLayerName.Board).type == "wall")
+            return false;
 
         return true;
     }

@@ -54,6 +54,7 @@
      <Compile Include="Assets\Game\Conditions\Condition.cs" />
      <Compile Include="Assets\Game\Conditions\ConditionState.cs" />
      <Compile Include="Assets\Game\Conditions\DemoLevelConditions.cs" />
+     <Compile Include="Assets\Game\Conditions\DemoWallsTeleportsPressurePlatesConditions.cs" />
      <Compile Include="Assets\Game\Conditions\LevelConditions.cs" />
      <Compile Include="Assets\Game\Conditions\NumericSequenceCondition.cs" />
      <Compile Include="Assets\Game\Conditions\SpecificTileCondition.cs" />
