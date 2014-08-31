@@ -43,4 +43,22 @@
    <property name="value" value="4"/>
   </properties>
  </tile>
+  <tile id="27">
+  <properties>
+   <property name="type" value="trigger"/>
+   <property name="value" value="pressureplate"/>
+  </properties>
+ </tile>
+  <tile id="28">
+  <properties>
+   <property name="type" value="portal"/>
+   <property name="value" value=""/>
+  </properties>
+ </tile>
+  <tile id="30">
+  <properties>
+   <property name="type" value="wall"/>
+   <property name="value" value="block"/>
+  </properties>
+ </tile>
 </tileset>
