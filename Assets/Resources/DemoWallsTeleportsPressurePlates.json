@@ -42,6 +42,32 @@
                  "width":41,
                  "x":265,
                  "y":276
+                }, 
+                {
+                 "height":33,
+                 "name":"trigger",
+                 "properties":
+                    {
+                     "linkto":"2"
+                    },
+                 "type":"portal",
+                 "visible":true,
+                 "width":34,
+                 "x":142,
+                 "y":77
+                }, 
+                {
+                 "height":37,
+                 "name":"trigger",
+                 "properties":
+                    {
+                     "linkto":"1"
+                    },
+                 "type":"portal",
+                 "visible":true,
+                 "width":40,
+                 "x":77,
+                 "y":588
                 }],
          "opacity":1,
          "type":"objectgroup",

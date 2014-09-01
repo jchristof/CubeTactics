@@ -401,6 +401,7 @@
      <Compile Include="Assets\Map\Tile.cs" />
      <Compile Include="Assets\Map\TileType.cs" />
      <Compile Include="Assets\Map\Tileset.cs" />
+     <Compile Include="Assets\Map\Trigger.cs" />
      <Compile Include="Assets\PlayerController.cs" />
      <Compile Include="Assets\PlayfieldScript.cs" />
      <None Include="Assets\PlaneShader.shader" />

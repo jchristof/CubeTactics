@@ -16,6 +16,7 @@ public class PlayfieldScript : MonoBehaviour {
     public bool CreateTrail { get; set; }
 
     Vector3 _spawnPoint;
+    List<Trigger> _triggers = new List<Trigger>();
     List<Tuple<Vector3, GameObject>> playfiedGrid = new List<Tuple<Vector3, GameObject>>();
     Map _map;
 
@@ -41,19 +42,32 @@ public class PlayfieldScript : MonoBehaviour {
                  _spawnPoint = PlayerPositionFromXY(_map.PixelXToTileX(layerObject.x), _map.PixelYToTileY(layerObject.y));
              if (layerObject.name == "goal") {
              }
-         }  
+         }
+         else if (layerObject.name == "trigger") {
+             if (layerObject.type == "portal") {
+                 Trigger trigger = new Trigger(layerObject.name,
+                     layerObject.type,
+                     Convert.ToInt32(layerObject.properties.id),
+                     _map.PixelXToTileX(layerObject.x),
+                     _map.PixelYToTileY(layerObject.y),
+                     Convert.ToInt32(layerObject.properties.linkto),
+                     layerObject.visible);
+
+                 _triggers.Add(trigger);
+             }
+         }
     }
 
-    void PerTileObjectSetup(int xPosition, int yPosition, int tileSetIndex) {
-        Tile t = _map.TileAtTileSetIndex(tileSetIndex);
+    //void PerTileObjectSetup(int xPosition, int yPosition, int tileSetIndex) {
+    //    Tile t = _map.TileAtTileSetIndex(tileSetIndex);
 
-        if (t.type == "trigger") {
-            if(t.value == "spawn")
-                _spawnPoint = PlayerPositionFromXY(xPosition, yPosition);
-            if (t.value == "goal") {
-            }
-        }            
-    }
+    //    if (t.type == "trigger") {
+    //        if(t.value == "spawn")
+    //            _spawnPoint = PlayerPositionFromXY(xPosition, yPosition);
+    //        if (t.value == "goal") {
+    //        }
+    //    }            
+    //}
 
     void PerTileMapSetup(int xPosition, int yPosition, int tileSetIndex){
         if (tileSetIndex == -1)
@@ -68,6 +82,7 @@ public class PlayfieldScript : MonoBehaviour {
             //cube.transform.localScale = new Vector3(0.9f, 1.0f, 0.9f);
 
         }
+        
         else {
             GameObject quad = NewTileAt(new Vector3(xPosition, 0, yPosition));
 

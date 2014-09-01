@@ -10,6 +10,8 @@ namespace Assets.Map {
             public string Name { get; set; }
             public string Description { get; set; }
             public string Trail { get; set; }
+            public string linkto { get; set; }
+            public string id { get; set; }
         }
 
         public int height { get; set; }
