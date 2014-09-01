@@ -11,12 +11,6 @@ using Assets;
 
 public class PlayfieldScript : MonoBehaviour {
 
-    private bool _clampToRectBounds;
-    public bool ClampToRectBounds {
-        get { return _clampToRectBounds; }
-        set { _clampToRectBounds = value; }
-    }
-
     public bool _crossEmptyTile;
     public bool _crossMyPath;
     public bool CreateTrail { get; set; }
@@ -27,6 +21,7 @@ public class PlayfieldScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        ClampToRectBounds = true;
         _map = CompositionRoot.Map;
 
         _map.ForeachTile(new Action<int, int, int>(PerTileMapSetup), MapLayerName.Board);
@@ -87,8 +82,10 @@ public class PlayfieldScript : MonoBehaviour {
         ExecuteNewPosition(toPosition);
     }
 
+    public bool ClampToRectBounds { get; set; }
+
     public bool RequestPlayerMoveTo(Vector3 position) {
-        if (_clampToRectBounds) {
+        if (ClampToRectBounds) {
             if (!_map.PositionWithinMapBounds(position))
                 return false;
         }

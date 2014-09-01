@@ -147,10 +147,12 @@ namespace Assets.Map {
         }
 
         public bool PositionWithinMapBounds(Vector3 position) {
-            if (position.x < 0 || position.z < 0)
+            int x = Convert.ToInt32(position.x);
+            int y = Convert.ToInt32(position.z);
+            if (x < 0 || y < 0)
                 return false;
 
-            if (position.x > _mapModel.width || position.z > _mapModel.height)
+            if (x >= _mapModel.width || y >= _mapModel.height)
                 return false;
 
             return true;
