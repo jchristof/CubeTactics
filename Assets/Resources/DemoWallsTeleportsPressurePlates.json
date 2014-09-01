@@ -48,6 +48,7 @@
                  "name":"trigger",
                  "properties":
                     {
+                     "id":"1",
                      "linkto":"2"
                     },
                  "type":"portal",
@@ -61,6 +62,7 @@
                  "name":"trigger",
                  "properties":
                     {
+                     "id":"2",
                      "linkto":"1"
                     },
                  "type":"portal",

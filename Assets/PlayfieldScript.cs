@@ -6,6 +6,7 @@ using Assets.Map;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
+using System.Linq;
 using System;
 using Assets;
 
@@ -26,7 +27,6 @@ public class PlayfieldScript : MonoBehaviour {
         _map = CompositionRoot.Map;
 
         _map.ForeachTile(new Action<int, int, int>(PerTileMapSetup), MapLayerName.Board);
-        //_map.ForeachTile(new Action<int, int, int>(PerTileObjectSetup), MapLayerName.Object);
         _map.ForeachObject(new Action<MapLayerObject> (PerObjectSetup));
 
         CompositionRoot.PlayerController.SpawnAt(_spawnPoint);
@@ -54,20 +54,10 @@ public class PlayfieldScript : MonoBehaviour {
                      layerObject.visible);
 
                  _triggers.Add(trigger);
+                 print("New trigger: " + trigger.ToString());
              }
          }
     }
-
-    //void PerTileObjectSetup(int xPosition, int yPosition, int tileSetIndex) {
-    //    Tile t = _map.TileAtTileSetIndex(tileSetIndex);
-
-    //    if (t.type == "trigger") {
-    //        if(t.value == "spawn")
-    //            _spawnPoint = PlayerPositionFromXY(xPosition, yPosition);
-    //        if (t.value == "goal") {
-    //        }
-    //    }            
-    //}
 
     void PerTileMapSetup(int xPosition, int yPosition, int tileSetIndex){
         if (tileSetIndex == -1)
@@ -205,5 +195,18 @@ public class PlayfieldScript : MonoBehaviour {
         }
 
         CompositionRoot.Game.ExecutePlayerMove(newPlayerPosition);
+        int xPos = Convert.ToInt32(newPlayerPosition.x);
+        int yPos = Convert.ToInt32(newPlayerPosition.z);
+
+        print(string.Format("X:{0}, y:{1}", xPos, yPos));
+        Trigger originTrigger = _triggers.Where(x => x.X == xPos)
+            .Where(x => x.Y == yPos).FirstOrDefault();
+
+        if(originTrigger != null){
+            Trigger destinationTrigger = _triggers.Find(x => x.Id == originTrigger.LinkTo);
+            if(destinationTrigger != null){
+                CompositionRoot.PlayerController.AutoMatedMoveTo(new Vector3(destinationTrigger.X, 0.5f, destinationTrigger.Y));
+            }
+        }
     }
 }

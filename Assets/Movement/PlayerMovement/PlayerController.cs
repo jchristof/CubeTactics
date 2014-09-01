@@ -2,6 +2,7 @@
 using System.Collections;
 using Assets.Language;
 using Assets;
+using Assets.Movement.PlayerMovement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -12,6 +13,8 @@ public class PlayerController : MonoBehaviour {
     Vector3 refPoint;
     Vector3 rotationAxis;
     Vector3 direction;
+
+    AutomatedMove automatedMove;
 
     bool rotating = false;
     float angle = 0.0f;
@@ -79,6 +82,12 @@ public class PlayerController : MonoBehaviour {
 
     #endregion
     void Update() {
+        if (automatedMove != null) {
+            transform.position = automatedMove.moveTo;
+            automatedMove = null;
+            return;
+        }
+
 
         if (!rotating) {
             if (!InputEnabled)
@@ -99,7 +108,7 @@ public class PlayerController : MonoBehaviour {
 
             if (direction.Item1 != Vector3.zero) {
                 Vector3 requestPosition = transform.position + direction.Item1;
-                print(string.Format("Request next position: {0}", requestPosition));
+                //print(string.Format("Request next position: {0}", requestPosition));
                 if (!CompositionRoot.Playfield.RequestPlayerMoveTo(requestPosition)) {
                     return;
                 }
@@ -129,10 +138,15 @@ public class PlayerController : MonoBehaviour {
         MoveToFinished();
     }
 
+    public void AutoMatedMoveTo(Vector3 moveTo) {
+        automatedMove = new AutomatedMove { moveTo = moveTo };
+    }
+
+
     void MoveToFinished(){
         PlayfieldScript playfieldScript = CompositionRoot.Playfield;
 
-        print(string.Format("New Position: {0}", transform.position));
+        //print(string.Format("New Position: {0}", transform.position));
         playfieldScript.PlayerMoved(transform.position);
         
     }
