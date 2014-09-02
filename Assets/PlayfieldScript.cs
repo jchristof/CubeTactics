@@ -45,7 +45,7 @@ public class PlayfieldScript : MonoBehaviour {
              }
          }
          else if (layerObject.name == "trigger") {
-             if (layerObject.type == "portal") {
+             if (layerObject.type == "teleport") {
                  Teleporter trigger = new Teleporter(layerObject.name,
                      layerObject.type,
                      Convert.ToInt32(layerObject.properties.id),
@@ -59,7 +59,10 @@ public class PlayfieldScript : MonoBehaviour {
                  _triggers.Add(trigger);
                  print("New trigger: " + trigger.ToString());
              }
+             else if (layerObject.type == "pressureplate") {
+             }
          }
+         
     }
 
     void PerTileMapSetup(int xPosition, int yPosition, int tileSetIndex){

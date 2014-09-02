@@ -37,7 +37,7 @@
                      "id":"1",
                      "linkto":"2"
                     },
-                 "type":"portal",
+                 "type":"teleport",
                  "visible":true,
                  "width":34,
                  "x":142,
@@ -52,7 +52,7 @@
                      "id":"2",
                      "linkto":"1"
                     },
-                 "type":"portal",
+                 "type":"teleport",
                  "visible":true,
                  "width":40,
                  "x":77,

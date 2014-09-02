@@ -112,14 +112,14 @@
  </layer>
  <objectgroup name="Object" width="10" height="10">
   <object name="spawnpoint" type="spawnplayer" x="265" y="276" width="41" height="32"/>
-  <object name="trigger" type="portal" x="142" y="77" width="34" height="33">
+  <object name="trigger" type="teleport" x="142" y="77" width="34" height="33">
    <properties>
     <property name="enabled" value="true"/>
     <property name="id" value="1"/>
     <property name="linkto" value="2"/>
    </properties>
   </object>
-  <object name="trigger" type="portal" x="77" y="588" width="40" height="37">
+  <object name="trigger" type="teleport" x="77" y="588" width="40" height="37">
    <properties>
     <property name="enabled" value="true"/>
     <property name="id" value="2"/>

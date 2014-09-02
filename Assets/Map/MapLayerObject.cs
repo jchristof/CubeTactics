@@ -9,6 +9,7 @@ namespace Assets.Map {
             public string linkto { get; set; }
             public string id { get; set; }
             public bool enabled { get; set; }
+            public string script { get; set; }
         }
 
         public int height { get; set; }

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Assets.Map.Triggers;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -44,6 +45,55 @@ namespace Assets.Map {
 
             TileWidth = _mapModel.tilesets[0].tilewidth;
             TileHeight = _mapModel.tilesets[0].tileheight;
+        }
+
+        Vector3 SpawnPoint { get; set; }
+        List<Trigger> Triggers { get; set; }
+        void BuildMapObject() {
+            MapLayer layer = GetLayerByName(MapLayerName.Object);
+
+            var spawnPoint = layer.objects
+                .Where(x => x.name == "spawnpoint")
+                .Where(x => x.type == "spawnplayer")
+                .First();
+
+            if(spawnPoint == null)
+                throw new InvalidOperationException("no player spawnpoint");
+
+            SpawnPoint = new Vector3(PixelXToTileX(spawnPoint.x), 0.5f, PixelXToTileX(spawnPoint.y));
+            layer.objects.Remove(spawnPoint);
+
+            var triggers = layer.objects
+                .Where(x => x.name == "trigger");
+
+            var teleporters = triggers
+                .Where(x => x.name == "teleport");
+
+            Triggers = new List<Trigger>();
+
+            foreach (var t in teleporters) {
+                Teleporter trigger = new Teleporter(t.name,
+                      t.type,
+                      Convert.ToInt32(t.properties.id),
+                      PixelXToTileX(t.x),
+                      PixelYToTileY(t.y),
+                      Convert.ToInt32(t.properties.linkto),
+                      t.visible,
+                      t.properties.enabled);
+
+                trigger.Triggers = Triggers;
+                Triggers.Add(trigger);
+
+                layer.objects.Remove(t);
+            }
+
+            var pressureplates = triggers
+                .Where(x => x.name == "pressureplate");
+
+            foreach (var p in pressureplates) {
+            }
+                
+
         }
 
         int ImageWidthInTiles {get; set;}

@@ -407,6 +407,7 @@
     <Compile Include="Assets\Map\Tile.cs" />
     <Compile Include="Assets\Map\Tileset.cs" />
     <Compile Include="Assets\Map\TileType.cs" />
+    <Compile Include="Assets\Map\Triggers\PressurePlate.cs" />
     <Compile Include="Assets\Map\Triggers\Teleporter.cs" />
     <Compile Include="Assets\Map\Triggers\Trigger.cs" />
     <Compile Include="Assets\Movement\PlayerMovement\AutomatedMove.cs" />
