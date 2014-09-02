@@ -33,6 +33,7 @@
                  "name":"trigger",
                  "properties":
                     {
+                     "enabled":"true",
                      "id":"1",
                      "linkto":"2"
                     },
@@ -47,6 +48,7 @@
                  "name":"trigger",
                  "properties":
                     {
+                     "enabled":"true",
                      "id":"2",
                      "linkto":"1"
                     },
@@ -61,8 +63,8 @@
                  "name":"trigger",
                  "properties":
                     {
-                     "disable":"tile",
-                     "tile":""
+                     "enabled":"true",
+                     "script":"pressureplate trigger"
                     },
                  "type":"pressureplate",
                  "visible":true,

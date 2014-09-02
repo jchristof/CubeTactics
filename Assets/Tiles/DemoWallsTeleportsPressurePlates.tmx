@@ -114,20 +114,22 @@
   <object name="spawnpoint" type="spawnplayer" x="265" y="276" width="41" height="32"/>
   <object name="trigger" type="portal" x="142" y="77" width="34" height="33">
    <properties>
+    <property name="enabled" value="true"/>
     <property name="id" value="1"/>
     <property name="linkto" value="2"/>
    </properties>
   </object>
   <object name="trigger" type="portal" x="77" y="588" width="40" height="37">
    <properties>
+    <property name="enabled" value="true"/>
     <property name="id" value="2"/>
     <property name="linkto" value="1"/>
    </properties>
   </object>
   <object name="trigger" type="pressureplate" x="14" y="146" width="39" height="32">
    <properties>
-    <property name="disable" value="tile"/>
-    <property name="tile" value=""/>
+    <property name="enabled" value="true"/>
+    <property name="script" value="pressureplate trigger"/>
    </properties>
   </object>
   <object name="script" type="pressureplate trigger" x="-113" y="58" width="87" height="66">

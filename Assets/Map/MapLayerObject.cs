@@ -8,6 +8,7 @@ namespace Assets.Map {
         public class Properties {
             public string linkto { get; set; }
             public string id { get; set; }
+            public bool enabled { get; set; }
         }
 
         public int height { get; set; }

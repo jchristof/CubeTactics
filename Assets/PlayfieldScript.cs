@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System;
 using Assets;
+using Assets.Map.Triggers;
 
 public class PlayfieldScript : MonoBehaviour {
 
@@ -45,14 +46,16 @@ public class PlayfieldScript : MonoBehaviour {
          }
          else if (layerObject.name == "trigger") {
              if (layerObject.type == "portal") {
-                 Trigger trigger = new Trigger(layerObject.name,
+                 Teleporter trigger = new Teleporter(layerObject.name,
                      layerObject.type,
                      Convert.ToInt32(layerObject.properties.id),
                      _map.PixelXToTileX(layerObject.x),
                      _map.PixelYToTileY(layerObject.y),
                      Convert.ToInt32(layerObject.properties.linkto),
-                     layerObject.visible);
+                     layerObject.visible,
+                     layerObject.properties.enabled);
 
+                 trigger.Triggers = _triggers;
                  _triggers.Add(trigger);
                  print("New trigger: " + trigger.ToString());
              }
@@ -183,6 +186,20 @@ public class PlayfieldScript : MonoBehaviour {
         return newQuad;
     }
 
+    void RunTriggers(Vector3 newPlayerPosition) {
+        int xPos = Convert.ToInt32(newPlayerPosition.x);
+        int yPos = Convert.ToInt32(newPlayerPosition.z);
+
+        var trippedTriggers = _triggers
+            .Where(x => x.X == xPos)
+            .Where(x => x.Y == yPos)
+            .Where(x => x.Enabled == true) ;
+
+        foreach (var trigger in trippedTriggers) {
+            trigger.OnTriggered();
+        }   
+    }
+
     void ExecuteNewPosition(Vector3 newPlayerPosition) {
         if (CreateTrail) {
             GameObject quad = GameObject.Find("Quad2");
@@ -195,18 +212,6 @@ public class PlayfieldScript : MonoBehaviour {
         }
 
         CompositionRoot.Game.ExecutePlayerMove(newPlayerPosition);
-        int xPos = Convert.ToInt32(newPlayerPosition.x);
-        int yPos = Convert.ToInt32(newPlayerPosition.z);
-
-        //print(string.Format("X:{0}, y:{1}", xPos, yPos));
-        Trigger originTrigger = _triggers.Where(x => x.X == xPos)
-            .Where(x => x.Y == yPos).FirstOrDefault();
-
-        if(originTrigger != null){
-            Trigger destinationTrigger = _triggers.Find(x => x.Id == originTrigger.LinkTo);
-            if(destinationTrigger != null){
-                CompositionRoot.PlayerController.AutoMatedMoveTo(new Vector3(destinationTrigger.X, 0.5f, destinationTrigger.Y));
-            }
-        }
+        RunTriggers(newPlayerPosition);
     }
 }
