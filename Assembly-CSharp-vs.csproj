@@ -408,6 +408,8 @@
      <Compile Include="Assets\Movement\PlayerMovement\AutomatedMove.cs" />
      <Compile Include="Assets\Movement\PlayerMovement\PlayerController.cs" />
      <Compile Include="Assets\PlayfieldScript.cs" />
+     <Compile Include="Assets\Script\Command.cs" />
+     <Compile Include="Assets\Script\ObjectCommand.cs" />
      <None Include="Assets\PlaneShader.shader" />
      <None Include="Assets\JsonDotNet\ReadMe.txt" />
  <Reference Include="SampleClassLibrary">

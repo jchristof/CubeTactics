@@ -77,7 +77,7 @@
                  "name":"script",
                  "properties":
                     {
-                     "script":"{ \n\"Commands\":[\n        {\n         \"Command\":\"Disable\"\n         \"Layer\":\"Board\",\n         \"Object\":\"Tile\",\n         \"Position\": [9,6]\n        }]\n}"
+                     "script":"{ \n\"Commands\":[\n        {\n         \"ObjectCommand\":\"Disable\"\n         \"Layer\":\"Board\",\n         \"Object\":\"Tile\",\n         \"Position\": [9,6]\n        }]\n}"
                     },
                  "type":"pressureplate trigger",
                  "visible":true,

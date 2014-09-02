@@ -17,8 +17,8 @@ public class PlayfieldScript : MonoBehaviour {
     public bool _crossMyPath;
     public bool CreateTrail { get; set; }
 
-    Vector3 _spawnPoint;
-    List<Trigger> _triggers = new List<Trigger>();
+    //Vector3 _spawnPoint;
+    //List<Trigger> _triggers = new List<Trigger>();
     List<Tuple<Vector3, GameObject>> playfiedGrid = new List<Tuple<Vector3, GameObject>>();
     Map _map;
 
@@ -28,42 +28,42 @@ public class PlayfieldScript : MonoBehaviour {
         _map = CompositionRoot.Map;
 
         _map.ForeachTile(new Action<int, int, int>(PerTileMapSetup), MapLayerName.Board);
-        _map.ForeachObject(new Action<MapLayerObject> (PerObjectSetup));
+        //_map.ForeachObject(new Action<MapLayerObject> (PerObjectSetup));
 
-        CompositionRoot.PlayerController.SpawnAt(_spawnPoint);
+        CompositionRoot.PlayerController.SpawnAt(_map.SpawnPoint);
 	}
 
      Vector3 PlayerPositionFromXY(int x, int y) {
         return new Vector3(x, 0.5f, y);
     }
 
-     void PerObjectSetup(MapLayerObject layerObject) {
-         if (layerObject.name == "spawnpoint") {
-             if (layerObject.type == "spawnplayer")
-                 _spawnPoint = PlayerPositionFromXY(_map.PixelXToTileX(layerObject.x), _map.PixelYToTileY(layerObject.y));
-             if (layerObject.name == "goal") {
-             }
-         }
-         else if (layerObject.name == "trigger") {
-             if (layerObject.type == "teleport") {
-                 Teleporter trigger = new Teleporter(layerObject.name,
-                     layerObject.type,
-                     Convert.ToInt32(layerObject.properties.id),
-                     _map.PixelXToTileX(layerObject.x),
-                     _map.PixelYToTileY(layerObject.y),
-                     Convert.ToInt32(layerObject.properties.linkto),
-                     layerObject.visible,
-                     layerObject.properties.enabled);
+    // void PerObjectSetup(MapLayerObject layerObject) {
+    //     if (layerObject.name == "spawnpoint") {
+    //         if (layerObject.type == "spawnplayer")
+    //             _spawnPoint = PlayerPositionFromXY(_map.PixelXToTileX(layerObject.x), _map.PixelYToTileY(layerObject.y));
+    //         if (layerObject.name == "goal") {
+    //         }
+    //     }
+    //     else if (layerObject.name == "trigger") {
+    //         if (layerObject.type == "teleport") {
+    //             Teleporter trigger = new Teleporter(layerObject.name,
+    //                 layerObject.type,
+    //                 Convert.ToInt32(layerObject.properties.id),
+    //                 _map.PixelXToTileX(layerObject.x),
+    //                 _map.PixelYToTileY(layerObject.y),
+    //                 Convert.ToInt32(layerObject.properties.linkto),
+    //                 layerObject.visible,
+    //                 layerObject.properties.enabled);
 
-                 trigger.Triggers = _triggers;
-                 _triggers.Add(trigger);
-                 print("New trigger: " + trigger.ToString());
-             }
-             else if (layerObject.type == "pressureplate") {
-             }
-         }
+    //             trigger.Triggers = _triggers;
+    //             _triggers.Add(trigger);
+    //             print("New trigger: " + trigger.ToString());
+    //         }
+    //         else if (layerObject.type == "pressureplate") {
+    //         }
+    //     }
          
-    }
+    //}
 
     void PerTileMapSetup(int xPosition, int yPosition, int tileSetIndex){
         if (tileSetIndex == -1)
@@ -193,7 +193,7 @@ public class PlayfieldScript : MonoBehaviour {
         int xPos = Convert.ToInt32(newPlayerPosition.x);
         int yPos = Convert.ToInt32(newPlayerPosition.z);
 
-        var trippedTriggers = _triggers
+        var trippedTriggers = _map.Triggers
             .Where(x => x.X == xPos)
             .Where(x => x.Y == yPos)
             .Where(x => x.Enabled == true) ;

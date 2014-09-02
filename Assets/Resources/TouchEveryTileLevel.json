@@ -12,38 +12,25 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-         "height":10,
-         "name":"Object",
-         "opacity":1,
-         "type":"tilelayer",
-         "visible":false,
-         "width":10,
-         "x":0,
-         "y":0
-        }, 
-        {
          "height":10,
          "name":"Object",
          "objects":[
                 {
-                 "height":98,
-                 "name":"LevelTag",
+                 "height":33,
+                 "name":"spawnpoint",
                  "properties":
                     {
-                     "Conditions":"TouchEveryTileLevelConditions",
-                     "Description":"Touch every tile only once",
-                     "Name":"Touch Every Tile"
+
                     },
-                 "type":"",
+                 "type":"spawnplayer",
                  "visible":true,
-                 "width":107,
-                 "x":30,
-                 "y":19
+                 "width":38,
+                 "x":587,
+                 "y":15
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "width":10,
          "x":0,
          "y":0
@@ -51,7 +38,10 @@
  "orientation":"orthogonal",
  "properties":
     {
-
+     "Conditions":"TouchEveryTileLevelConditions",
+     "Description":"Touch every tile only once",
+     "Name ":"Touch Every Tile",
+     "Trail":"Solid"
     },
  "tileheight":64,
  "tilesets":[
@@ -94,6 +84,21 @@
                 {
                  "type":"number",
                  "value":"4"
+                },
+             "27":
+                {
+                 "type":"trigger",
+                 "value":"pressureplate"
+                },
+             "28":
+                {
+                 "type":"portal",
+                 "value":""
+                },
+             "30":
+                {
+                 "type":"wall",
+                 "value":"block"
                 },
              "8":
                 {

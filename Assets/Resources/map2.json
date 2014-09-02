@@ -1,7 +1,31 @@
 { "height":10,
  "layers":[
         {
-         "data":[12, 12, 0, 0, 0, 0, 0, 0, 0, 12, 12, 12, 12, 12, 12, 12, 12, 12, 0, 12, 12, 12, 12, 0, 0, 0, 0, 12, 12, 12, 12, 0, 0, 0, 12, 12, 12, 12, 12, 0, 12, 0, 0, 12, 12, 12, 12, 12, 12, 0, 12, 12, 0, 12, 0, 12, 0, 12, 12, 0, 12, 12, 0, 12, 0, 12, 0, 12, 12, 12, 12, 12, 0, 12, 0, 12, 0, 12, 0, 12, 0, 12, 0, 12, 0, 12, 0, 12, 0, 12, 0, 10, 0, 12, 12, 12, 0, 12, 12, 12],
+         "height":10,
+         "name":"Object",
+         "objects":[
+                {
+                 "height":31,
+                 "name":"spawnpoint",
+                 "properties":
+                    {
+
+                    },
+                 "type":"spawnplayer",
+                 "visible":true,
+                 "width":33,
+                 "x":594,
+                 "y":592
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":10,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":[10, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 12, 0, 16, 12, 12, 0, 0, 0, 0, 0, 12, 0, 12, 0, 12, 0, 0, 0, 0, 0, 12, 12, 12, 0, 12, 0, 0, 0, 0, 0, 12, 12, 12, 12, 12, 0, 0, 0, 0, 0, 0, 17, 12, 0, 12, 0, 0, 0, 0, 0, 0, 0, 12, 12, 15, 14, 12, 12, 0, 0, 0, 0, 0, 0, 12, 0, 0, 12, 0, 0, 0, 0, 0, 0, 12, 12, 0, 12, 0, 0, 0, 0, 0, 0, 0, 12, 12, 12],
          "height":10,
          "name":"Board",
          "opacity":1,
@@ -10,49 +34,14 @@
          "width":10,
          "x":0,
          "y":0
-        }, 
-        {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-         "height":10,
-         "name":"Object",
-         "opacity":1,
-         "type":"tilelayer",
-         "visible":false,
-         "width":10,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "height":10,
-         "name":"Object",
-         "objects":[
-                {
-                 "height":98,
-                 "name":"LevelTag",
-                 "properties":
-                    {
-                     "Conditions":"TouchEveryTileLevelConditions",
-                     "Description":"Touch every tile only once",
-                     "Name":"Touch Every Tile",
-                     "Trail":"Solid"
-                    },
-                 "type":"",
-                 "visible":true,
-                 "width":107,
-                 "x":30,
-                 "y":19
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "width":10,
-         "x":0,
-         "y":0
         }],
  "orientation":"orthogonal",
  "properties":
     {
-
+     "Conditions":"DemoLevelConditions",
+     "Description":"Level Rules:\\nCross the numbered tiles in order\\nMake it to the goal\\n Don't cross your own path",
+     "Name":"Numerica Sequence",
+     "Trail":"Solid"
     },
  "tileheight":64,
  "tilesets":[
@@ -95,6 +84,21 @@
                 {
                  "type":"number",
                  "value":"4"
+                },
+             "27":
+                {
+                 "type":"trigger",
+                 "value":"pressureplate"
+                },
+             "28":
+                {
+                 "type":"portal",
+                 "value":""
+                },
+             "30":
+                {
+                 "type":"wall",
+                 "value":"block"
                 },
              "8":
                 {

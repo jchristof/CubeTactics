@@ -137,7 +137,7 @@
     <property name="script">{ 
 &quot;Commands&quot;:[
         {
-         &quot;Command&quot;:&quot;Disable&quot;
+         &quot;ObjectCommand&quot;:&quot;Disable&quot;
          &quot;Layer&quot;:&quot;Board&quot;,
          &quot;Object&quot;:&quot;Tile&quot;,
          &quot;Position&quot;: [9,6]

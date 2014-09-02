@@ -1,4 +1,5 @@
 ﻿using Assets.Map.Triggers;
+using Assets.Script;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -45,10 +46,13 @@ namespace Assets.Map {
 
             TileWidth = _mapModel.tilesets[0].tilewidth;
             TileHeight = _mapModel.tilesets[0].tileheight;
+
+            BuildMapObject();
         }
 
-        Vector3 SpawnPoint { get; set; }
-        List<Trigger> Triggers { get; set; }
+        public Vector3 SpawnPoint { get; set; }
+        public List<Trigger> Triggers { get; set; }
+
         void BuildMapObject() {
             MapLayer layer = GetLayerByName(MapLayerName.Object);
 
@@ -61,13 +65,14 @@ namespace Assets.Map {
                 throw new InvalidOperationException("no player spawnpoint");
 
             SpawnPoint = new Vector3(PixelXToTileX(spawnPoint.x), 0.5f, PixelXToTileX(spawnPoint.y));
-            layer.objects.Remove(spawnPoint);
+
+            //layer.objects.Remove(spawnPoint);
 
             var triggers = layer.objects
                 .Where(x => x.name == "trigger");
 
             var teleporters = triggers
-                .Where(x => x.name == "teleport");
+                .Where(x => x.type == "teleport");
 
             Triggers = new List<Trigger>();
 
@@ -84,13 +89,27 @@ namespace Assets.Map {
                 trigger.Triggers = Triggers;
                 Triggers.Add(trigger);
 
-                layer.objects.Remove(t);
+                //layer.objects.Remove(t);
             }
 
             var pressureplates = triggers
-                .Where(x => x.name == "pressureplate");
+                .Where(x => x.type == "pressureplate");
 
             foreach (var p in pressureplates) {
+                PressurePlate trigger = new PressurePlate(p.name,
+                      p.type,
+                      Convert.ToInt32(p.properties.id),
+                      PixelXToTileX(p.x),
+                      PixelYToTileY(p.y),
+                      Convert.ToInt32(p.properties.linkto),
+                      p.visible,
+                      p.properties.enabled);
+
+                //trigger.Script = JsonConvert.DeserializeObject<ObjectCommand[]>(p.properties.script);
+
+                Triggers.Add(trigger);
+
+                //layer.objects.Remove(p);
             }
                 
 
