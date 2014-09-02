@@ -25,12 +25,12 @@ namespace Assets.Game {
             _map.LoadMap(mapFileToLoad);
             CompositionRoot.Map = _map;
 
-            string levelConditionsClassName = CompositionRoot.Map.MapMeta.properties.Conditions;
+            string levelConditionsClassName = CompositionRoot.Map.MapProperties.Conditions;
             Type elementType = Type.GetType(
                 string.Format("Assets.Game.Conditions.{0}, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null", levelConditionsClassName));
 
             _levelConditions = (LevelConditions)Activator.CreateInstance(elementType);
-            CompositionRoot.Playfield.CreateTrail = CompositionRoot.Map.MapMeta.properties.Trail == "Solid";
+            CompositionRoot.Playfield.CreateTrail = CompositionRoot.Map.MapProperties.Trail == "Solid";
         }
 
         GameState GameState { 

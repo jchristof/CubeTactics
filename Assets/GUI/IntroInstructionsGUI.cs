@@ -24,7 +24,7 @@ using UnityEngine;
 
 
         void OnGUI() {
-            string instructions = CompositionRoot.Map.MapMeta.properties.Description.Replace(@"\n", System.Environment.NewLine);
+            string instructions = CompositionRoot.Map.MapProperties.Description.Replace(@"\n", System.Environment.NewLine);
             GUI.Box(_guiBox, instructions);
             if (GUI.Button(_button, "Ok") || Input.anyKey) {
                 this.enabled = false;

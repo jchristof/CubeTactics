@@ -398,6 +398,7 @@
      <Compile Include="Assets\Map\MapLayerName.cs" />
      <Compile Include="Assets\Map\MapLayerObject.cs" />
      <Compile Include="Assets\Map\MapModel.cs" />
+     <Compile Include="Assets\Map\PropertiesMap.cs" />
      <Compile Include="Assets\Map\Tile.cs" />
      <Compile Include="Assets\Map\TileType.cs" />
      <Compile Include="Assets\Map\Tileset.cs" />

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="10" height="10" tilewidth="64" tileheight="64">
+ <properties>
+  <property name="Conditions" value="DemoWallsTeleportsPressurePlatesConditions"/>
+  <property name="Description" value="Test out portals, pressure plates, block walls"/>
+  <property name="Name" value="Block out!"/>
+ </properties>
  <tileset firstgid="1" source="tilemap.tsx"/>
  <layer name="Board" width="10" height="10">
   <data>
@@ -106,13 +111,6 @@
   </data>
  </layer>
  <objectgroup name="Object" width="10" height="10">
-  <object name="LevelTag" x="-114" y="-18" width="87" height="65">
-   <properties>
-    <property name="Conditions" value="DemoWallsTeleportsPressurePlatesConditions"/>
-    <property name="Description" value="Test out portals, pressure plates, block walls"/>
-    <property name="Name" value="Block out!"/>
-   </properties>
-  </object>
   <object name="spawnpoint" type="spawnplayer" x="265" y="276" width="41" height="32"/>
   <object name="trigger" type="portal" x="142" y="77" width="34" height="33">
    <properties>
@@ -124,6 +122,25 @@
    <properties>
     <property name="id" value="2"/>
     <property name="linkto" value="1"/>
+   </properties>
+  </object>
+  <object name="trigger" type="pressureplate" x="14" y="146" width="39" height="32">
+   <properties>
+    <property name="disable" value="tile"/>
+    <property name="tile" value=""/>
+   </properties>
+  </object>
+  <object name="script" type="pressureplate trigger" x="-113" y="58" width="87" height="66">
+   <properties>
+    <property name="script">{ 
+&quot;Commands&quot;:[
+        {
+         &quot;Command&quot;:&quot;Disable&quot;
+         &quot;Layer&quot;:&quot;Board&quot;,
+         &quot;Object&quot;:&quot;Tile&quot;,
+         &quot;Position&quot;: [9,6]
+        }]
+}</property>
    </properties>
   </object>
  </objectgroup>

@@ -17,7 +17,7 @@ namespace Assets.Map {
             Visible = visible;
         }
 
-        public string ToString() {
+        public override string ToString() {
             return JsonConvert.SerializeObject(this);
         }
 

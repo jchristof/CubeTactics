@@ -16,21 +16,6 @@
          "name":"Object",
          "objects":[
                 {
-                 "height":65,
-                 "name":"LevelTag",
-                 "properties":
-                    {
-                     "Conditions":"DemoWallsTeleportsPressurePlatesConditions",
-                     "Description":"Test out portals, pressure plates, block walls",
-                     "Name":"Block out!"
-                    },
-                 "type":"",
-                 "visible":true,
-                 "width":87,
-                 "x":-114,
-                 "y":-18
-                }, 
-                {
                  "height":32,
                  "name":"spawnpoint",
                  "properties":
@@ -70,6 +55,33 @@
                  "width":40,
                  "x":77,
                  "y":588
+                }, 
+                {
+                 "height":32,
+                 "name":"trigger",
+                 "properties":
+                    {
+                     "disable":"tile",
+                     "tile":""
+                    },
+                 "type":"pressureplate",
+                 "visible":true,
+                 "width":39,
+                 "x":14,
+                 "y":146
+                }, 
+                {
+                 "height":66,
+                 "name":"script",
+                 "properties":
+                    {
+                     "script":"{ \n\"Commands\":[\n        {\n         \"Command\":\"Disable\"\n         \"Layer\":\"Board\",\n         \"Object\":\"Tile\",\n         \"Position\": [9,6]\n        }]\n}"
+                    },
+                 "type":"pressureplate trigger",
+                 "visible":true,
+                 "width":87,
+                 "x":-113,
+                 "y":58
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -81,7 +93,9 @@
  "orientation":"orthogonal",
  "properties":
     {
-
+     "Conditions":"DemoWallsTeleportsPressurePlatesConditions",
+     "Description":"Test out portals, pressure plates, block walls",
+     "Name":"Block out!"
     },
  "tileheight":64,
  "tilesets":[

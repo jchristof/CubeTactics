@@ -12,7 +12,7 @@ public class InstructionsGUI : MonoBehaviour {
         //    print(a.name);
 
         int yPos = 10;
-        GUI.Box(new Rect(10, yPos, 300, 30), CompositionRoot.Map.MapMeta.properties.Name);
+        GUI.Box(new Rect(10, yPos, 300, 30), CompositionRoot.Map.MapProperties.Name);
         yPos += 30;
 
         foreach(var c in CompositionRoot.Game.Conditions){

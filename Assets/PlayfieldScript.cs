@@ -198,7 +198,7 @@ public class PlayfieldScript : MonoBehaviour {
         int xPos = Convert.ToInt32(newPlayerPosition.x);
         int yPos = Convert.ToInt32(newPlayerPosition.z);
 
-        print(string.Format("X:{0}, y:{1}", xPos, yPos));
+        //print(string.Format("X:{0}, y:{1}", xPos, yPos));
         Trigger originTrigger = _triggers.Where(x => x.X == xPos)
             .Where(x => x.Y == yPos).FirstOrDefault();
 

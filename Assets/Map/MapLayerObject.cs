@@ -6,10 +6,6 @@ using System.Text;
 namespace Assets.Map {
     public class MapLayerObject {
         public class Properties {
-            public string Conditions { get; set; }
-            public string Name { get; set; }
-            public string Description { get; set; }
-            public string Trail { get; set; }
             public string linkto { get; set; }
             public string id { get; set; }
         }

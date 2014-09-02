@@ -59,10 +59,9 @@ namespace Assets.Map {
         public int PixelYToTileY(int y) {
             return y / TileHeight;
         }
-        public MapLayerObject MapMeta {
+        public PropertiesMap MapProperties {
             get {
-                return _mapModel.layers.First(x => x.name == "Object")
-                    .objects.First(x=>x.name == "LevelTag");
+                return _mapModel.properties;
             }
         }
 
