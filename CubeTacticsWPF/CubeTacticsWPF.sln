@@ -1,7 +1,8 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{3711077A-FBA8-1498-DDCD-A9D587F71B32}") = "CubeTactics", "Assembly-CSharp.csproj", "{01B43CE5-1965-9847-0F55-FD994A520328}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "..\Assembly-CSharp.csproj", "{01B43CE5-1965-9847-0F55-FD994A520328}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubeTacticsWPf", "CubeTacticsWPf.csproj", "{D77BF91D-EE2F-4B5C-95C8-F90F491B447A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,11 +14,15 @@ Global
 		{01B43CE5-1965-9847-0F55-FD994A520328}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01B43CE5-1965-9847-0F55-FD994A520328}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01B43CE5-1965-9847-0F55-FD994A520328}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D77BF91D-EE2F-4B5C-95C8-F90F491B447A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D77BF91D-EE2F-4B5C-95C8-F90F491B447A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D77BF91D-EE2F-4B5C-95C8-F90F491B447A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D77BF91D-EE2F-4B5C-95C8-F90F491B447A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																				GlobalSection(MonoDevelopProperties) = preSolution
+	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $3
@@ -34,5 +39,4 @@ Global
 		$3.inheritsScope = text/plain
 		$3.scope = text/plain
 	EndGlobalSection
-
 EndGlobal

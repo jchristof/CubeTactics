@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -53,11 +54,12 @@ namespace Assets.Map {
             TileHeight = _mapModel.tilesets[0].tileheight;
 
             MapLayer layer = GetLayerByName(MapLayerName.Object);
-                BuildMapObject(layer.objects);
+            BuildMapObject(layer.objects);
         }
 
         public Vector3 SpawnPoint { get; set; }
         public List<Trigger> Triggers { get; set; }
+        public IEnumerable<Assets.Map.Script.Script> Scripts { get; set; }
 
         void BuildMapObject(IList<MapLayerObject> mapObjects) {
 
@@ -66,51 +68,43 @@ namespace Assets.Map {
             var triggers = mapObjects
                 .Where(x => x.name == "trigger");
 
-            var teleporters = triggers
-                .Where(x => x.type == "teleport");
-
             Triggers = new List<Trigger>();
 
-            foreach (var t in teleporters) {
-                Teleporter trigger = new Teleporter(t.name,
-                      t.type,
-                      Convert.ToInt32(t.properties.id),
-                      PixelXToTileX(t.x),
-                      PixelYToTileY(t.y),
-                      Convert.ToInt32(t.properties.linkto),
-                      t.visible,
-                      t.properties.enabled);
+            IEnumerable<Trigger> teleporters = _objectFactory.CreateTeleporters(this, triggers, new ReadOnlyCollection<Trigger>(Triggers));
+            Triggers.AddRange(teleporters);
 
-                trigger.Triggers = Triggers;
-                Triggers.Add(trigger);
-            }
+            Scripts = _objectFactory.CreateScripts(mapObjects);
 
-            var pressureplates = triggers
-                .Where(x => x.type == "pressureplate");
+            IEnumerable<Trigger> pressurePlates = _objectFactory.CreatePressurePlates(this, Scripts, triggers);
+            Triggers.AddRange(pressurePlates);
 
-            foreach (var p in pressureplates) {
-                PressurePlate trigger = new PressurePlate(p.name,
-                      p.type,
-                      Convert.ToInt32(p.properties.id),
-                      PixelXToTileX(p.x),
-                      PixelYToTileY(p.y),
-                      Convert.ToInt32(p.properties.linkto),
-                      p.visible,
-                      p.properties.enabled);
 
-                string scriptName = p.properties.script;
+            //var pressureplates = triggers
+            //    .Where(x => x.type == "pressureplate");
 
-                if (!string.IsNullOrEmpty(scriptName)) {
-                    MapLayerObject scriptObject = mapObjects
-                        .Where(x=>x.name == "script")
-                        .Where(x => x.type == scriptName).FirstOrDefault();
+            //foreach (var p in pressureplates) {
+            //    PressurePlate trigger = new PressurePlate(p.name,
+            //          p.type,
+            //          Convert.ToInt32(p.properties.id),
+            //          PixelXToTileX(p.x),
+            //          PixelYToTileY(p.y),
+            //          Convert.ToInt32(p.properties.linkto),
+            //          p.visible,
+            //          p.properties.enabled);
 
-                    //if (scriptObject != null)
-                     //   trigger.Script = JsonConvert.DeserializeObject<ObjectCommand[]>(p.properties.script);
-                }
+            //    string scriptName = p.properties.script;
 
-                Triggers.Add(trigger);
-            }
+            //    if (!string.IsNullOrEmpty(scriptName)) {
+            //        MapLayerObject scriptObject = mapObjects
+            //            .Where(x=>x.name == "script")
+            //            .Where(x => x.type == scriptName).FirstOrDefault();
+
+            //        //if (scriptObject != null)
+            //         //   trigger.Script = JsonConvert.DeserializeObject<ObjectCommand[]>(p.properties.script);
+            //    }
+
+            //    Triggers.Add(trigger);
+            //}
                 
 
         }

@@ -402,6 +402,7 @@
      <Compile Include="Assets\Map\MapModel.cs" />
      <Compile Include="Assets\Map\MapObjectFactory.cs" />
      <Compile Include="Assets\Map\PropertiesMap.cs" />
+     <Compile Include="Assets\Map\Script\Script.cs" />
      <Compile Include="Assets\Map\Tile.cs" />
      <Compile Include="Assets\Map\TileType.cs" />
      <Compile Include="Assets\Map\Tileset.cs" />
