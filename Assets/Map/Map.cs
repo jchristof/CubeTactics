@@ -10,12 +10,17 @@ using System.Text;
 using UnityEngine;
 
 namespace Assets.Map {
-    public class Map {
+    public class Map : IMap {
         MapModel _mapModel;
         Dictionary<int, Tile> tilelist = new Dictionary<int, Tile>();
         Tile emptyTile = new Tile {
             index = -1
         };
+
+        IMapObjectFactory _objectFactory;
+        public Map() {
+            _objectFactory = new MapObjectFactory();
+        }
 
         public void LoadMap(string filename){
             TextAsset temp = Resources.Load(filename) as TextAsset;
@@ -47,28 +52,18 @@ namespace Assets.Map {
             TileWidth = _mapModel.tilesets[0].tilewidth;
             TileHeight = _mapModel.tilesets[0].tileheight;
 
-            BuildMapObject();
+            MapLayer layer = GetLayerByName(MapLayerName.Object);
+                BuildMapObject(layer.objects);
         }
 
         public Vector3 SpawnPoint { get; set; }
         public List<Trigger> Triggers { get; set; }
 
-        void BuildMapObject() {
-            MapLayer layer = GetLayerByName(MapLayerName.Object);
+        void BuildMapObject(IList<MapLayerObject> mapObjects) {
 
-            var spawnPoint = layer.objects
-                .Where(x => x.name == "spawnpoint")
-                .Where(x => x.type == "spawnplayer")
-                .First();
+            SpawnPoint = _objectFactory.CreatePlayerSpawnPoint(mapObjects, this);
 
-            if(spawnPoint == null)
-                throw new InvalidOperationException("no player spawnpoint");
-
-            SpawnPoint = new Vector3(PixelXToTileX(spawnPoint.x), 0.5f, PixelXToTileX(spawnPoint.y));
-
-            //layer.objects.Remove(spawnPoint);
-
-            var triggers = layer.objects
+            var triggers = mapObjects
                 .Where(x => x.name == "trigger");
 
             var teleporters = triggers
@@ -88,8 +83,6 @@ namespace Assets.Map {
 
                 trigger.Triggers = Triggers;
                 Triggers.Add(trigger);
-
-                //layer.objects.Remove(t);
             }
 
             var pressureplates = triggers
@@ -105,11 +98,18 @@ namespace Assets.Map {
                       p.visible,
                       p.properties.enabled);
 
-                //trigger.Script = JsonConvert.DeserializeObject<ObjectCommand[]>(p.properties.script);
+                string scriptName = p.properties.script;
+
+                if (!string.IsNullOrEmpty(scriptName)) {
+                    MapLayerObject scriptObject = mapObjects
+                        .Where(x=>x.name == "script")
+                        .Where(x => x.type == scriptName).FirstOrDefault();
+
+                    //if (scriptObject != null)
+                     //   trigger.Script = JsonConvert.DeserializeObject<ObjectCommand[]>(p.properties.script);
+                }
 
                 Triggers.Add(trigger);
-
-                //layer.objects.Remove(p);
             }
                 
 
@@ -128,6 +128,7 @@ namespace Assets.Map {
         public int PixelYToTileY(int y) {
             return y / TileHeight;
         }
+
         public PropertiesMap MapProperties {
             get {
                 return _mapModel.properties;

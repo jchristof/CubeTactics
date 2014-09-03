@@ -398,11 +398,14 @@
     <Compile Include="Assets\Language\Tuple.cs" />
     <Compile Include="Assets\Level\LevelName.cs" />
     <Compile Include="Assets\Map\Direction.cs" />
+    <Compile Include="Assets\Map\IMap.cs" />
+    <Compile Include="Assets\Map\IMapObjectFactory.cs" />
     <Compile Include="Assets\Map\Map.cs" />
     <Compile Include="Assets\Map\MapLayer.cs" />
     <Compile Include="Assets\Map\MapLayerName.cs" />
     <Compile Include="Assets\Map\MapLayerObject.cs" />
     <Compile Include="Assets\Map\MapModel.cs" />
+    <Compile Include="Assets\Map\MapObjectFactory.cs" />
     <Compile Include="Assets\Map\PropertiesMap.cs" />
     <Compile Include="Assets\Map\Tile.cs" />
     <Compile Include="Assets\Map\Tileset.cs" />
