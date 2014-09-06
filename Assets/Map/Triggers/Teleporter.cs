@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Script;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -7,8 +8,8 @@ using UnityEngine;
 
 namespace Assets.Map.Triggers {
     public class Teleporter : Trigger{
-        public Teleporter(IMap map, MapObject mapObject, ReadOnlyCollection<Trigger> triggers) :
-            base(mapObject, map) {
+        public Teleporter(IMap map, MapObject mapObject, IScriptExecutor scriptExecutor, ReadOnlyCollection<Trigger> triggers) :
+            base(mapObject, map, scriptExecutor) {
                 Triggers = triggers;
         }
 
@@ -19,10 +20,6 @@ namespace Assets.Map.Triggers {
             if (destinationTrigger != null) {
                 CompositionRoot.PlayerController.AutoMatedMoveTo(new Vector3(destinationTrigger.X, 0.5f, destinationTrigger.Y));
             }
-        }
-
-        public override void OnExit() {
-            throw new NotImplementedException();
         }
     }
 }

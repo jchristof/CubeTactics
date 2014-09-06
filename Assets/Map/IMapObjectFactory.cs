@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using UnityEngine;
-
 namespace Assets.Map {
-    public interface IMapObjectFactory {
-        Vector3 CreatePlayerSpawnPoint(IList<MapObject> mapObjects, IMap map);
-        IEnumerable<Assets.Map.Script.Script> CreateScripts(IList<MapObject> mapObjects);
-        IEnumerable<Trigger> CreateTeleporters(IMap map, IList<MapObject> mapObjects, ReadOnlyCollection<Trigger> triggersList);
-        //IEnumerable<Trigger> CreatePressurePlates(IMap map, IEnumerable<Assets.Map.Script.Script> scripts, IEnumerable<MapLayerObject> triggerdata);
+    interface IMapObjectFactory {
+        UnityEngine.Vector3 CreatePlayerSpawnPoint(System.Collections.Generic.IList<MapObject> mapObjects, IMap map);
+        System.Collections.Generic.IEnumerable<Assets.Map.Script.Script> CreateScripts(System.Collections.Generic.IList<MapObject> mapObjects);
+        System.Collections.Generic.IEnumerable<Trigger> CreateTeleporters(IMap map, Assets.Script.IScriptExecutor scriptExecutor, System.Collections.Generic.IList<MapObject> mapObjects, System.Collections.ObjectModel.ReadOnlyCollection<Trigger> triggersList);
+        Assets.Script.CommandList DeserializeScript(string scriptJson);
     }
 }

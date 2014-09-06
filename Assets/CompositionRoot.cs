@@ -1,4 +1,5 @@
 ﻿
+using Assets.Script;
 using UnityEngine;
 
 namespace Assets {
@@ -43,6 +44,15 @@ namespace Assets {
                 if (_playField == null)
                     _playField = GameObject.Find("Playfield").GetComponent<PlayfieldScript>();
                 return _playField;
+            }
+        }
+
+        static ScriptExecutor _scriptExecutor;
+        public static ScriptExecutor ScriptExecutor {
+            get {
+                if (_scriptExecutor == null)
+                    _scriptExecutor = new ScriptExecutor();
+                return _scriptExecutor;
             }
         }
 

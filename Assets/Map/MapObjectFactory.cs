@@ -33,12 +33,12 @@ namespace Assets.Map {
                     });
         }
 
-        public IEnumerable<Trigger> CreateTeleporters(IMap map, IList<MapObject> mapObjects, ReadOnlyCollection<Trigger> triggersList) {
+        public IEnumerable<Trigger> CreateTeleporters(IMap map, IScriptExecutor scriptExecutor, IList<MapObject> mapObjects, ReadOnlyCollection<Trigger> triggersList) {
             var teleporters =
                     mapObjects
                         .Where(x => x.type == MapObjectType.Teleporter);
 
-            var newTeleporters = teleporters.Select(t => new Teleporter(map, t, triggersList));
+            var newTeleporters = teleporters.Select(t => new Teleporter(map, t, scriptExecutor, triggersList));
 
             return newTeleporters.Cast<Trigger>();
         }

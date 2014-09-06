@@ -66,8 +66,9 @@ namespace Assets.Map {
             SpawnPoint = _objectFactory.CreatePlayerSpawnPoint(mapObjects, this);
 
             Triggers = new List<Trigger>();
+            IScriptExecutor scriptExecutor = CompositionRoot.ScriptExecutor;
 
-            IEnumerable<Trigger> teleporters = _objectFactory.CreateTeleporters(this, mapObjects, new ReadOnlyCollection<Trigger>(Triggers));
+            IEnumerable<Trigger> teleporters = _objectFactory.CreateTeleporters(this, scriptExecutor, mapObjects, new ReadOnlyCollection<Trigger>(Triggers));
             Triggers.AddRange(teleporters);
 
             Scripts = _objectFactory.CreateScripts(mapObjects);

@@ -17,18 +17,14 @@ public class PlayfieldScript : MonoBehaviour {
     public bool _crossMyPath;
     public bool CreateTrail { get; set; }
 
-    //Vector3 _spawnPoint;
-    //List<Trigger> _triggers = new List<Trigger>();
     List<Tuple<Vector3, GameObject>> playfiedGrid = new List<Tuple<Vector3, GameObject>>();
     Map _map;
 
-	// Use this for initialization
 	void Start () {
         ClampToRectBounds = true;
         _map = CompositionRoot.Map;
 
         _map.ForeachTile(new Action<int, int, int>(PerTileMapSetup), MapLayerName.Board);
-        //_map.ForeachObject(new Action<MapLayerObject> (PerObjectSetup));
 
         CompositionRoot.PlayerController.SpawnAt(_map.SpawnPoint);
 	}
@@ -37,33 +33,6 @@ public class PlayfieldScript : MonoBehaviour {
         return new Vector3(x, 0.5f, y);
     }
 
-    // void PerObjectSetup(MapLayerObject layerObject) {
-    //     if (layerObject.name == "spawnpoint") {
-    //         if (layerObject.type == "spawnplayer")
-    //             _spawnPoint = PlayerPositionFromXY(_map.PixelXToTileX(layerObject.x), _map.PixelYToTileY(layerObject.y));
-    //         if (layerObject.name == "goal") {
-    //         }
-    //     }
-    //     else if (layerObject.name == "trigger") {
-    //         if (layerObject.type == "teleport") {
-    //             Teleporter trigger = new Teleporter(layerObject.name,
-    //                 layerObject.type,
-    //                 Convert.ToInt32(layerObject.properties.id),
-    //                 _map.PixelXToTileX(layerObject.x),
-    //                 _map.PixelYToTileY(layerObject.y),
-    //                 Convert.ToInt32(layerObject.properties.linkto),
-    //                 layerObject.visible,
-    //                 layerObject.properties.enabled);
-
-    //             trigger.Triggers = _triggers;
-    //             _triggers.Add(trigger);
-    //             print("New trigger: " + trigger.ToString());
-    //         }
-    //         else if (layerObject.type == "pressureplate") {
-    //         }
-    //     }
-         
-    //}
 
     void PerTileMapSetup(int xPosition, int yPosition, int tileSetIndex){
         if (tileSetIndex == -1)
@@ -75,8 +44,6 @@ public class PlayfieldScript : MonoBehaviour {
             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             cube.transform.position = new Vector3(xPosition, 0.5F, yPosition);
             cube.renderer.material = Resources.Load("CubeWall", typeof(Material)) as Material;
-            //cube.transform.localScale = new Vector3(0.9f, 1.0f, 0.9f);
-
         }
         
         else {

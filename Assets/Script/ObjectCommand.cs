@@ -5,9 +5,11 @@ using System.Text;
 
 namespace Assets.Script {
     public enum ObjectCommand {
+        Destroy,
         Disable,
         Enable,
         Create,
-        Activate
+        Activate,
+        Reset
     }
 }
