@@ -195,11 +195,10 @@ public class PlayfieldScript : MonoBehaviour {
 
         var trippedTriggers = _map.Triggers
             .Where(x => x.X == xPos)
-            .Where(x => x.Y == yPos)
-            .Where(x => x.Enabled == true) ;
+            .Where(x => x.Y == yPos);
 
         foreach (var trigger in trippedTriggers) {
-            trigger.OnTriggered();
+            trigger.OnEnter();
         }   
     }
 

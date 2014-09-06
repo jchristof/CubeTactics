@@ -15,7 +15,4 @@ namespace Assets.Map {
             return string.Format("Tile index {0}, type: {1}, value: {2}", index, type, value);
         }
     }
-
-    
-    
 }

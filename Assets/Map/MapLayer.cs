@@ -14,7 +14,7 @@ namespace Assets.Map {
         public int width { get; set; }
         public int x { get; set; }
         public int y { get; set; }
-        public IList<MapLayerObject> objects { get; set; }
+        public IList<MapObject> objects { get; set; }
     }
 
 }

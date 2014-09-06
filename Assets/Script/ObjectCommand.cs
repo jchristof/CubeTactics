@@ -7,5 +7,7 @@ namespace Assets.Script {
     public enum ObjectCommand {
         Disable,
         Enable,
+        Create,
+        Activate
     }
 }

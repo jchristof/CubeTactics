@@ -54,59 +54,26 @@ namespace Assets.Map {
             TileHeight = _mapModel.tilesets[0].tileheight;
 
             MapLayer layer = GetLayerByName(MapLayerName.Object);
-            BuildMapObject(layer.objects);
+            BuildMapObjects(layer.objects);
         }
 
         public Vector3 SpawnPoint { get; set; }
         public List<Trigger> Triggers { get; set; }
         public IEnumerable<Assets.Map.Script.Script> Scripts { get; set; }
 
-        void BuildMapObject(IList<MapLayerObject> mapObjects) {
+        void BuildMapObjects(IList<MapObject> mapObjects) {
 
             SpawnPoint = _objectFactory.CreatePlayerSpawnPoint(mapObjects, this);
 
-            var triggers = mapObjects
-                .Where(x => x.name == "trigger");
-
             Triggers = new List<Trigger>();
 
-            IEnumerable<Trigger> teleporters = _objectFactory.CreateTeleporters(this, triggers, new ReadOnlyCollection<Trigger>(Triggers));
+            IEnumerable<Trigger> teleporters = _objectFactory.CreateTeleporters(this, mapObjects, new ReadOnlyCollection<Trigger>(Triggers));
             Triggers.AddRange(teleporters);
 
             Scripts = _objectFactory.CreateScripts(mapObjects);
 
-            IEnumerable<Trigger> pressurePlates = _objectFactory.CreatePressurePlates(this, Scripts, triggers);
-            Triggers.AddRange(pressurePlates);
-
-
-            //var pressureplates = triggers
-            //    .Where(x => x.type == "pressureplate");
-
-            //foreach (var p in pressureplates) {
-            //    PressurePlate trigger = new PressurePlate(p.name,
-            //          p.type,
-            //          Convert.ToInt32(p.properties.id),
-            //          PixelXToTileX(p.x),
-            //          PixelYToTileY(p.y),
-            //          Convert.ToInt32(p.properties.linkto),
-            //          p.visible,
-            //          p.properties.enabled);
-
-            //    string scriptName = p.properties.script;
-
-            //    if (!string.IsNullOrEmpty(scriptName)) {
-            //        MapLayerObject scriptObject = mapObjects
-            //            .Where(x=>x.name == "script")
-            //            .Where(x => x.type == scriptName).FirstOrDefault();
-
-            //        //if (scriptObject != null)
-            //         //   trigger.Script = JsonConvert.DeserializeObject<ObjectCommand[]>(p.properties.script);
-            //    }
-
-            //    Triggers.Add(trigger);
-            //}
-                
-
+            //IEnumerable<Trigger> pressurePlates = _objectFactory.CreatePressurePlates(this, Scripts, triggers);
+            //Triggers.AddRange(pressurePlates);
         }
 
         int ImageWidthInTiles {get; set;}
@@ -178,7 +145,7 @@ namespace Assets.Map {
             return _mapModel.layers.First(x => x.name == layerName.ToString());
         }
 
-        public void ForeachObject(Action<MapLayerObject> perObjectAction){
+        public void ForeachObject(Action<MapObject> perObjectAction){
             MapLayer layer = GetLayerByName(MapLayerName.Object);
             foreach(var o in layer.objects)
                 perObjectAction(o);

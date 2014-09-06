@@ -398,15 +398,15 @@
      <Compile Include="Assets\Map\Map.cs" />
      <Compile Include="Assets\Map\MapLayer.cs" />
      <Compile Include="Assets\Map\MapLayerName.cs" />
-     <Compile Include="Assets\Map\MapLayerObject.cs" />
      <Compile Include="Assets\Map\MapModel.cs" />
+     <Compile Include="Assets\Map\MapObject.cs" />
      <Compile Include="Assets\Map\MapObjectFactory.cs" />
+     <Compile Include="Assets\Map\MapObjectType.cs" />
      <Compile Include="Assets\Map\PropertiesMap.cs" />
      <Compile Include="Assets\Map\Script\Script.cs" />
      <Compile Include="Assets\Map\Tile.cs" />
      <Compile Include="Assets\Map\TileType.cs" />
      <Compile Include="Assets\Map\Tileset.cs" />
-     <Compile Include="Assets\Map\Triggers\PressurePlate.cs" />
      <Compile Include="Assets\Map\Triggers\Teleporter.cs" />
      <Compile Include="Assets\Map\Triggers\Trigger.cs" />
      <Compile Include="Assets\Movement\PlayerMovement\AutomatedMove.cs" />

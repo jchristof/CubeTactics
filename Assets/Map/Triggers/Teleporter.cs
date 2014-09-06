@@ -7,18 +7,22 @@ using UnityEngine;
 
 namespace Assets.Map.Triggers {
     public class Teleporter : Trigger{
-        public Teleporter(string name, string type, int id, int xpos, int ypos, int linkTo, bool visible, bool enabled, ReadOnlyCollection<Trigger> triggers) :
-            base(name, type, id, xpos, ypos, linkTo, visible, enabled) {
+        public Teleporter(IMap map, MapObject mapObject, ReadOnlyCollection<Trigger> triggers) :
+            base(mapObject, map) {
                 Triggers = triggers;
         }
 
         public ReadOnlyCollection<Trigger> Triggers { get; private set; }
 
-        public override void OnTriggered() {
-            Trigger destinationTrigger = Triggers.Where(x => x.Id == LinkTo).FirstOrDefault();
+        public override void OnEnter() {
+            Trigger destinationTrigger = Triggers.Where(x => x.Name == Properties.linkto).FirstOrDefault();
             if (destinationTrigger != null) {
                 CompositionRoot.PlayerController.AutoMatedMoveTo(new Vector3(destinationTrigger.X, 0.5f, destinationTrigger.Y));
             }
+        }
+
+        public override void OnExit() {
+            throw new NotImplementedException();
         }
     }
 }

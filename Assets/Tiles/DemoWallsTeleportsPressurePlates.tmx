@@ -111,28 +111,26 @@
   </data>
  </layer>
  <objectgroup name="Object" width="10" height="10">
-  <object name="spawnpoint" type="spawnplayer" x="265" y="276" width="41" height="32"/>
-  <object name="trigger" type="teleport" x="142" y="77" width="34" height="33">
+  <object name="spawnplayer" type="SpawnPoint" x="265" y="276" width="41" height="32"/>
+  <object name="teleport1" type="Teleporter" x="142" y="77" width="34" height="33">
    <properties>
     <property name="enabled" value="true"/>
-    <property name="id" value="1"/>
-    <property name="linkto" value="2"/>
+    <property name="linkto" value="teleport2"/>
    </properties>
   </object>
-  <object name="trigger" type="teleport" x="77" y="588" width="40" height="37">
+  <object name="teleport2" type="Teleporter" x="77" y="588" width="40" height="37">
    <properties>
     <property name="enabled" value="true"/>
-    <property name="id" value="2"/>
-    <property name="linkto" value="1"/>
+    <property name="linkto" value="teleport1"/>
    </properties>
   </object>
-  <object name="trigger" type="pressureplate" x="14" y="146" width="39" height="32">
+  <object name="Trigger1" type="EnterExit" x="14" y="146" width="39" height="32">
    <properties>
     <property name="enabled" value="true"/>
-    <property name="script" value="pressureplate trigger"/>
+    <property name="onEnter" value="pressureplate trigger"/>
    </properties>
   </object>
-  <object name="script" type="pressureplate trigger" x="-113" y="58" width="87" height="66">
+  <object name="pressureplatetrigger" type="Script" x="-113" y="58" width="87" height="66">
    <properties>
     <property name="script">{ 
 &quot;Commands&quot;:[

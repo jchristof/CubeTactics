@@ -5,34 +5,31 @@ using System.Linq;
 using System.Text;
 
 namespace Assets.Map {
-    public class Trigger {
+    public abstract class Trigger {
 
-        public Trigger(string name, string type, int id, int xpos, int ypos, int linkTo, bool visible, bool enabled){
-            X = xpos;
-            Y = ypos;
-            Name = name;
-            Type = type;
-            Id = id;
-            LinkTo = linkTo;
-            Visible = visible;
-            Enabled = enabled;
+        public Trigger(MapObject mapObject, IMap map){
+            if (mapObject == null)
+                throw new ArgumentNullException("mapObject");
+
+            if (map == null)
+                throw new ArgumentNullException("map");
+
+            _mapObject = mapObject;
+            _map = map;
         }
 
-        public virtual void OnTriggered() {
+        readonly MapObject _mapObject;
+        readonly IMap _map;
 
-        }
+        public abstract void OnEnter();
+        public abstract void OnExit();
 
-        //public override string ToString() {
-        //    return JsonConvert.SerializeObject(this);
-        //}
+        public MapObject.Properties Properties { get { return _mapObject.properties; } }
 
-        public int X { get; protected set; }
-        public int Y { get; protected set; }
-        public string Name { get; protected set; }
-        public string Type { get; protected set; }
-        public int Id { get; protected set; }
-        public int LinkTo { get; protected set; }
-        public bool Visible { get; protected set; }
-        public bool Enabled { get; protected set; }
+        public int X { get { return _map.PixelXToTileX(_mapObject.x); } }
+        public int Y { get { return _map.PixelYToTileY(_mapObject.y); } }
+        public string Name { get { return _mapObject.name; } }
+        public MapObjectType Type { get { return _mapObject.type; } }
+        public bool Visible { get { return _mapObject.visible; } }
     }
 }

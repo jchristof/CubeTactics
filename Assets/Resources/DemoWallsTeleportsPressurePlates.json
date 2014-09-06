@@ -17,12 +17,12 @@
          "objects":[
                 {
                  "height":32,
-                 "name":"spawnpoint",
+                 "name":"spawnplayer",
                  "properties":
                     {
 
                     },
-                 "type":"spawnplayer",
+                 "type":"SpawnPoint",
                  "visible":true,
                  "width":41,
                  "x":265,
@@ -30,14 +30,13 @@
                 }, 
                 {
                  "height":33,
-                 "name":"trigger",
+                 "name":"teleport1",
                  "properties":
                     {
                      "enabled":"true",
-                     "id":"1",
-                     "linkto":"2"
+                     "linkto":"teleport2"
                     },
-                 "type":"teleport",
+                 "type":"Teleporter",
                  "visible":true,
                  "width":34,
                  "x":142,
@@ -45,14 +44,13 @@
                 }, 
                 {
                  "height":37,
-                 "name":"trigger",
+                 "name":"teleport2",
                  "properties":
                     {
                      "enabled":"true",
-                     "id":"2",
-                     "linkto":"1"
+                     "linkto":"teleport1"
                     },
-                 "type":"teleport",
+                 "type":"Teleporter",
                  "visible":true,
                  "width":40,
                  "x":77,
@@ -60,13 +58,13 @@
                 }, 
                 {
                  "height":32,
-                 "name":"trigger",
+                 "name":"Trigger1",
                  "properties":
                     {
                      "enabled":"true",
-                     "script":"pressureplate trigger"
+                     "onEnter":"pressureplate trigger"
                     },
-                 "type":"pressureplate",
+                 "type":"EnterExit",
                  "visible":true,
                  "width":39,
                  "x":14,
@@ -74,12 +72,12 @@
                 }, 
                 {
                  "height":66,
-                 "name":"script",
+                 "name":"pressureplatetrigger",
                  "properties":
                     {
                      "script":"{ \n\"Commands\":[\n        {\n         \"ObjectCommand\":\"Disable\"\n         \"Layer\":\"Board\",\n         \"Object\":\"Tile\",\n         \"Position\": [9,6]\n        }]\n}"
                     },
-                 "type":"pressureplate trigger",
+                 "type":"Script",
                  "visible":true,
                  "width":87,
                  "x":-113,
