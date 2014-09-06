@@ -157,13 +157,15 @@ public class PlayfieldScript : MonoBehaviour {
     }
 
     public void RemoveTileVisualAt(Vector3 position) {
-
+        var removeList = new List<Tuple<Vector3, GameObject>>();
         foreach (var obj in playfiedGrid) {
-            if(AlmostEqualNoY(obj.Item1, position, .25f))
+            if (AlmostEqualNoY(obj.Item1, position, .25f)) {
                 GameObject.Destroy(obj.Item2);
+                removeList.Add(obj);
+            }
         }
 
-        //playfiedGrid.RemoveAll(x => AlmostEqualNoY(x.Item1, position, Vector3.kEpsilon));
+        playfiedGrid.RemoveAll(x => AlmostEqualNoY(x.Item1, position, .25f));
     }
 
     public GameObject NewTileVisualAt(Vector3 newPlayerPosition) {
