@@ -16,6 +16,9 @@ namespace Assets.Script {
     }
 
     public class CommandList {
+        public CommandList() {
+            Commands = new List<Command>();
+        }
         public IList<Command> Commands { get; set; }
     }
 

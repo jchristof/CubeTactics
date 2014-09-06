@@ -53,12 +53,20 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="EnterExitTest.cs" />
     <Compile Include="MapObjectFactoryTest.cs" />
+    <Compile Include="Script\CommandTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Assembly-CSharp-vs.csproj">
+      <Project>{01b43ce5-1965-9847-0f55-fd994a520328}</Project>
+      <Name>Assembly-CSharp-vs</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

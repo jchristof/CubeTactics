@@ -11,7 +11,7 @@ using System.Text;
 using UnityEngine;
 
 namespace Assets.Map {
-    public class Map : IMap {
+    public class Map : IMap{
         MapModel _mapModel;
         Dictionary<int, Tile> tilelist = new Dictionary<int, Tile>();
         Tile emptyTile = new Tile {
@@ -73,8 +73,8 @@ namespace Assets.Map {
 
             Scripts = _objectFactory.CreateScripts(mapObjects);
 
-            //IEnumerable<Trigger> pressurePlates = _objectFactory.CreatePressurePlates(this, Scripts, triggers);
-            //Triggers.AddRange(pressurePlates);
+            IEnumerable<Trigger> EnterExit = _objectFactory.CreateEnterExitTriggers(this, scriptExecutor, mapObjects, new ReadOnlyCollection<Trigger>(Triggers));
+            Triggers.AddRange(EnterExit);
         }
 
         int ImageWidthInTiles {get; set;}
@@ -132,6 +132,26 @@ namespace Assets.Map {
             return tilelist[tileSetIndex];
         }
 
+        public void CreateTileAt(Vector3 position, MapLayerName layerName) {
+            //CreateTileAt(Convert.ToInt32(position.x), Convert.ToInt32(position.z), layerName);
+        }
+
+        public void CreateTileAt(int x, int y, int tileIndex) {
+            MapLayer layer = GetLayerByName(MapLayerName.Board);
+            int flatIndex = (y * _mapModel.height) + x;
+            layer.data[flatIndex] = tileIndex;
+        }
+
+        public void RemoveTileAt(Vector3 position, MapLayerName layerName) {
+            RemoveTileAt(Convert.ToInt32(position.x), Convert.ToInt32(position.z), layerName);
+        }
+
+        public void RemoveTileAt(int x, int y, MapLayerName layerName) {
+            MapLayer layer = GetLayerByName(layerName);
+            int flatIndex = (y * _mapModel.height) + x;
+            layer.data[flatIndex] = 0;
+        }
+
         public int TileIndexAt(Vector3 position, MapLayerName layerName) {
             return TileIndexAt(Convert.ToInt32(position.x), Convert.ToInt32(position.z), layerName);
         }
@@ -142,7 +162,7 @@ namespace Assets.Map {
             return layer.data[flatIndex] - 1;
         }
 
-        MapLayer GetLayerByName(MapLayerName layerName) {
+        public MapLayer GetLayerByName(MapLayerName layerName) {
             return _mapModel.layers.First(x => x.name == layerName.ToString());
         }
 

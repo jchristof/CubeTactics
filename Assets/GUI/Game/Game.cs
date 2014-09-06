@@ -18,12 +18,11 @@ namespace Assets.Game {
 
         public void Awake() {
 
-            Assets.Map.Map _map = new Assets.Map.Map();
+            CompositionRoot.Map = new Assets.Map.Map();
 
             string mapFileToLoad = levelToLoad.ToString();
 
-            _map.LoadMap(mapFileToLoad);
-            CompositionRoot.Map = _map;
+            CompositionRoot.Map.LoadMap(mapFileToLoad);
 
             string levelConditionsClassName = CompositionRoot.Map.MapProperties.Conditions;
             Type elementType = Type.GetType(

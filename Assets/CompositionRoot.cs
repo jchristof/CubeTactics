@@ -1,4 +1,5 @@
 ﻿
+using Assets.Map;
 using Assets.Script;
 using UnityEngine;
 
@@ -32,8 +33,8 @@ namespace Assets {
             }
         }
 
-        static Assets.Map.Map _map;
-        public static Assets.Map.Map Map {
+        static IMap _map;
+        public static IMap Map {
             get { return _map; }
             set { _map = value; }
         }
@@ -51,7 +52,7 @@ namespace Assets {
         public static ScriptExecutor ScriptExecutor {
             get {
                 if (_scriptExecutor == null)
-                    _scriptExecutor = new ScriptExecutor();
+                    _scriptExecutor = new ScriptExecutor(Map);
                 return _scriptExecutor;
             }
         }

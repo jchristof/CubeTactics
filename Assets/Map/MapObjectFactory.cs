@@ -43,6 +43,16 @@ namespace Assets.Map {
             return newTeleporters.Cast<Trigger>();
         }
 
+        public IEnumerable<Trigger> CreateEnterExitTriggers(IMap map, IScriptExecutor scriptExecutor, IList<MapObject> mapObjects, ReadOnlyCollection<Trigger> triggersList) {
+            var enterExitTriggers =
+                    mapObjects
+                        .Where(x => x.type == MapObjectType.EnterExit);
+
+            var newEnterExitTriggers = enterExitTriggers.Select(t => new EnterExit(map, t, scriptExecutor, triggersList));
+
+            return newEnterExitTriggers.Cast<Trigger>();
+        }
+
         public CommandList DeserializeScript(string scriptJson) {
             return JsonConvert.DeserializeObject<CommandList>(scriptJson);
         }

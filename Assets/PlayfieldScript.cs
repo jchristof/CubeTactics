@@ -18,13 +18,13 @@ public class PlayfieldScript : MonoBehaviour {
     public bool CreateTrail { get; set; }
 
     List<Tuple<Vector3, GameObject>> playfiedGrid = new List<Tuple<Vector3, GameObject>>();
-    Map _map;
+    IMap _map;
 
 	void Start () {
         ClampToRectBounds = true;
         _map = CompositionRoot.Map;
 
-        _map.ForeachTile(new Action<int, int, int>(PerTileMapSetup), MapLayerName.Board);
+        _map.ForeachTile(new Action<int, int, int>(CreateTileVisualAt), MapLayerName.Board);
 
         CompositionRoot.PlayerController.SpawnAt(_map.SpawnPoint);
 	}
@@ -34,7 +34,7 @@ public class PlayfieldScript : MonoBehaviour {
     }
 
 
-    void PerTileMapSetup(int xPosition, int yPosition, int tileSetIndex){
+     public void CreateTileVisualAt(int xPosition, int yPosition, int tileSetIndex) {
         if (tileSetIndex == -1)
             return;
 
@@ -44,10 +44,11 @@ public class PlayfieldScript : MonoBehaviour {
             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             cube.transform.position = new Vector3(xPosition, 0.5F, yPosition);
             cube.renderer.material = Resources.Load("CubeWall", typeof(Material)) as Material;
+            playfiedGrid.Add(Tuple<Vector3, GameObject>.Create(cube.transform.position, cube));
         }
         
         else {
-            GameObject quad = NewTileAt(new Vector3(xPosition, 0, yPosition));
+            GameObject quad = NewTileVisualAt(new Vector3(xPosition, 0, yPosition));
 
             Mesh mesh = quad.GetComponent<MeshFilter>().mesh;
             mesh.uv = _map.UVForTileType(tileSetIndex, mesh);
@@ -68,12 +69,12 @@ public class PlayfieldScript : MonoBehaviour {
                 return false;
         }
 
-        if (!_crossMyPath) {
-            foreach (var quad in playfiedGrid) {
-                if (AlmostEqual(quad.Item1, position, 0.25f))
-                    return false;
-            }
-        }
+        //if (!_crossMyPath) {
+        //    foreach (var quad in playfiedGrid) {
+        //        if (AlmostEqual(quad.Item1, position, 0.25f))
+        //            return false;
+        //    }
+        //}
 
         if (!_crossEmptyTile) {
             if (_map.TileIndexAt(position, MapLayerName.Board) == -1)
@@ -95,6 +96,17 @@ public class PlayfieldScript : MonoBehaviour {
 
         return equal;
     }
+
+    public static bool AlmostEqualNoY(Vector3 v1, Vector3 v2, float precision) {
+        bool equal = true;
+
+        if (Mathf.Abs(v1.x - v2.x) > precision) equal = false;
+        //if (Mathf.Abs(v1.y - v2.y) > precision) equal = false;
+        if (Mathf.Abs(v1.z - v2.z) > precision) equal = false;
+
+        return equal;
+    }
+
 
     Mesh CreateQuadMesh() {
 
@@ -144,7 +156,17 @@ public class PlayfieldScript : MonoBehaviour {
         return mesh;
     }
 
-    GameObject NewTileAt(Vector3 newPlayerPosition) {
+    public void RemoveTileVisualAt(Vector3 position) {
+
+        foreach (var obj in playfiedGrid) {
+            if(AlmostEqualNoY(obj.Item1, position, .25f))
+                GameObject.Destroy(obj.Item2);
+        }
+
+        //playfiedGrid.RemoveAll(x => AlmostEqualNoY(x.Item1, position, Vector3.kEpsilon));
+    }
+
+    public GameObject NewTileVisualAt(Vector3 newPlayerPosition) {
         GameObject quad = GameObject.Find("Tile01");
 
         Vector3 quadPosition = newPlayerPosition;
