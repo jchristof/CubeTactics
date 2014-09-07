@@ -10,6 +10,8 @@ namespace Assets.Map {
         PropertiesMap MapProperties { get; }
         int PixelXToTileX(int x);
         int PixelYToTileY(int y);
+        int Height { get; }
+        int Width { get; }
         bool PositionWithinMapBounds(UnityEngine.Vector3 position);
         void CreateTileAt(Vector3 position, MapLayerName layerName);
         void CreateTileAt(int x, int y, int tileIndex);

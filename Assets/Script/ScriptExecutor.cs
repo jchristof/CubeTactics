@@ -22,14 +22,14 @@ namespace Assets.Script {
             foreach (var cmd in commandList.Commands) {
                 if (cmd.ObjectCommand == ObjectCommand.Destroy) {
                     if (cmd.Tile != null) {
-                        _map.RemoveTileAt(cmd.Tile[0], cmd.Tile[1], MapLayerName.Board);
-                        CompositionRoot.Playfield.RemoveTileVisualAt(new Vector3(cmd.Tile[0], 0, cmd.Tile[1]));
+                        _map.RemoveTileAt(cmd.Tile[0], _map.Height - cmd.Tile[1], MapLayerName.Board);
+                        CompositionRoot.Playfield.RemoveTileVisualAt(new Vector3(cmd.Tile[0], 0, _map.Height - cmd.Tile[1]));
                     }
                 }
                 else if (cmd.ObjectCommand == ObjectCommand.Create) {
                     if (cmd.Tile != null) {
-                        _map.CreateTileAt(cmd.Tile[0], cmd.Tile[1], cmd.TileIndex);
-                        CompositionRoot.Playfield.CreateTileVisualAt(cmd.Tile[0], cmd.Tile[1], cmd.TileIndex);
+                        _map.CreateTileAt(cmd.Tile[0], _map.Height - cmd.Tile[1], cmd.TileIndex);
+                        CompositionRoot.Playfield.CreateTileVisualAt(cmd.Tile[0], _map.Height - cmd.Tile[1], cmd.TileIndex);
                     }
                 }
             }

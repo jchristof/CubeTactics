@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using Assets.Extensions;
 
 namespace Assets.Map {
     public class Map : IMap{
@@ -53,6 +54,9 @@ namespace Assets.Map {
             TileWidth = _mapModel.tilesets[0].tilewidth;
             TileHeight = _mapModel.tilesets[0].tileheight;
 
+            ReorderTiles(GetLayerByName(MapLayerName.Board));
+            ReorderObjects(GetLayerByName(MapLayerName.Object));
+
             MapLayer layer = GetLayerByName(MapLayerName.Object);
             BuildMapObjects(layer.objects);
         }
@@ -60,6 +64,24 @@ namespace Assets.Map {
         public Vector3 SpawnPoint { get; set; }
         public List<Trigger> Triggers { get; set; }
         public IEnumerable<Assets.Map.Script.Script> Scripts { get; set; }
+
+        void ReorderTiles(MapLayer mapLayer) {
+            int[] mapdata = mapLayer.data.ToArray();
+            int[] reorderedData = new int[0];
+            for (int y = _mapModel.height - 1; y >= 0 ; y--) {
+                for (int x = 0; x < _mapModel.width; x += mapLayer.width) {
+                    int flatIndex = (y * _mapModel.width) + x;                    
+                    reorderedData = reorderedData.Concat( mapdata.SubArray(flatIndex, mapLayer.width)).ToArray();
+                }
+            }
+            mapLayer.data = new List<int>(reorderedData);
+
+        }
+
+        void ReorderObjects(MapLayer mapLayer) {
+
+            mapLayer.objects.Select(x => { x.y = (_mapModel.height * _mapModel.tilewidth) - x.y; return x; }).ToList();
+        }
 
         void BuildMapObjects(IList<MapObject> mapObjects) {
 
@@ -91,6 +113,9 @@ namespace Assets.Map {
             return y / TileHeight;
         }
 
+
+        public int Height { get { return _mapModel.height; } }
+        public int Width { get { return _mapModel.width; } }
         public PropertiesMap MapProperties {
             get {
                 return _mapModel.properties;

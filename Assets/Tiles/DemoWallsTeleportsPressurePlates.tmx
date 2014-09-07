@@ -95,19 +95,19 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="31"/>
+   <tile gid="31"/>
+   <tile gid="31"/>
    <tile gid="12"/>
-   <tile gid="31"/>
-   <tile gid="31"/>
    <tile gid="31"/>
    <tile gid="29"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="31"/>
-   <tile gid="31"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
    <tile gid="10"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
   </data>
  </layer>
  <objectgroup name="Object" width="10" height="10">
@@ -141,6 +141,11 @@
          &quot;Position&quot;: [9,6]
         }]
 }</property>
+   </properties>
+  </object>
+  <object name="removetile" type="Select" x="461" y="403" width="35" height="30">
+   <properties>
+    <property name="type" value="Tile"/>
    </properties>
   </object>
  </objectgroup>

@@ -10,6 +10,9 @@ namespace Assets.Map {
         Teleporter,
         Elevator,
         Enemy,
-        Script
+        Script,
+        Tile,
+        Object,
+        Select
     }
 }

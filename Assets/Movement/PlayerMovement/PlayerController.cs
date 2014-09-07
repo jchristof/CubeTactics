@@ -30,22 +30,6 @@ public class PlayerController : MonoBehaviour {
         MoveToFinished();
     }
 
-    void RotateCube(Vector3 refPoint, Vector3 rotationAxis) {
-        rotator.localRotation = Quaternion.identity;
-        rotator.position = transform.position - Vector3.up * halfCubeSize + refPoint;
-        transform.parent = rotator;
-
-        if (angle < 90.0f) {
-            angle += Time.deltaTime * 90.0f * speed;
-            rotator.rotation = Quaternion.AngleAxis(Mathf.Min(angle, 90.0f), rotationAxis);
-            return;
-        }
-
-        transform.parent = null;
-        rotating = false;
-        angle = 0;
-    }
-
     #region Input
     bool _inputEnabled;
 
@@ -108,16 +92,13 @@ public class PlayerController : MonoBehaviour {
 
             if (direction.Item1 != Vector3.zero) {
                 Vector3 requestPosition = transform.position + direction.Item1;
-                //print(string.Format("Request next position: {0}", requestPosition));
-                if (!CompositionRoot.Playfield.RequestPlayerMoveTo(requestPosition)) {
+                if (!CompositionRoot.Playfield.RequestPlayerMoveTo(requestPosition))
                     return;
-                }
 
                 rotating = true;
                 refPoint = direction.Item1 * halfCubeSize;
                 rotationAxis = direction.Item2;
                 
-
                 rotator.localRotation = Quaternion.identity;
                 rotator.position = transform.position - Vector3.up * halfCubeSize + refPoint;
                 transform.parent = rotator;
@@ -138,15 +119,28 @@ public class PlayerController : MonoBehaviour {
         MoveToFinished();
     }
 
+    void RotateCube(Vector3 refPoint, Vector3 rotationAxis) {
+        rotator.localRotation = Quaternion.identity;
+        rotator.position = transform.position - Vector3.up * halfCubeSize + refPoint;
+        transform.parent = rotator;
+
+        if (angle < 90.0f) {
+            angle += Time.deltaTime * 90.0f * speed;
+            rotator.rotation = Quaternion.AngleAxis(Mathf.Min(angle, 90.0f), rotationAxis);
+            return;
+        }
+
+        transform.parent = null;
+        rotating = false;
+        angle = 0;
+    }
+
     public void AutoMatedMoveTo(Vector3 moveTo) {
         automatedMove = new AutomatedMove { moveTo = moveTo };
     }
 
-
     void MoveToFinished(){
         PlayfieldScript playfieldScript = CompositionRoot.Playfield;
-
-        //print(string.Format("New Position: {0}", transform.position));
         playfieldScript.PlayerMoved(transform.position);
         
     }
