@@ -143,9 +143,11 @@
 }</property>
    </properties>
   </object>
-  <object name="removetile" type="Select" x="461" y="403" width="35" height="30">
+  <object name="removetile" type="Tile" x="461" y="403" width="8" height="32"/>
+  <object name="goal" type="EnterExit" x="397" y="591" width="39" height="34"/>
+  <object name="addtile" type="Tile" x="485" y="410" width="11" height="20">
    <properties>
-    <property name="type" value="Tile"/>
+    <property name="tileindex" value="12"/>
    </properties>
   </object>
  </objectgroup>

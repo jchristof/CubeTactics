@@ -38,15 +38,7 @@ namespace Assets.Map {
                 }
             }
 
-            if (_mapModel.tilesets[0].imagewidth % _mapModel.tilesets[0].tilewidth != 0)
-                throw new InvalidOperationException(string.Format("Tile image width {0} not an even multiple of tile width {1}",
-                    _mapModel.tilesets[0].imagewidth,
-                    _mapModel.tilesets[0].tilewidth));
-
-            if (_mapModel.tilesets[0].imageheight % _mapModel.tilesets[0].tileheight != 0)
-                throw new InvalidOperationException(string.Format("Tile image height {0} not an even multiple of tile height {1}",
-                    _mapModel.tilesets[0].imageheight,
-                    _mapModel.tilesets[0].tileheight));
+            ValidateMapLoad();
 
             ImageWidthInTiles = _mapModel.tilesets[0].imagewidth / _mapModel.tilesets[0].tilewidth;
             ImageHeightInTiles = _mapModel.tilesets[0].imageheight / _mapModel.tilesets[0].tileheight;
@@ -57,13 +49,26 @@ namespace Assets.Map {
             ReorderTiles(GetLayerByName(MapLayerName.Board));
             ReorderObjects(GetLayerByName(MapLayerName.Object));
 
-            MapLayer layer = GetLayerByName(MapLayerName.Object);
-            BuildMapObjects(layer.objects);
+            MapObjects = GetLayerByName(MapLayerName.Object).objects;
+            BuildMapObjects(MapObjects);
+        }
+
+        void ValidateMapLoad() {
+            if (_mapModel.tilesets[0].imagewidth % _mapModel.tilesets[0].tilewidth != 0)
+                throw new InvalidOperationException(string.Format("Tile image width {0} not an even multiple of tile width {1}",
+                    _mapModel.tilesets[0].imagewidth,
+                    _mapModel.tilesets[0].tilewidth));
+
+            if (_mapModel.tilesets[0].imageheight % _mapModel.tilesets[0].tileheight != 0)
+                throw new InvalidOperationException(string.Format("Tile image height {0} not an even multiple of tile height {1}",
+                    _mapModel.tilesets[0].imageheight,
+                    _mapModel.tilesets[0].tileheight));
         }
 
         public Vector3 SpawnPoint { get; set; }
         public List<Trigger> Triggers { get; set; }
         public IEnumerable<Assets.Map.Script.Script> Scripts { get; set; }
+        public IList<MapObject> MapObjects { get; set; }
 
         void ReorderTiles(MapLayer mapLayer) {
             int[] mapdata = mapLayer.data.ToArray();
@@ -75,7 +80,6 @@ namespace Assets.Map {
                 }
             }
             mapLayer.data = new List<int>(reorderedData);
-
         }
 
         void ReorderObjects(MapLayer mapLayer) {
@@ -112,7 +116,6 @@ namespace Assets.Map {
         public int PixelYToTileY(int y) {
             return y / TileHeight;
         }
-
 
         public int Height { get { return _mapModel.height; } }
         public int Width { get { return _mapModel.width; } }

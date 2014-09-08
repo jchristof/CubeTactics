@@ -15,14 +15,13 @@ namespace Assets.Map.Triggers {
             _commandList = new CommandList();
             _commandList.Commands.Add(new Command{
                 ObjectCommand = ObjectCommand.Destroy,
-                Tile = new List<int>(new int[] { 6, 8 })
+                ObjectName = "removetile",
                 }
              );
 
             _commandList.Commands.Add(new Command{
                 ObjectCommand  = ObjectCommand.Create,
-                Tile = new List<int>(new int[]{ 6, 8 }),
-                TileIndex = 12
+                ObjectName = "addtile",
             });
         }
 

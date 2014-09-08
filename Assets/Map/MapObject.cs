@@ -12,6 +12,7 @@ namespace Assets.Map {
             public bool enabled { get; set; }
             public string onEnter { get; set; }
             public string onExit { get; set; }
+            public int tileindex { get; set; }
 
             [JsonConverter(typeof(StringEnumConverter))]
             public MapObjectType type { get; set; }

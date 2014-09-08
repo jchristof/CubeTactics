@@ -13,6 +13,5 @@ namespace Assets.Map {
         Script,
         Tile,
         Object,
-        Select
     }
 }

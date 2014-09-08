@@ -52,7 +52,7 @@ namespace Assets {
         public static ScriptExecutor ScriptExecutor {
             get {
                 if (_scriptExecutor == null)
-                    _scriptExecutor = new ScriptExecutor(Map);
+                    _scriptExecutor = new ScriptExecutor(Map, Map.MapObjects);
                 return _scriptExecutor;
             }
         }

@@ -7,13 +7,19 @@ using UnityEngine;
 
 namespace Assets.Script {
     public class ScriptExecutor : IScriptExecutor {
-        public ScriptExecutor(IMap map) {
+        public ScriptExecutor(IMap map, IList<MapObject> mapObjects) {
             if (map == null)
                 throw new ArgumentNullException("map");
 
+            if (mapObjects == null)
+                throw new ArgumentNullException("mapObjects");
+
             _map = map;
+            _mapObjects = mapObjects;
         }
+
         readonly IMap _map;
+        readonly IList<MapObject> _mapObjects;
 
         public void Execute(CommandList commandList) {
             if (commandList == null || commandList.Commands == null)
@@ -21,15 +27,21 @@ namespace Assets.Script {
 
             foreach (var cmd in commandList.Commands) {
                 if (cmd.ObjectCommand == ObjectCommand.Destroy) {
-                    if (cmd.Tile != null) {
-                        _map.RemoveTileAt(cmd.Tile[0], _map.Height - cmd.Tile[1], MapLayerName.Board);
-                        CompositionRoot.Playfield.RemoveTileVisualAt(new Vector3(cmd.Tile[0], 0, _map.Height - cmd.Tile[1]));
+                    MapObject mapObject = _mapObjects.Where(x=>x.name == cmd.ObjectName).First();
+                    if(mapObject.type == MapObjectType.Tile){
+                        int x = _map.PixelXToTileX(mapObject.x);
+                        int y = _map.PixelYToTileY(mapObject.y);
+                        _map.RemoveTileAt(x, y, MapLayerName.Board);
+                        CompositionRoot.Playfield.RemoveTileVisualAt(new Vector3(x, 0, y));
                     }
                 }
                 else if (cmd.ObjectCommand == ObjectCommand.Create) {
-                    if (cmd.Tile != null) {
-                        _map.CreateTileAt(cmd.Tile[0], _map.Height - cmd.Tile[1], cmd.TileIndex);
-                        CompositionRoot.Playfield.CreateTileVisualAt(cmd.Tile[0], _map.Height - cmd.Tile[1], cmd.TileIndex);
+                    MapObject mapObject = _mapObjects.Where(x => x.name == cmd.ObjectName).First();
+                    if (mapObject.type == MapObjectType.Tile) {
+                        int x = _map.PixelXToTileX(mapObject.x);
+                        int y = _map.PixelYToTileY(mapObject.y);
+                        _map.CreateTileAt(x, y, mapObject.properties.tileindex);
+                        CompositionRoot.Playfield.CreateTileVisualAt(x, y, mapObject.properties.tileindex);
                     }
                 }
             }

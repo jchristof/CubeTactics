@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 namespace Assets.Map {
     public interface IMap {
@@ -8,6 +9,7 @@ namespace Assets.Map {
         MapLayer GetLayerByName(MapLayerName layerName);
         void LoadMap(string filename);
         PropertiesMap MapProperties { get; }
+        IList<MapObject> MapObjects { get; set; }
         int PixelXToTileX(int x);
         int PixelYToTileY(int y);
         int Height { get; }

@@ -84,17 +84,43 @@
                  "y":58
                 }, 
                 {
-                 "height":30,
+                 "height":32,
                  "name":"removetile",
                  "properties":
                     {
-                     "type":"Tile"
+
                     },
-                 "type":"Select",
+                 "type":"Tile",
                  "visible":true,
-                 "width":35,
+                 "width":8,
                  "x":461,
                  "y":403
+                }, 
+                {
+                 "height":34,
+                 "name":"goal",
+                 "properties":
+                    {
+
+                    },
+                 "type":"EnterExit",
+                 "visible":true,
+                 "width":39,
+                 "x":397,
+                 "y":591
+                }, 
+                {
+                 "height":20,
+                 "name":"addtile",
+                 "properties":
+                    {
+                     "tileindex":"12"
+                    },
+                 "type":"Tile",
+                 "visible":true,
+                 "width":11,
+                 "x":485,
+                 "y":410
                 }],
          "opacity":1,
          "type":"objectgroup",
