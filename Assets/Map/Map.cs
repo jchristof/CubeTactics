@@ -126,7 +126,7 @@ namespace Assets.Map {
         }
 
         public Vector2[] UVForTileType(int tileIndex, Mesh mesh) {
-
+            //mesh.uv[0] = 0.125f * xIndex);
             Vector2[] uvs = new Vector2[mesh.vertices.Length];
             int i = 0;
             int xIndex = tileIndex % ImageWidthInTiles;
@@ -135,6 +135,15 @@ namespace Assets.Map {
                 uvs[i] = new Vector2(((mesh.vertices[i].x + .5f) * .125f) + (.125f * xIndex), ((mesh.vertices[i].y + .5f) * -.125f) + (-.125f * yIndex));
                 i++;
             }
+
+            Vector2 temp = uvs[0];
+            uvs[0] = uvs[3];
+            uvs[3] = temp;
+
+            temp = uvs[1];
+            uvs[1] = uvs[2];
+            uvs[2] = temp;
+
             return uvs;
         }
 
