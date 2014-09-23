@@ -69,12 +69,12 @@ public class PlayfieldScript : MonoBehaviour {
                 return false;
         }
 
-        //if (!_crossMyPath) {
-        //    foreach (var quad in playfiedGrid) {
-        //        if (AlmostEqual(quad.Item1, position, 0.25f))
-        //            return false;
-        //    }
-        //}
+        if (!_crossMyPath) {
+            foreach (var quad in playfiedGrid) {
+                if (AlmostEqual(quad.Item1, position, 0.25f))
+                    return false;
+            }
+        }
 
         if (!_crossEmptyTile) {
             if (_map.TileIndexAt(position, MapLayerName.Board) == -1)

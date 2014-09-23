@@ -7,10 +7,7 @@
   <property name="Trail" value="Solid"/>
  </properties>
  <tileset firstgid="1" source="tilemap.tsx"/>
- <objectgroup name="Object" width="10" height="10">
-  <object name="spawnpoint" type="spawnplayer" x="594" y="592" width="33" height="31"/>
- </objectgroup>
- <layer name="Board" width="10" height="10" visible="0">
+ <layer name="Board" width="10" height="10">
   <data>
    <tile gid="10"/>
    <tile gid="12"/>
@@ -114,4 +111,7 @@
    <tile gid="12"/>
   </data>
  </layer>
+ <objectgroup name="Object" width="10" height="10">
+  <object name="spawnplayer" type="SpawnPoint" x="594" y="592" width="33" height="31"/>
+ </objectgroup>
 </map>

@@ -26,7 +26,12 @@ namespace Assets.Map {
 
         public void LoadMap(string filename){
             TextAsset temp = Resources.Load(filename) as TextAsset;
-            _mapModel = JsonConvert.DeserializeObject<MapModel>(temp.text);            
+            try {
+                _mapModel = JsonConvert.DeserializeObject<MapModel>(temp.text);
+            }
+            catch (Exception e) {
+                MonoBehaviour.print(e.Message);
+            }
 
             if (_mapModel.tilesets[0].tileproperties != null) {
                 var dynObj = JObject.Parse((_mapModel.tilesets[0].tileproperties.ToString()));

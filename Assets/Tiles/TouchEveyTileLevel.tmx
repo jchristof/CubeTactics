@@ -13,6 +13,6 @@
   </data>
  </layer>
  <objectgroup name="Object" width="10" height="10">
-  <object name="spawnpoint" type="spawnplayer" x="587" y="15" width="38" height="33"/>
+  <object name="spawnplayer" type="SpawnPoint" x="587" y="15" width="38" height="33"/>
  </objectgroup>
 </map>
