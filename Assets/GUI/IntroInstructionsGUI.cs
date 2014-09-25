@@ -21,7 +21,7 @@ using UnityEngine;
         }
 
         void OnGUI() {
-            string instructions = CompositionRoot.Map.MapProperties.Description.Replace(@"\n", System.Environment.NewLine);
+            string instructions = LocaleText.Text[CompositionRoot.Map.MapProperties.Description].Replace(@"\n", System.Environment.NewLine);
             GUI.Box(_guiBox, instructions);
 
             if (GUI.Button(_button, LocaleText.Text["ButtonOk"]) || Input.anyKey) {
