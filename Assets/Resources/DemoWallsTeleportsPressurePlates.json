@@ -133,8 +133,8 @@
  "properties":
     {
      "Conditions":"DemoWallsTeleportsPressurePlatesConditions",
-     "Description":"Test out portals, pressure plates, block walls",
-     "Name":"Block out!"
+     "Description":"BlockOutDescription",
+     "Name":"BlockOutLevelName"
     },
  "tileheight":64,
  "tilesets":[

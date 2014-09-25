@@ -43,6 +43,8 @@ namespace Assets.Map {
                 }
             }
 
+            MonoBehaviour.print(temp.text);
+
             ValidateMapLoad();
 
             ImageWidthInTiles = _mapModel.tilesets[0].imagewidth / _mapModel.tilesets[0].tilewidth;

@@ -39,8 +39,8 @@
  "properties":
     {
      "Conditions":"TouchEveryTileLevelConditions",
-     "Description":"Touch every tile only once",
-     "Name ":"Touch Every Tile",
+     "Description":"TouchEveryTileDescription",
+     "Name":"TouchEveryTileLevelName",
      "Trail":"Solid"
     },
  "tileheight":64,

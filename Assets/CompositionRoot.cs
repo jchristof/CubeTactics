@@ -1,6 +1,8 @@
 ﻿
+using Assets.Locale;
 using Assets.Map;
 using Assets.Script;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Assets {

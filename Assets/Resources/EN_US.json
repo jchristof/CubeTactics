@@ -1,0 +1,18 @@
+{
+	"LevelComplete":"Level Complete!",
+	"LevelFailed":"Level Failed!",
+	"ButtonReloadLevel":"Reload Level",
+	"ButtonQuit":"Quit",
+
+	"BlockOutLevelName":"Block Out!",
+	"BlockOutDescription":"Test out portals, pressure plates, block walls",
+
+	"NumericSequenceLevelName":"Numeric Sequence",
+	"NumericSequenceDescription":"Level Rules:\nCross the numbered tiles in order\nMake it to the goal\n Don't cross your own path",
+
+	"TouchEveryTileLevelName":"Touch Every Tile",
+	"TouchEveryTileDescription":"Touch every tile only once\nGet to the goal",
+
+
+	"ButtonOk":"Ok"
+}

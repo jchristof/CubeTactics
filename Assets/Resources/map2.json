@@ -39,8 +39,8 @@
  "properties":
     {
      "Conditions":"DemoLevelConditions",
-     "Description":"Level Rules:\\nCross the numbered tiles in order\\nMake it to the goal\\n Don't cross your own path",
-     "Name":"Numerica Sequence",
+     "Description":"NumericSequenceDescription",
+     "Name":"NumericSequenceLevelName",
      "Trail":"Solid"
     },
  "tileheight":64,

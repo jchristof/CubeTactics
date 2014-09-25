@@ -1,6 +1,8 @@
 ﻿using Assets.Game.Conditions;
 using Assets.Level;
+using Assets.Locale;
 using Assets.Map;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +15,14 @@ namespace Assets.Game {
 
         protected LevelConditions _levelConditions;
         Action _initializeAction;
+        string _regionTextFile = "EN_US";
 
         public static LevelName levelToLoad;
 
         public void Awake() {
+ 
+            TextAsset languageText = Resources.Load(_regionTextFile) as TextAsset;
+            LocaleText.CreateText(languageText.text);
 
             CompositionRoot.Map = new Assets.Map.Map();
 
