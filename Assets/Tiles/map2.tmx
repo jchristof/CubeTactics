@@ -3,6 +3,7 @@
  <properties>
   <property name="Conditions" value="DemoLevelConditions"/>
   <property name="Description" value="NumericSequenceDescription"/>
+  <property name="Music" value="Blake - Dance With Me"/>
   <property name="Name" value="NumericSequenceLevelName"/>
   <property name="Trail" value="Solid"/>
  </properties>

@@ -16,6 +16,15 @@ namespace Assets {
                 return _game;
             }
         }
+
+        static AudioSource _musicPlayer;
+        public static AudioSource MusicPlayer {
+            get {
+                if (_musicPlayer == null)
+                    _musicPlayer = GameObject.Find("Sound").GetComponent<AudioSource>();
+                return _musicPlayer;
+            }
+        }
                     
         static PlayerController _playerController;
         public static PlayerController PlayerController {

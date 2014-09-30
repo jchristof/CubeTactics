@@ -4,6 +4,8 @@
 	"ButtonReloadLevel":"Reload Level",
 	"ButtonQuit":"Quit",
 
+	"MusicVolume":"Music Volume",
+
 	"BlockOutLevelName":"Block Out!",
 	"BlockOutDescription":"Test out portals, pressure plates, block walls",
 

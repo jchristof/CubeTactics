@@ -12,13 +12,13 @@ public class LevelMenuGUI : MonoBehaviour {
 
         foreach (var e in Enum.GetValues(typeof(LevelName))) {
             yPos += 50;
-            if (GUI.Button(new Rect(20, yPos, 200, 30), e.ToString())) {
+            if (GUI.Button(new Rect(20, yPos, 300, 30), e.ToString())) {
                 Application.LoadLevel("scenedemo");
                 Game.levelToLoad = (LevelName)e;
             }
         }
         yPos += 50;
-        if (GUI.Button(new Rect(20, yPos, 200, 30), "Quit"))
+        if (GUI.Button(new Rect(20, yPos, 300, 30), "Quit"))
                 Application.Quit();
     }
 }

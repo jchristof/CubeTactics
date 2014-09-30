@@ -5,5 +5,8 @@ using System.Text;
 
 namespace Assets.Game.Conditions {
     class DemoWallsTeleportsPressurePlatesConditions : LevelConditions {
+        public DemoWallsTeleportsPressurePlatesConditions()
+            : base() {
+        }
     }
 }

@@ -40,6 +40,7 @@
     {
      "Conditions":"DemoLevelConditions",
      "Description":"NumericSequenceDescription",
+     "Music":"Blake - Dance With Me",
      "Name":"NumericSequenceLevelName",
      "Trail":"Solid"
     },

@@ -154,6 +154,12 @@ namespace Assets.Map {
             return uvs;
         }
 
+        public IEnumerable<MapObject> MapObjectAt(Vector3 position) {
+            return GetLayerByName(MapLayerName.Object).objects.
+                Where(x => PixelXToTileX(x.x) == position.x).
+                Where(x => PixelYToTileY(x.y) == position.y);
+        }
+
         public Tile TileAtTileSetIndex(int tileSetIndex) {
             if (tileSetIndex == -1 || !tilelist.ContainsKey(tileSetIndex))
                 return emptyTile;

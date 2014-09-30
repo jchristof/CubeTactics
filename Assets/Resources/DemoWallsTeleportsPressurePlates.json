@@ -134,6 +134,7 @@
     {
      "Conditions":"DemoWallsTeleportsPressurePlatesConditions",
      "Description":"BlockOutDescription",
+     "Music":"Adam Szabo - One Day (Funky Mix)",
      "Name":"BlockOutLevelName"
     },
  "tileheight":64,

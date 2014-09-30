@@ -16,6 +16,7 @@ namespace Assets.Game {
         protected LevelConditions _levelConditions;
         Action _initializeAction;
         string _regionTextFile = "EN_US";
+        string _musicRoot = "Music";
 
         public static LevelName levelToLoad;
 
@@ -36,6 +37,11 @@ namespace Assets.Game {
 
             _levelConditions = (LevelConditions)Activator.CreateInstance(elementType);
             CompositionRoot.Playfield.CreateTrail = CompositionRoot.Map.MapProperties.Trail == "Solid";
+
+            if(!string.IsNullOrEmpty(CompositionRoot.Map.MapProperties.Music)){
+                CompositionRoot.MusicPlayer.audio.clip = Resources.Load(string.Format("{0}/{1}", _musicRoot, CompositionRoot.Map.MapProperties.Music)) as AudioClip;
+                CompositionRoot.MusicPlayer.audio.Play();
+            }
         }
 
         GameState GameState { 

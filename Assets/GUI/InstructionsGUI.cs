@@ -9,9 +9,11 @@ public class InstructionsGUI : MonoBehaviour {
 
     void Awake() {
         _uiRect = new Rect();
+        _sliderValue = CompositionRoot.MusicPlayer.volume;
     }
 
     Rect _uiRect;
+    float _sliderValue;
 
     Rect Rect(int x, int y, int width, int height) {
         _uiRect.x = x;
@@ -53,6 +55,19 @@ public class InstructionsGUI : MonoBehaviour {
         yPos += 30;
         if (GUI.Button(Rect(10, yPos, 300, 30), LocaleText.Text["ButtonQuit"])) {
             Application.LoadLevel("loadmenu");
+        }
+
+        yPos += 30;
+
+        GUI.Box(Rect(10, yPos, 300, 30), LocaleText.Text["MusicVolume"]);
+
+        yPos += 30;
+
+        float currentSlider = GUI.HorizontalSlider(Rect(10, yPos, 300, 30), _sliderValue, 0.0F, 1.0F);
+
+        if (Mathf.Abs(currentSlider - _sliderValue) > 0.05) {
+            CompositionRoot.MusicPlayer.volume = currentSlider;
+            _sliderValue = currentSlider;
         }
     }
 }

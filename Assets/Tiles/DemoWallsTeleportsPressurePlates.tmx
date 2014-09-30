@@ -3,6 +3,7 @@
  <properties>
   <property name="Conditions" value="DemoWallsTeleportsPressurePlatesConditions"/>
   <property name="Description" value="BlockOutDescription"/>
+  <property name="Music" value="Adam Szabo - One Day (Funky Mix)"/>
   <property name="Name" value="BlockOutLevelName"/>
  </properties>
  <tileset firstgid="1" source="tilemap.tsx"/>

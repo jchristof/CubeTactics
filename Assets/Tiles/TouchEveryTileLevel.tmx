@@ -3,6 +3,7 @@
  <properties>
   <property name="Conditions" value="TouchEveryTileLevelConditions"/>
   <property name="Description" value="TouchEveryTileDescription"/>
+  <property name="Music" value="Blake - Nowhere near"/>
   <property name="Name" value="TouchEveryTileLevelName"/>
   <property name="Trail" value="Solid"/>
  </properties>
