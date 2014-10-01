@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
     Vector3 direction;
 
     AutomatedMove automatedMove;
+    SwipeInputDirection _swipeInputDirection;
 
     bool rotating = false;
     float angle = 0.0f;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start() {
         rotator = (new GameObject("Rotator")).transform;
+        _swipeInputDirection = new SwipeInputDirection();
         MoveToFinished();
     }
 
@@ -38,10 +40,10 @@ public class PlayerController : MonoBehaviour {
         set { _inputEnabled = value; }
     }
 
-    bool InputKeyLeft() { return Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow); }
-    bool InputKeyUp() { return Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow); }
-    bool InputKeyRight() { return Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow); }
-    bool InputKeyDown() { return Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow); }
+    bool InputKeyLeft() { return Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || _swipeInputDirection.InputKeyLeft(); }
+    bool InputKeyUp() { return Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || _swipeInputDirection.InputKeyUp(); }
+    bool InputKeyRight() { return Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || _swipeInputDirection.InputKeyRight(); }
+    bool InputKeyDown() { return Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) || _swipeInputDirection.InputKeyDown(); }
 
     bool AnyMoveKeyDown() {
         return
@@ -66,6 +68,8 @@ public class PlayerController : MonoBehaviour {
 
     #endregion
     void Update() {
+        _swipeInputDirection.Update();
+
         if (automatedMove != null) {
             transform.position = automatedMove.moveTo;
             automatedMove = null;

@@ -19,9 +19,16 @@ namespace Assets.Game {
         string _musicRoot = "Music";
 
         public static LevelName levelToLoad;
+        
+        float distance = 4.0f;
+        float height = 10.5f;
+        float heightDamping = 2.0f;
+        float rotationDamping = 3.0f;
 
         public void Awake() {
- 
+#if UNITY_ANDROID
+            Screen.orientation = ScreenOrientation.AutoRotation;
+#endif
             TextAsset languageText = Resources.Load(_regionTextFile) as TextAsset;
             LocaleText.CreateText(languageText.text);
 
@@ -73,6 +80,44 @@ namespace Assets.Game {
 
         void Update() {
             _levelConditions.Update();
+        }
+
+        void LateUpdate() {
+            Transform cameraTarget = GameObject.Find("CameraLookAt").transform;
+            if (cameraTarget == null)
+                return;
+
+            // Calculate the current rotation angles
+            //float wantedRotationAngle = cameraTarget.eulerAngles.y;
+            float wantedHeight = /*cameraTarget.position.y +*/ height;
+
+            float currentRotationAngle = GameObject.Find("Main Camera").transform.eulerAngles.y;
+            float currentHeight = GameObject.Find("Main Camera").transform.position.y;
+
+            // Damp the rotation around the y-axis
+            //currentRotationAngle = Mathf.LerpAngle(currentRotationAngle, wantedRotationAngle, rotationDamping * Time.deltaTime);
+
+            // Damp the height
+            currentHeight = Mathf.Lerp(currentHeight, wantedHeight, heightDamping * Time.deltaTime);
+
+            // Convert the angle into a rotation
+            Quaternion currentRotation = Quaternion.Euler(0, currentRotationAngle, 0);
+
+            // Set the position of the camera on the x-z plane to:
+            // distance meters behind the target
+            GameObject.Find("Main Camera").transform.position = cameraTarget.position;
+            GameObject.Find("Main Camera").transform.position -= currentRotation * Vector3.forward * distance;
+
+            // Set the height of the camera
+            Vector3 camPosition = GameObject.Find("Main Camera").transform.position;
+            camPosition.y = currentHeight;
+            GameObject.Find("Main Camera").transform.position = camPosition;
+
+            Transform newLookat = cameraTarget.transform;
+            newLookat.position = new Vector3(cameraTarget.transform.position.x, 0.5f, cameraTarget.transform.position.z);
+
+            // Always look at the target
+            GameObject.Find("Main Camera").transform.LookAt(newLookat);
         }
 
         public void ExecutePlayerMove(Vector3 position) {
