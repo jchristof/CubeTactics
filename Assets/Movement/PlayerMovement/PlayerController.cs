@@ -123,6 +123,56 @@ public class PlayerController : MonoBehaviour {
         MoveToFinished();
     }
 
+    float distance = 4.0f;
+    float height = 10.5f;
+    float heightDamping = 2.0f;
+    float rotationDamping = 3.0f;
+
+    void LateUpdate() {
+        if (Input.GetAxis("Mouse ScrollWheel") < 0) // back
+        {
+            height = Mathf.Max(height + .1f, 10);
+
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") > 0) // forward
+        {
+            height = Mathf.Min(height - .1f, 5);
+        }
+
+        Transform cameraTarget = GameObject.Find("CameraLookAt").transform;
+        if (cameraTarget == null)
+            return;
+
+        // Calculate the current rotation angles
+        //float wantedRotationAngle = cameraTarget.eulerAngles.y;
+        float wantedHeight = /*cameraTarget.position.y +*/ height;
+
+        float currentRotationAngle = GameObject.Find("Main Camera").transform.eulerAngles.y;
+        float currentHeight = GameObject.Find("Main Camera").transform.position.y;
+
+        // Damp the rotation around the y-axis
+        //currentRotationAngle = Mathf.LerpAngle(currentRotationAngle, wantedRotationAngle, rotationDamping * Time.deltaTime);
+
+        // Damp the height
+        currentHeight = Mathf.Lerp(currentHeight, wantedHeight, heightDamping * Time.deltaTime);
+
+        // Convert the angle into a rotation
+        Quaternion currentRotation = Quaternion.Euler(0, currentRotationAngle, 0);
+
+        // Set the position of the camera on the x-z plane to:
+        // distance meters behind the target
+        Vector3 desiredPosition = cameraTarget.position - currentRotation * Vector3.forward * distance;
+        desiredPosition.y = currentHeight;
+
+        GameObject.Find("Main Camera").transform.position = desiredPosition;
+
+        Transform newLookat = cameraTarget.transform;
+        newLookat.position = new Vector3(cameraTarget.transform.position.x, 0.5f, cameraTarget.transform.position.z);
+
+        // Always look at the target
+        GameObject.Find("Main Camera").transform.LookAt(newLookat);
+    }
+
     void RotateCube(Vector3 refPoint, Vector3 rotationAxis) {
         rotator.localRotation = Quaternion.identity;
         rotator.position = transform.position - Vector3.up * halfCubeSize + refPoint;

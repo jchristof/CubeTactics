@@ -21,7 +21,7 @@ namespace Assets.Movement.PlayerMovement {
             if (true) {
 #endif
                 TouchAbstractor.TouchInternal touch = _touch.Touch;
-                Debug.Log("Touch phase: " + touch.phase.ToString());
+                //Debug.Log("Touch phase: " + touch.phase.ToString());
                 switch (touch.phase) {
 
                     case TouchPhase.Began:
@@ -38,11 +38,11 @@ namespace Assets.Movement.PlayerMovement {
                             float swipeValue = Mathf.Sign(touch.position.y - startPos.y);
                             if (swipeValue > 0) {
                                 SwipeType = PlayerMovement.SwipeType.Up;
-                                Debug.Log("swipe up");
+                                //Debug.Log("swipe up");
                             }
                             else if (swipeValue < 0) {
                                 SwipeType = PlayerMovement.SwipeType.Down;
-                                Debug.Log("swipe down");
+                                //Debug.Log("swipe down");
                             }
 
                             return;
@@ -54,12 +54,12 @@ namespace Assets.Movement.PlayerMovement {
 
                             if (swipeValue > 0) {
                                 SwipeType = PlayerMovement.SwipeType.Right;
-                                Debug.Log("swipe right");
+                                //Debug.Log("swipe right");
                             }
 
                             else if (swipeValue < 0) {
                                 SwipeType = PlayerMovement.SwipeType.Left;
-                                Debug.Log("swipe left");
+                                //Debug.Log("swipe left");
                             }
 
                             return;

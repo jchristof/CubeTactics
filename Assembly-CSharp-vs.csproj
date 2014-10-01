@@ -412,6 +412,7 @@
      <Compile Include="Assets\Map\Triggers\EnterExit.cs" />
      <Compile Include="Assets\Map\Triggers\Teleporter.cs" />
      <Compile Include="Assets\Map\Triggers\Trigger.cs" />
+     <Compile Include="Assets\Movement\Interpolate.cs" />
      <Compile Include="Assets\Movement\PlayerMovement\AutomatedMove.cs" />
      <Compile Include="Assets\Movement\PlayerMovement\IInputDirection.cs" />
      <Compile Include="Assets\Movement\PlayerMovement\KeyInputDirection.cs" />
