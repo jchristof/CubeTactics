@@ -3,6 +3,7 @@ using System.Collections;
 using Assets.Language;
 using Assets;
 using Assets.Movement.PlayerMovement;
+using Assets.Movement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -12,10 +13,11 @@ public class PlayerController : MonoBehaviour {
     Transform rotator;
     Vector3 refPoint;
     Vector3 rotationAxis;
-    Vector3 direction;
 
     AutomatedMove automatedMove;
     SwipeInputDirection _swipeInputDirection;
+    Transform easingCamTarget;
+    Assets.Movement.Interpolate.Function ease;
 
     bool rotating = false;
     float angle = 0.0f;
@@ -25,6 +27,9 @@ public class PlayerController : MonoBehaviour {
         rotator = (new GameObject("Rotator")).transform;
         _swipeInputDirection = new SwipeInputDirection();
         MoveToFinished();
+        ease = Interpolate.Ease(Interpolate.EaseType.Linear);
+        Transform camTarget = GameObject.Find("CameraLookAt").transform;
+        easingCamTarget = Instantiate(camTarget, camTarget.position, camTarget.rotation) as Transform;
     }
 
     public void SpawnAt(Vector3 position) {
@@ -126,23 +131,24 @@ public class PlayerController : MonoBehaviour {
     float distance = 4.0f;
     float height = 10.5f;
     float heightDamping = 2.0f;
-    float rotationDamping = 3.0f;
-
+    float elapsedTime = 0.0f;
     void LateUpdate() {
         if (Input.GetAxis("Mouse ScrollWheel") < 0) // back
-        {
             height = Mathf.Max(height + .1f, 10);
-
-        }
         else if (Input.GetAxis("Mouse ScrollWheel") > 0) // forward
-        {
             height = Mathf.Min(height - .1f, 5);
-        }
 
         Transform cameraTarget = GameObject.Find("CameraLookAt").transform;
-        if (cameraTarget == null)
-            return;
+        //Vector3 cameraTarget = GameObject.Find("Cube").transform.position;
 
+        if (Vector3.Distance(cameraTarget.position, easingCamTarget.position) > .01f) {
+            easingCamTarget.position = Interpolate.Ease(ease, easingCamTarget.position, cameraTarget.position - easingCamTarget.position, elapsedTime, 50.0f);
+            elapsedTime += Time.deltaTime;
+        }
+        else {
+            elapsedTime = 0.0f;
+            easingCamTarget.position = cameraTarget.position;
+        }
         // Calculate the current rotation angles
         //float wantedRotationAngle = cameraTarget.eulerAngles.y;
         float wantedHeight = /*cameraTarget.position.y +*/ height;
@@ -161,13 +167,13 @@ public class PlayerController : MonoBehaviour {
 
         // Set the position of the camera on the x-z plane to:
         // distance meters behind the target
-        Vector3 desiredPosition = cameraTarget.position - currentRotation * Vector3.forward * distance;
+        Vector3 desiredPosition = easingCamTarget.position - currentRotation * Vector3.forward * distance;
         desiredPosition.y = currentHeight;
 
         GameObject.Find("Main Camera").transform.position = desiredPosition;
 
-        Transform newLookat = cameraTarget.transform;
-        newLookat.position = new Vector3(cameraTarget.transform.position.x, 0.5f, cameraTarget.transform.position.z);
+        Transform newLookat = easingCamTarget.transform;
+        newLookat.position = new Vector3(easingCamTarget.transform.position.x, 0.5f, easingCamTarget.transform.position.z);
 
         // Always look at the target
         GameObject.Find("Main Camera").transform.LookAt(newLookat);
