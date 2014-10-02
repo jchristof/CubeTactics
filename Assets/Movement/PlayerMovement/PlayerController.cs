@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
     Transform easingCamTarget;
     Assets.Movement.Interpolate.Function ease;
 
+
     bool rotating = false;
     float angle = 0.0f;
     bool _keyHeld;
@@ -138,23 +139,22 @@ public class PlayerController : MonoBehaviour {
         else if (Input.GetAxis("Mouse ScrollWheel") > 0) // forward
             height = Mathf.Min(height - .1f, 5);
 
-        Transform cameraTarget = GameObject.Find("CameraLookAt").transform;
-        //Vector3 cameraTarget = GameObject.Find("Cube").transform.position;
+        Vector3 cameraTarget = GameObject.Find("Cube").transform.position;
 
-        if (Vector3.Distance(cameraTarget.position, easingCamTarget.position) > .01f) {
-            easingCamTarget.position = Interpolate.Ease(ease, easingCamTarget.position, cameraTarget.position - easingCamTarget.position, elapsedTime, 50.0f);
+        if (Vector3.Distance(cameraTarget, easingCamTarget.position) > .01f) {
+            easingCamTarget.position = Interpolate.Ease(ease, easingCamTarget.position, cameraTarget - easingCamTarget.position, elapsedTime, 50.0f);
             elapsedTime += Time.deltaTime;
         }
         else {
             elapsedTime = 0.0f;
-            easingCamTarget.position = cameraTarget.position;
+            easingCamTarget.position = cameraTarget;
         }
         // Calculate the current rotation angles
         //float wantedRotationAngle = cameraTarget.eulerAngles.y;
         float wantedHeight = /*cameraTarget.position.y +*/ height;
 
-        float currentRotationAngle = GameObject.Find("Main Camera").transform.eulerAngles.y;
-        float currentHeight = GameObject.Find("Main Camera").transform.position.y;
+        float currentRotationAngle = Camera.main.transform.eulerAngles.y;
+        float currentHeight = Camera.main.transform.position.y;
 
         // Damp the rotation around the y-axis
         //currentRotationAngle = Mathf.LerpAngle(currentRotationAngle, wantedRotationAngle, rotationDamping * Time.deltaTime);
@@ -170,13 +170,8 @@ public class PlayerController : MonoBehaviour {
         Vector3 desiredPosition = easingCamTarget.position - currentRotation * Vector3.forward * distance;
         desiredPosition.y = currentHeight;
 
-        GameObject.Find("Main Camera").transform.position = desiredPosition;
-
-        Transform newLookat = easingCamTarget.transform;
-        newLookat.position = new Vector3(easingCamTarget.transform.position.x, 0.5f, easingCamTarget.transform.position.z);
-
-        // Always look at the target
-        GameObject.Find("Main Camera").transform.LookAt(newLookat);
+        Camera.main.transform.position = desiredPosition;
+        Camera.main.transform.LookAt(easingCamTarget.transform);
     }
 
     void RotateCube(Vector3 refPoint, Vector3 rotationAxis) {
