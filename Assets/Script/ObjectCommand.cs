@@ -10,6 +10,8 @@ namespace Assets.Script {
         Enable,
         Create,
         Activate,
-        Reset
+        Reset,
+        LookAt,
+        Wait,
     }
 }

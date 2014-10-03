@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Camera\CameraScript.cs" />
      <Compile Include="Assets\CompositionRoot.cs" />
      <Compile Include="Assets\Extensions\ArrayExtensions.cs" />
      <Compile Include="Assets\Extensions\RectExtensions.cs" />

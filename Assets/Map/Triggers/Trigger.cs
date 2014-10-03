@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Assets.Map {
     public class Trigger {
@@ -31,7 +32,7 @@ namespace Assets.Map {
         public virtual void OnExit() { }
 
         protected void ExecuteScript(CommandList commandList) {
-            _scriptExecutor.Execute(commandList);
+             _scriptExecutor.Execute(commandList);
         }
 
         public MapObject.Properties Properties { get { return _mapObject.properties; } }

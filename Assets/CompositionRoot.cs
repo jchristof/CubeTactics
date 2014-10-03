@@ -39,7 +39,7 @@ namespace Assets {
         public static GameObject PlayerObject {
             get {
                 if (_playerObject == null)
-                    _playerObject = GameObject.Find("Cube");
+                    _playerObject = GameObject.Find("Player");
                 return _playerObject;
             }
         }
@@ -62,8 +62,11 @@ namespace Assets {
         static ScriptExecutor _scriptExecutor;
         public static ScriptExecutor ScriptExecutor {
             get {
-                if (_scriptExecutor == null)
-                    _scriptExecutor = new ScriptExecutor(Map, Map.MapObjects);
+                if (_scriptExecutor == null) {
+                    _scriptExecutor = GameObject.Find("GameManager").GetComponent<ScriptExecutor>();
+                    _scriptExecutor.Map = Map;
+                    _scriptExecutor.MapObjects = Map.MapObjects;
+                }
                 return _scriptExecutor;
             }
         }

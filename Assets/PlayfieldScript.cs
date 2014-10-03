@@ -39,9 +39,11 @@ public class PlayfieldScript : MonoBehaviour {
             return;
 
         Tile t = _map.TileAtTileSetIndex(tileSetIndex);
+        int flatIndex = _map.FlatTileIndex(xPosition, yPosition);
 
         if (t.type == "wall" && t.value == "block") {
             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.name = string.Format("{0}", flatIndex);
             cube.transform.position = new Vector3(xPosition, 0.5F, yPosition);
             cube.renderer.material = Resources.Load("CubeWall", typeof(Material)) as Material;
             playfiedGrid.Add(Tuple<Vector3, GameObject>.Create(cube.transform.position, cube));
@@ -49,7 +51,7 @@ public class PlayfieldScript : MonoBehaviour {
         
         else {
             GameObject quad = NewTileVisualAt(new Vector3(xPosition, 0, yPosition));
-
+            quad.name = string.Format("{0}", flatIndex);
             Mesh mesh = quad.GetComponent<MeshFilter>().mesh;
             mesh.uv = _map.UVForTileType(tileSetIndex, mesh);
         }

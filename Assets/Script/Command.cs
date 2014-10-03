@@ -10,6 +10,7 @@ namespace Assets.Script {
     public class Command {
         public string ObjectName { get; set; }
         public ObjectCommand ObjectCommand { get; set; }
+        public string Params { get; set; }
     }
 
     public class CommandList {
