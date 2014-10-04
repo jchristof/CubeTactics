@@ -9,8 +9,8 @@ namespace Assets.Map.Triggers {
     public class EnterExit : Trigger {
         CommandList _commandList;
 
-        public EnterExit(IMap map, MapObject mapObject, IScriptExecutor scriptExecutor, ReadOnlyCollection<Trigger> triggers) :
-            base(mapObject, map, scriptExecutor) {
+        public EnterExit(IMap map, IScriptExecutor scriptExecutor) :
+            base(map, scriptExecutor) {
 
             _commandList = new CommandList();
 
@@ -41,6 +41,16 @@ namespace Assets.Map.Triggers {
 
             _commandList.Commands.Add(new Command {
                 ObjectCommand = ObjectCommand.LookAt,
+                ObjectName = "goal"
+            });
+
+            _commandList.Commands.Add(new Command {
+                ObjectCommand = ObjectCommand.Wait,
+                Params = "{ time = 2.0 }"
+            });
+
+            _commandList.Commands.Add(new Command {
+                ObjectCommand = ObjectCommand.Activate,
                 ObjectName = "goal"
             });
 

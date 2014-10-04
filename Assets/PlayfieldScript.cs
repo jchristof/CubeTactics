@@ -182,17 +182,19 @@ public class PlayfieldScript : MonoBehaviour {
         return newQuad;
     }
 
+    //if a move puts the player on an enabled trigger, run the trigger's OnEnter function
     void RunTriggers(Vector3 newPlayerPosition) {
         int xPos = Convert.ToInt32(newPlayerPosition.x);
         int yPos = Convert.ToInt32(newPlayerPosition.z);
 
-        var trippedTriggers = _map.Triggers
-            .Where(x => x.X == xPos)
-            .Where(x => x.Y == yPos);
-
-        foreach (var trigger in trippedTriggers) {
-            trigger.OnEnter();
-        }   
+         _map.MapObjects
+            .Where(x => x.GetType().IsSubclassOf(typeof(Trigger)))
+            .Cast<Trigger>()
+            .Where(x => x.MapX == xPos)
+            .Where(x => x.MapY == yPos)
+            .Where(x=>x.Properties.Enabled)
+            .ToList()
+            .ForEach(x => x.OnEnter());
     }
 
     void ExecuteNewPosition(Vector3 newPlayerPosition) {

@@ -19,9 +19,9 @@ namespace Assets.Map {
             index = -1
         };
 
-        IMapObjectFactory _objectFactory;
+        //IMapObjectFactory _objectFactory;
         public Map() {
-            _objectFactory = new MapObjectFactory();
+            //_objectFactory = new MapObjectFactory();
         }
 
         public void LoadMap(string filename){
@@ -57,7 +57,9 @@ namespace Assets.Map {
             ReorderObjects(GetLayerByName(MapLayerName.Object));
 
             MapObjects = GetLayerByName(MapLayerName.Object).objects;
-            BuildMapObjects(MapObjects);
+            //BuildMapObjects(MapObjects);
+
+            SpawnPoint = MapObjects.Where(x => x.Type == MapObjectType.SpawnPoint).Cast<SpawnPoint>().First().Position;
         }
 
         void ValidateMapLoad() {
@@ -91,23 +93,24 @@ namespace Assets.Map {
 
         void ReorderObjects(MapLayer mapLayer) {
 
-            mapLayer.objects.Select(x => { x.y = (_mapModel.height * _mapModel.tilewidth) - x.y; return x; }).ToList();
+           var list =  mapLayer.objects.Select(x => { x.Y = (_mapModel.height * _mapModel.tilewidth) - x.Y; return x; }).ToList();
+           list.AsEnumerable();
         }
 
         void BuildMapObjects(IList<MapObject> mapObjects) {
 
-            SpawnPoint = _objectFactory.CreatePlayerSpawnPoint(mapObjects, this);
+            //SpawnPoint = _objectFactory.CreatePlayerSpawnPoint(mapObjects, this);
 
-            Triggers = new List<Trigger>();
-            IScriptExecutor scriptExecutor = CompositionRoot.ScriptExecutor;
+            //Triggers = new List<Trigger>();
+            //IScriptExecutor scriptExecutor = CompositionRoot.ScriptExecutor;
 
-            IEnumerable<Trigger> teleporters = _objectFactory.CreateTeleporters(this, scriptExecutor, mapObjects, new ReadOnlyCollection<Trigger>(Triggers));
-            Triggers.AddRange(teleporters);
+            //IEnumerable<Trigger> teleporters = _objectFactory.CreateTeleporters(this, scriptExecutor, mapObjects, new ReadOnlyCollection<Trigger>(Triggers));
+            //Triggers.AddRange(teleporters);
 
-            Scripts = _objectFactory.CreateScripts(mapObjects);
+            //Scripts = _objectFactory.CreateScripts(mapObjects);
 
-            IEnumerable<Trigger> EnterExit = _objectFactory.CreateEnterExitTriggers(this, scriptExecutor, mapObjects, new ReadOnlyCollection<Trigger>(Triggers));
-            Triggers.AddRange(EnterExit);
+            //IEnumerable<Trigger> EnterExit = _objectFactory.CreateEnterExitTriggers(this, scriptExecutor, mapObjects, new ReadOnlyCollection<Trigger>(Triggers));
+            //Triggers.AddRange(EnterExit);
         }
 
         int ImageWidthInTiles {get; set;}
@@ -160,8 +163,8 @@ namespace Assets.Map {
 
         public IEnumerable<MapObject> MapObjectAt(Vector3 position) {
             return GetLayerByName(MapLayerName.Object).objects.
-                Where(x => PixelXToTileX(x.x) == position.x).
-                Where(x => PixelYToTileY(x.y) == position.y);
+                Where(x => PixelXToTileX(x.X) == position.x).
+                Where(x => PixelYToTileY(x.X) == position.y);
         }
 
         public Tile TileAtTileSetIndex(int tileSetIndex) {

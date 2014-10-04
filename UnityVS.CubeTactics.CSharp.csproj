@@ -7,16 +7,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B9FD7C63-5A9D-2182-05AB-8DFC3C30103D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -411,13 +409,17 @@
     <Compile Include="Assets\Map\MapLayerName.cs" />
     <Compile Include="Assets\Map\MapModel.cs" />
     <Compile Include="Assets\Map\MapObject.cs" />
+    <Compile Include="Assets\Map\MapObjectConverter.cs" />
     <Compile Include="Assets\Map\MapObjectFactory.cs" />
+    <Compile Include="Assets\Map\MapObjectState.cs" />
     <Compile Include="Assets\Map\MapObjectType.cs" />
     <Compile Include="Assets\Map\PropertiesMap.cs" />
+    <Compile Include="Assets\Map\SpawnPoint.cs" />
     <Compile Include="Assets\Map\Tile.cs" />
     <Compile Include="Assets\Map\Tileset.cs" />
     <Compile Include="Assets\Map\TileType.cs" />
     <Compile Include="Assets\Map\Triggers\EnterExit.cs" />
+    <Compile Include="Assets\Map\Triggers\Goal.cs" />
     <Compile Include="Assets\Map\Triggers\Teleporter.cs" />
     <Compile Include="Assets\Map\Triggers\Trigger.cs" />
     <Compile Include="Assets\Movement\Interpolate.cs" />
@@ -440,6 +442,5 @@
     <None Include="Assets\PlaneShader.shader" />
     <None Include="Assets\JsonDotNet\Examples\Tests\TestModels\SampleClassLibrary.dll" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
 </Project>

@@ -13,5 +13,6 @@ namespace Assets.Map {
         Script,
         Tile,
         Object,
+        Goal
     }
 }

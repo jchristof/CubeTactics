@@ -33,8 +33,8 @@
                  "name":"teleport1",
                  "properties":
                     {
-                     "enabled":"true",
-                     "linkto":"teleport2"
+                     "Enabled":"true",
+                     "LinkTo":"teleport2"
                     },
                  "type":"Teleporter",
                  "visible":true,
@@ -47,8 +47,8 @@
                  "name":"teleport2",
                  "properties":
                     {
-                     "enabled":"true",
-                     "linkto":"teleport1"
+                     "Enabled":"true",
+                     "LinkTo":"teleport1"
                     },
                  "type":"Teleporter",
                  "visible":true,
@@ -61,8 +61,8 @@
                  "name":"Trigger1",
                  "properties":
                     {
-                     "enabled":"true",
-                     "onEnter":"pressureplate trigger"
+                     "Enabled":"true",
+                     "OnEnter":"pressureplate trigger"
                     },
                  "type":"EnterExit",
                  "visible":true,
@@ -101,9 +101,9 @@
                  "name":"goal",
                  "properties":
                     {
-
+                     "State":"Inactive"
                     },
-                 "type":"EnterExit",
+                 "type":"Goal",
                  "visible":true,
                  "width":39,
                  "x":397,
@@ -114,7 +114,7 @@
                  "name":"addtile",
                  "properties":
                     {
-                     "tileindex":"12"
+                     "TileIndex":"12"
                     },
                  "type":"Tile",
                  "visible":true,

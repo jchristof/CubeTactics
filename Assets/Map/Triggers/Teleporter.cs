@@ -8,17 +8,14 @@ using UnityEngine;
 
 namespace Assets.Map.Triggers {
     public class Teleporter : Trigger{
-        public Teleporter(IMap map, MapObject mapObject, IScriptExecutor scriptExecutor, ReadOnlyCollection<Trigger> triggers) :
-            base(mapObject, map, scriptExecutor) {
-                Triggers = triggers;
+        public Teleporter(IMap map, IScriptExecutor scriptExecutor) :
+            base(map, scriptExecutor) {
         }
 
-        public ReadOnlyCollection<Trigger> Triggers { get; private set; }
-
         public override void OnEnter() {
-            Trigger destinationTrigger = Triggers.Where(x => x.Name == Properties.linkto).FirstOrDefault();
+            Trigger destinationTrigger = (Trigger)Map.MapObjects.Where(x => x.Name == Properties.LinkTo).FirstOrDefault();
             if (destinationTrigger != null) {
-                CompositionRoot.PlayerController.AutoMatedMoveTo(new Vector3(destinationTrigger.X, 0.5f, destinationTrigger.Y));
+                CompositionRoot.PlayerController.AutoMatedMoveTo(new Vector3(destinationTrigger.MapX, 0.5f, destinationTrigger.MapY));
             }
         }
     }

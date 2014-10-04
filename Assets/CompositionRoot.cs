@@ -65,7 +65,6 @@ namespace Assets {
                 if (_scriptExecutor == null) {
                     _scriptExecutor = GameObject.Find("GameManager").GetComponent<ScriptExecutor>();
                     _scriptExecutor.Map = Map;
-                    _scriptExecutor.MapObjects = Map.MapObjects;
                 }
                 return _scriptExecutor;
             }

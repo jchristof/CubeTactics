@@ -115,20 +115,20 @@
   <object name="spawnplayer" type="SpawnPoint" x="265" y="276" width="41" height="32"/>
   <object name="teleport1" type="Teleporter" x="142" y="77" width="34" height="33">
    <properties>
-    <property name="enabled" value="true"/>
-    <property name="linkto" value="teleport2"/>
+    <property name="Enabled" value="true"/>
+    <property name="LinkTo" value="teleport2"/>
    </properties>
   </object>
   <object name="teleport2" type="Teleporter" x="77" y="588" width="40" height="37">
    <properties>
-    <property name="enabled" value="true"/>
-    <property name="linkto" value="teleport1"/>
+    <property name="Enabled" value="true"/>
+    <property name="LinkTo" value="teleport1"/>
    </properties>
   </object>
   <object name="Trigger1" type="EnterExit" x="14" y="146" width="39" height="32">
    <properties>
-    <property name="enabled" value="true"/>
-    <property name="onEnter" value="pressureplate trigger"/>
+    <property name="Enabled" value="true"/>
+    <property name="OnEnter" value="pressureplate trigger"/>
    </properties>
   </object>
   <object name="pressureplatetrigger" type="Script" x="-113" y="58" width="87" height="66">
@@ -145,10 +145,14 @@
    </properties>
   </object>
   <object name="removetile" type="Tile" x="461" y="403" width="8" height="32"/>
-  <object name="goal" type="EnterExit" x="397" y="591" width="39" height="34"/>
+  <object name="goal" type="Goal" x="397" y="591" width="39" height="34">
+   <properties>
+    <property name="State" value="Inactive"/>
+   </properties>
+  </object>
   <object name="addtile" type="Tile" x="485" y="410" width="11" height="20">
    <properties>
-    <property name="tileindex" value="12"/>
+    <property name="TileIndex" value="12"/>
    </properties>
   </object>
  </objectgroup>

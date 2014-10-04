@@ -13,21 +13,21 @@ namespace Assets.Map {
         public Vector3 CreatePlayerSpawnPoint(IList<MapObject> mapObjects, IMap map) {
             var spawnPoint = 
                 mapObjects
-                    .Where(x => x.name == "spawnplayer")
-                    .Where(x => x.type == MapObjectType.SpawnPoint)
+                    .Where(x => x.Name == "spawnplayer")
+                    .Where(x => x.Type == MapObjectType.SpawnPoint)
                     .FirstOrDefault();
 
             if (spawnPoint == null)
                 throw new InvalidOperationException("no player spawnpoint");
 
-            return new Vector3(map.PixelXToTileX(spawnPoint.x), 0.5f, map.PixelXToTileX(spawnPoint.y));
+            return new Vector3(map.PixelXToTileX(spawnPoint.X), 0.5f, map.PixelXToTileX(spawnPoint.Y));
         }
 
         public IEnumerable<Assets.Map.Script.Script> CreateScripts(IList<MapObject> mapObjects) {
             return mapObjects
-                    .Where(x => x.type == MapObjectType.Script)
+                    .Where(x => x.Type == MapObjectType.Script)
                     .Select(s => new Assets.Map.Script.Script {
-                        Name = s.name,
+                        Name = s.Name,
                         //Type = s.type,
                         //ScriptValue = s.properties.script
                     });
@@ -36,9 +36,9 @@ namespace Assets.Map {
         public IEnumerable<Trigger> CreateTeleporters(IMap map, IScriptExecutor scriptExecutor, IList<MapObject> mapObjects, ReadOnlyCollection<Trigger> triggersList) {
             var teleporters =
                     mapObjects
-                        .Where(x => x.type == MapObjectType.Teleporter);
+                        .Where(x => x.Type == MapObjectType.Teleporter);
 
-            var newTeleporters = teleporters.Select(t => new Teleporter(map, t, scriptExecutor, triggersList));
+            var newTeleporters = teleporters.Select(t => new Teleporter(map,  scriptExecutor));
 
             return newTeleporters.Cast<Trigger>();
         }
@@ -46,9 +46,10 @@ namespace Assets.Map {
         public IEnumerable<Trigger> CreateEnterExitTriggers(IMap map, IScriptExecutor scriptExecutor, IList<MapObject> mapObjects, ReadOnlyCollection<Trigger> triggersList) {
             var enterExitTriggers =
                     mapObjects
-                        .Where(x => x.type == MapObjectType.EnterExit);
+                        .Where(x => x.Type == MapObjectType.EnterExit);
 
-            var newEnterExitTriggers = enterExitTriggers.Select(t => new EnterExit(map, t, scriptExecutor, triggersList));
+
+            var newEnterExitTriggers = enterExitTriggers.Select(t => new EnterExit(map, scriptExecutor));
 
             return newEnterExitTriggers.Cast<Trigger>();
         }
@@ -57,28 +58,5 @@ namespace Assets.Map {
             return JsonConvert.DeserializeObject<CommandList>(scriptJson);
         }
 
-        //public IEnumerable<Trigger> CreatePressurePlates(IMap map, IEnumerable<Assets.Map.Script.Script> scripts, IEnumerable<MapLayerObject> triggerdata) {
-        //    var pressurePlates =
-        //            triggerdata
-        //                .Where(x => x.type == "pressureplate");
-
-        //    //var newPressurePlates = pressurePlates.Select(p => new PressurePlate(p.name,
-        //    //          p.type,
-        //    //          Convert.ToInt32(p.properties.id),
-        //    //          map.PixelXToTileX(p.x),
-        //    //          map.PixelYToTileY(p.y),
-        //    //          Convert.ToInt32(p.properties.linkto),
-        //    //          p.visible,
-        //    //          p.properties.enabled,
-        //    //          p.properties.script));
-
-        //    foreach (var p in newPressurePlates) {
-        //        var script = scripts.Where(x => x.Type == p.ScriptName).FirstOrDefault();
-        //        if (script != null)
-        //            p.Script = JsonConvert.DeserializeObject<ObjectCommand[]>(script.ScriptValue);
-        //    }
-                
-        //    return newPressurePlates.Cast<Trigger>();
-        //}
     }
 }
