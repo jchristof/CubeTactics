@@ -395,6 +395,7 @@
      <Compile Include="Assets\Language\Point.cs" />
      <Compile Include="Assets\Language\Tuple.cs" />
      <Compile Include="Assets\Level\LevelName.cs" />
+     <Compile Include="Assets\LoadscreenCube.cs" />
      <Compile Include="Assets\Locale\LocaleText.cs" />
      <Compile Include="Assets\Map\Direction.cs" />
      <Compile Include="Assets\Map\IMap.cs" />
@@ -438,6 +439,10 @@
  <Reference Include="SampleClassLibrary">
  <HintPath>Assets\JsonDotNet\Examples\Tests\TestModels\SampleClassLibrary.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{871DD184-D94B-326C-F911-59250003D5B3}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

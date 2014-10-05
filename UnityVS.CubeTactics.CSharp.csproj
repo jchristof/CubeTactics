@@ -51,6 +51,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="UnityVS.CubeTactics.CSharp.Plugins.csproj">
+      <Project>{5B123208-D45C-4D24-3BA4-1E97240B643B}</Project>
+      <Name>UnityVS.CubeTactics.CSharp.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\Camera\CameraScript.cs" />
     <Compile Include="Assets\CompositionRoot.cs" />
     <Compile Include="Assets\Extensions\ArrayExtensions.cs" />
@@ -400,6 +406,7 @@
     <Compile Include="Assets\Language\Point.cs" />
     <Compile Include="Assets\Language\Tuple.cs" />
     <Compile Include="Assets\Level\LevelName.cs" />
+    <Compile Include="Assets\LoadscreenCube.cs" />
     <Compile Include="Assets\Locale\LocaleText.cs" />
     <Compile Include="Assets\Map\Direction.cs" />
     <Compile Include="Assets\Map\IMap.cs" />
