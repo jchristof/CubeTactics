@@ -1,0 +1,9 @@
+Character.bank
+Master Bank.bank
+Master Bank.strings.bank
+Music.bank
+Surround_Ambience.bank
+UI_Menu.bank
+Vehicles.bank
+VO_Menu_English.bank
+Weapons.bank

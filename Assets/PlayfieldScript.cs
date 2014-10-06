@@ -23,10 +23,11 @@ public class PlayfieldScript : MonoBehaviour {
 	void Start () {
         ClampToRectBounds = true;
         _map = CompositionRoot.Map;
-
         _map.ForeachTile(new Action<int, int, int>(CreateTileVisualAt), MapLayerName.Board);
-
+         
         CompositionRoot.PlayerController.SpawnAt(_map.SpawnPoint);
+
+       
 	}
 
      Vector3 PlayerPositionFromXY(int x, int y) {
@@ -210,5 +211,10 @@ public class PlayfieldScript : MonoBehaviour {
 
         CompositionRoot.Game.ExecutePlayerMove(newPlayerPosition);
         RunTriggers(newPlayerPosition);
+        FMOD.Studio.EventInstance moveSound;
+        moveSound = FMOD_StudioSystem.instance.GetEvent("event:/Character/Footsteps/Footsteps");
+        moveSound.setParameterValue("Surface", 3f);
+        moveSound.start();
+        moveSound.release();
     }
 }
