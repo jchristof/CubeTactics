@@ -11,6 +11,8 @@ namespace Assets.Script {
         public string ObjectName { get; set; }
         public ObjectCommand ObjectCommand { get; set; }
         public string Params { get; set; }
+
+        public virtual void Execute() { }
     }
 
     public class CommandList {

@@ -3,6 +3,8 @@ using Assets.Locale;
 using Assets.Map;
 using Assets.Script;
 using Newtonsoft.Json;
+using System;
+using System.Threading;
 using UnityEngine;
 
 namespace Assets {
@@ -23,6 +25,17 @@ namespace Assets {
                 if (_musicPlayer == null)
                     _musicPlayer = GameObject.Find("Sound").GetComponent<AudioSource>();
                 return _musicPlayer;
+            }
+        }
+
+        static AudioPlayer _audioPlayer;
+
+        public static AudioPlayer AudioPlayer {
+            get {
+                if (_audioPlayer == null)
+                    _audioPlayer = new AudioPlayer();
+
+                return _audioPlayer;
             }
         }
                     
@@ -70,7 +83,17 @@ namespace Assets {
             }
         }
 
+        static void Invoke(Action action) {
+            action();
+        }
+
+        public static void RunOnMainThread(Action action){
+            _context.Post(e=>Invoke((Action)e), action);
+        }
+
+        static SynchronizationContext _context;
         public static void InitializeGame(){
+            var sc = SynchronizationContext.Current; 
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using UnityEngine;
 
 namespace Assets.Script {
@@ -19,14 +20,22 @@ namespace Assets.Script {
             if (commandList == null || commandList.Commands == null)
                 return;
             StartCoroutine(ExecuteAsync(commandList));
+
+            //var t = new Thread(()=>{
+            //    ExecuteAsync(commandList);
+            //});
+            //t.Start();
         }
+
+        //public void ExecuteAsync(CommandList commandList) {
+        //}
 
         public IEnumerator ExecuteAsync(CommandList commandList) {
 
             foreach (var cmd in commandList.Commands) {
                 if (cmd.ObjectCommand == ObjectCommand.Destroy) {
                     MapObject mapObject = _map.MapObjects.Where(x => x.Name == cmd.ObjectName).First();
-                    if(mapObject.Type == MapObjectType.Tile){
+                    if (mapObject.Type == MapObjectType.Tile) {
                         int x = _map.PixelXToTileX(mapObject.X);
                         int y = _map.PixelYToTileY(mapObject.Y);
                         _map.RemoveTileAt(x, y, MapLayerName.Board);
@@ -42,20 +51,20 @@ namespace Assets.Script {
                         CompositionRoot.Playfield.CreateTileVisualAt(x, y, mapObject.Properties.TileIndex);
                     }
                 }
-                else if(cmd.ObjectCommand == ObjectCommand.LookAt){
+                else if (cmd.ObjectCommand == ObjectCommand.LookAt) {
                     MapObject mapObject = _map.MapObjects.Where(x => x.Name == cmd.ObjectName).FirstOrDefault();
                     _map.MapObjects.ToList().ForEach(x => { print(x.Name); });
 
-                    if(mapObject != null){
+                    if (mapObject != null) {
                         //if (mapObject.type == MapObjectType.Tile) {
-                            int x = _map.PixelXToTileX(mapObject.X);
-                            int y = _map.PixelYToTileY(mapObject.Y);
+                        int x = _map.PixelXToTileX(mapObject.X);
+                        int y = _map.PixelYToTileY(mapObject.Y);
 
-                            GameObject go = GameObject.Find(string.Format("{0}", _map.FlatTileIndex(x, y)));
-                            UnityEngine.Camera.main.GetComponent<CameraScript>().Target = go.transform;
+                        GameObject go = GameObject.Find(string.Format("{0}", _map.FlatTileIndex(x, y)));
+                        UnityEngine.Camera.main.GetComponent<CameraScript>().Target = go.transform;
                         //}
                     }
-                    else{
+                    else {
                         GameObject go = GameObject.Find(cmd.ObjectName);
                         UnityEngine.Camera.main.GetComponent<CameraScript>().Target = go.transform;
                         print(string.Format("Look at tile name {0}, flat index {1}", cmd.ObjectName, go.name));
@@ -77,10 +86,6 @@ namespace Assets.Script {
                 }
             }
             yield return null;
-        }
-
-        void Destroy(Command cmd) {
-
         }
     }
 }

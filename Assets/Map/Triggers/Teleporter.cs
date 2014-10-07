@@ -16,6 +16,7 @@ namespace Assets.Map.Triggers {
             Trigger destinationTrigger = (Trigger)Map.MapObjects.Where(x => x.Name == Properties.LinkTo).FirstOrDefault();
             if (destinationTrigger != null) {
                 CompositionRoot.PlayerController.AutoMatedMoveTo(new Vector3(destinationTrigger.MapX, 0.5f, destinationTrigger.MapY));
+                CompositionRoot.AudioPlayer.PlayTeleportSound();
             }
         }
     }

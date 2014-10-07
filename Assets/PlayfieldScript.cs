@@ -210,11 +210,7 @@ public class PlayfieldScript : MonoBehaviour {
         }
 
         CompositionRoot.Game.ExecutePlayerMove(newPlayerPosition);
+        CompositionRoot.AudioPlayer.PlayStepSound();
         RunTriggers(newPlayerPosition);
-        FMOD.Studio.EventInstance moveSound;
-        moveSound = FMOD_StudioSystem.instance.GetEvent("event:/Character/Footsteps/Footsteps");
-        moveSound.setParameterValue("Surface", 3f);
-        moveSound.start();
-        moveSound.release();
     }
 }
