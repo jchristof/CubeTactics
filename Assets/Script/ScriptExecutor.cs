@@ -21,10 +21,10 @@ namespace Assets.Script {
                 return;
             StartCoroutine(ExecuteAsync(commandList));
 
-            //var t = new Thread(()=>{
-            //    ExecuteAsync(commandList);
-            //});
-            //t.Start();
+            var t = new Thread(() => {
+                commandList.Commands.ToList().ForEach(x => x.Execute());
+            });
+            t.Start();
         }
 
         //public void ExecuteAsync(CommandList commandList) {

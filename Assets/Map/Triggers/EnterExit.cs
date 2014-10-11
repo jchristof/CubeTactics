@@ -27,7 +27,6 @@ namespace Assets.Map.Triggers {
 
             _commandList.Commands.Add(new Command {
                 ObjectCommand = ObjectCommand.Wait,
-                Params = "{ time = 2.0 }"
             });
 
             _commandList.Commands.Add(new Command {
@@ -47,7 +46,6 @@ namespace Assets.Map.Triggers {
 
             _commandList.Commands.Add(new Command {
                 ObjectCommand = ObjectCommand.Wait,
-                Params = "{ time = 2.0 }"
             });
 
             _commandList.Commands.Add(new Command {
@@ -57,7 +55,6 @@ namespace Assets.Map.Triggers {
 
             _commandList.Commands.Add(new Command {
                 ObjectCommand = ObjectCommand.Wait,
-                Params = "{ time = 2.0 }"
             });
 
             _commandList.Commands.Add(new Command {

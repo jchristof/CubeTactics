@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Assets.Script.Commands {
     public class DestroyCommand : Command {
+        public DestroyCommand() { }
         public DestroyCommand(IMap map) {
             if(map == null)
                 throw new ArgumentNullException("map");

@@ -6,6 +6,7 @@ using System.Text;
 
 namespace Assets.Script.Commands {
     public class CreateCommand : Command {
+        public CreateCommand() { }
         public CreateCommand(IMap map) {
             if(map == null)
                 throw new ArgumentNullException("map");

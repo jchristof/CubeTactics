@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Assets.Audio {
-    public enum SfxType {
+namespace Assets.Script {
+    public enum ObjectType {
         None,
-        PressurePlateClick
+        Tile,
+        MapObject,
+        GameObject
     }
 }

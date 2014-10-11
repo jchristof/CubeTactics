@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace Assets.Script.Commands {
     public class LookAtCommand : Command {
+        public LookAtCommand() { }
         public LookAtCommand(IMap map) {
             if(map == null)
                 throw new ArgumentNullException("map");

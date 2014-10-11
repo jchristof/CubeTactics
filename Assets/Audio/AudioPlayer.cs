@@ -31,7 +31,7 @@ namespace Assets {
 
         public void PlaySfx(SfxType type) {
             switch(type){
-                case SfxType.Trigger:
+                case SfxType.PressurePlateClick:
                     PlayTriggerSound();
                     break;
             }
