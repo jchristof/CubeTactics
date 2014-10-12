@@ -53,16 +53,7 @@ namespace Assets.Map {
 
             MapObjects = GetLayerByName(MapLayerName.Object).objects;
 
-            if (!string.IsNullOrEmpty(_mapModel.properties.Scripts)) {
-                TextAsset scriptsJson = Resources.Load("Scripts/BlockOut") as TextAsset;
-
-                try {
-                    ScriptList = (Dictionary<string, IList<Command>>)JsonConvert.DeserializeObject(scriptsJson.text, typeof(Dictionary<string, IList<Command>>));
-                }
-                catch (Exception e) {
-                    MonoBehaviour.print(e.Message);
-                }
-            }
+            ScriptList = CompositionRoot.LoadScripts(_mapModel.properties.Scripts);
 
             SpawnPoint = MapObjects.Where(x => x.Type == MapObjectType.SpawnPoint).Cast<SpawnPoint>().First().Position;
         }

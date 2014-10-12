@@ -5,6 +5,7 @@ using Assets.Map;
 using Assets.Script;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
@@ -93,6 +94,24 @@ namespace Assets {
         static Invoker _invoker;
         public static void InitializeGame(){
             _invoker = GameObject.Find("Invoker").GetComponent<Invoker>();
+        }
+
+        static readonly string _scriptPath = "Scripts/";
+        static public Dictionary<string, IList<Command>> LoadScripts(string scriptName) {
+            if(string.IsNullOrEmpty(scriptName))
+                return default(Dictionary<string, IList<Command>>);
+
+            string scriptResource = scriptName.Split('.')[0];
+            string scriptJson = (Resources.Load(string.Format("{0}{1}", _scriptPath, scriptResource)) as TextAsset).text;
+
+            try {
+                return (Dictionary<string, IList<Command>>)JsonConvert.DeserializeObject(scriptJson, typeof(Dictionary<string, IList<Command>>));
+            }
+            catch (Exception e) {
+                MonoBehaviour.print(e.Message);
+            }
+
+            return default(Dictionary<string, IList<Command>>);     
         }
     }
 }
