@@ -171,6 +171,14 @@ public partial class MainWindow : Window {
     }
 
     #endregion
+
+    void PropertyGridChanged_Event(object sender, PropertyChangedEventArgs e) {
+        if (ViewModel == null || ViewModel.Commands == null)
+            return;
+
+        ICollectionView view = CollectionViewSource.GetDefaultView(ViewModel.Commands);
+        view.Refresh();
+    }
 }
 
 

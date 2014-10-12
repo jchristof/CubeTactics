@@ -159,7 +159,9 @@
                                 Grid.Column="4"
                                 SelectedObject="{Binding SelectedCommand}"
                                 VerticalAlignment="Stretch"
-                                HorizontalAlignment="Stretch">
+                                HorizontalAlignment="Stretch"
+                                PropertyChanged="PropertyGridChanged_Event"
+                               >
                 
                 
             </xctk:PropertyGrid>

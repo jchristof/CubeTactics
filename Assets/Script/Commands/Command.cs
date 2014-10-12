@@ -10,13 +10,17 @@ using System.Text;
 
 namespace Assets.Script {
     [JsonConverter(typeof(CommandConverter))]
-    public class Command {
+    public class Command : INotifyPropertyChanged {
         public string ObjectName { get; set; }
         [Browsable(false)]
         [JsonConverter(typeof(StringEnumConverter))]
         public ObjectCommand ObjectCommand { get; set; }
         public ObjectType ObjectType { get; set; }
+        //public object SecondaryInfo {
+        //    get { return ObjectName;
 
         public virtual void Execute() { }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
