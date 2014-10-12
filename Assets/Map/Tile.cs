@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 
 namespace Assets.Map {
+     [JsonConverter(typeof(TileConverter))]
     public class Tile {
         public int index { get; set; }
         public string type {get;set;}

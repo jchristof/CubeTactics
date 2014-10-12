@@ -20,27 +20,15 @@ namespace Assets.Map {
         };
 
         public void LoadMap(string filename){
-            TextAsset mapJson = Resources.Load(filename) as TextAsset;
-            try {
-                _mapModel = JsonConvert.DeserializeObject<MapModel>(mapJson.text);
-            }
-            catch (Exception e) {
-                MonoBehaviour.print(e.Message);
-            }
 
-            if (_mapModel.tilesets[0].tileproperties != null) {
-                var dynObj = JObject.Parse((_mapModel.tilesets[0].tileproperties.ToString()));
-           
-                foreach (var v in dynObj) {
-                    Tile t = JsonConvert.DeserializeObject<Tile>(v.Value.ToString());
-                    t.index = Convert.ToInt32(v.Key);
-                    tilelist.Add(t.index, t);
-                }
-            }
+            _mapModel = CompositionRoot.LoadMap(filename);
 
-            MonoBehaviour.print(mapJson.text);
+            //cache tile type for faster lookup
+            _mapModel.tilesets[0].tileproperties.ToList().ForEach(x => {
+                tilelist.Add(x.index, x);
+            });
 
-            ValidateMapLoad();
+            _mapModel.Validate();
 
             ImageWidthInTiles = _mapModel.tilesets[0].imagewidth / _mapModel.tilesets[0].tilewidth;
             ImageHeightInTiles = _mapModel.tilesets[0].imageheight / _mapModel.tilesets[0].tileheight;
@@ -56,18 +44,6 @@ namespace Assets.Map {
             ScriptList = CompositionRoot.LoadScripts(_mapModel.properties.Scripts);
 
             SpawnPoint = MapObjects.Where(x => x.Type == MapObjectType.SpawnPoint).Cast<SpawnPoint>().First().Position;
-        }
-
-        void ValidateMapLoad() {
-            if (_mapModel.tilesets[0].imagewidth % _mapModel.tilesets[0].tilewidth != 0)
-                throw new InvalidOperationException(string.Format("Tile image width {0} not an even multiple of tile width {1}",
-                    _mapModel.tilesets[0].imagewidth,
-                    _mapModel.tilesets[0].tilewidth));
-
-            if (_mapModel.tilesets[0].imageheight % _mapModel.tilesets[0].tileheight != 0)
-                throw new InvalidOperationException(string.Format("Tile image height {0} not an even multiple of tile height {1}",
-                    _mapModel.tilesets[0].imageheight,
-                    _mapModel.tilesets[0].tileheight));
         }
 
         public Vector3 SpawnPoint { get; set; }

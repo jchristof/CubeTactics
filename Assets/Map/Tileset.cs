@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,8 @@ namespace Assets.Map {
         //public Properties2 properties { get; set; }
         public int spacing { get; set; }
         public int tileheight { get; set; }
-        public JObject tileproperties { get; set; }
+        [JsonConverter(typeof(TileSetConverter))]
+        public IList<Tile> tileproperties { get; set; }
         public int tilewidth { get; set; }
     }
 }

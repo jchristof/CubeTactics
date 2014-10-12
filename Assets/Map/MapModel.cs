@@ -9,7 +9,6 @@ namespace Assets.Map {
         public IList<MapLayer> layers { get; set; }
         public string orientation { get; set; }
         public PropertiesMap properties { get; set; }
-        //public int tileheight { get; set; }
         public IList<Tileset> tilesets { get; set; }
         public int tilewidth { get; set; }
         public int version { get; set; }

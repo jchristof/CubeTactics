@@ -104,6 +104,8 @@ namespace Assets {
             string scriptResource = scriptName.Split('.')[0];
             string scriptJson = (Resources.Load(string.Format("{0}{1}", _scriptPath, scriptResource)) as TextAsset).text;
 
+            MonoBehaviour.print(scriptJson);
+
             try {
                 return (Dictionary<string, IList<Command>>)JsonConvert.DeserializeObject(scriptJson, typeof(Dictionary<string, IList<Command>>));
             }
@@ -112,6 +114,26 @@ namespace Assets {
             }
 
             return default(Dictionary<string, IList<Command>>);     
+        }
+
+        static readonly string _mapPath = "Maps/";
+        static public MapModel LoadMap(string mapName){
+            if(string.IsNullOrEmpty(mapName))
+                return default(MapModel);
+
+            string mapResourceFile = mapName.Split('.')[0];
+            string mapJson = (Resources.Load(string.Format("{0}{1}", _mapPath, mapResourceFile)) as TextAsset).text;
+
+            MonoBehaviour.print(mapJson);
+
+            try {
+                return JsonConvert.DeserializeObject<MapModel>(mapJson);
+            }
+            catch (Exception e) {
+                MonoBehaviour.print(e.Message);
+            }
+
+            return default(MapModel);
         }
     }
 }
