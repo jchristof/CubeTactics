@@ -13,5 +13,6 @@ namespace Assets.Script {
         Reset,
         LookAt,
         Wait,
+        Sfx
     }
 }

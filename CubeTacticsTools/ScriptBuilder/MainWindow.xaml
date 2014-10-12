@@ -22,17 +22,20 @@
     </Window.Resources>
     
     <Grid>
-
-        <!--<Menu>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu>
             <MenuItem Header="_File">
-                <MenuItem Header="_Open..." />
+                <MenuItem Header="_Open..." Click="MenuOpen_Click"/>
                 <Separator />
-                <MenuItem Header="_Save" />
-                <MenuItem Header="_Save As..." />
+                <MenuItem Header="_Save" Click="MenuSave_Click"/>
+                <MenuItem Header="_Save As..." Click="MenuSaveAs_Click"/>
                 <Separator />
-                <MenuItem Header="_Exit" />
+                <MenuItem Header="_Exit" Click="MenuExit_Click"/>
             </MenuItem>
-        </Menu>-->
+        </Menu>
         <StackPanel Orientation="Horizontal" Grid.Row="1">
             <ListView Height="276" VerticalAlignment="Top" Width="203"
                       ItemsSource="{Binding Path=Scripts}"
@@ -40,10 +43,10 @@
                       >
                 <ListView.ContextMenu>
                     <ContextMenu DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}">
-                        <MenuItem Header="New" Click="NewScript_Click" />
+                        <MenuItem Header="New" Click="NewScriptContext_Click" />
                         <MenuItem Header="Delete" 
                                   IsEnabled="{Binding SelectedScriptName, Converter={StaticResource nullToBoolConverter}}" 
-                                  Click="DeleteScript_Click"/>
+                                  Click="DeleteScriptContext_Click"/>
                         
                     </ContextMenu>
                 </ListView.ContextMenu>
@@ -60,9 +63,9 @@
                 <ListView.ContextMenu>
                     <ContextMenu DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}"
                                  IsEnabled="{Binding SelectedScriptName, Converter={StaticResource nullToBoolConverter}}">
-                        <MenuItem Header="New" Click="NewCommand_Click" />
+                        <MenuItem Header="New" Click="NewCommandContext_Click" />
                         <MenuItem Header="Delete" IsEnabled="{Binding SelectedCommand, Converter={StaticResource nullToBoolConverter}}" 
-                                  Click="DeleteCommand_Click"/>
+                                  Click="DeleteCommandContext_Click"/>
                         
                     </ContextMenu>
                 </ListView.ContextMenu>
@@ -76,28 +79,31 @@
                 </ListView.ItemTemplate>
             </ListView>
             <StackPanel Orientation="Vertical">
-                <xctk:PropertyGrid x:Name="_propertyGrid" SelectedObject="{Binding SelectedCommand}"/>
+                <xctk:PropertyGrid x:Name="_propertyGrid" 
+                                   SelectedObject="{Binding SelectedCommand}"
+                                   VerticalAlignment="Stretch"
+                                   HorizontalAlignment="Stretch"/>
             </StackPanel>
         </StackPanel>
         
-        <Popup Name="NewCommandPopup" Placement="Mouse">
-            <StackPanel Background="LightGray">
+        <Popup Name="NewCommandPopup" Placement="Center">
+            <StackPanel Background="LightGray" Margin="1">
                 <Label HorizontalAlignment="Center">New Command</Label>
                 <ComboBox ItemsSource="{Binding Source={StaticResource commandObjectType}}"
                           SelectedItem="{Binding SelectedNewCommandType}"/>
                 <StackPanel Orientation="Horizontal">
-                    <Button Click="NewCommand_Ok" Margin="4">Ok</Button>
-                    <Button Click="NewCommand_Cancel" Margin="4">Cancel</Button>
+                    <Button Click="NewCommandPopupOk_Click" Margin="4">Ok</Button>
+                    <Button Click="NewCommandPopupCancel_Click" Margin="4">Cancel</Button>
                 </StackPanel>
             </StackPanel>
         </Popup>
-        <Popup Name="NewScriptPopup" Placement="Mouse">
-            <StackPanel Background="LightGray">
+        <Popup Name="NewScriptPopup" Placement="Center">
+            <StackPanel Background="LightGray" Margin="1">
                 <Label HorizontalAlignment="Center">New Script Name</Label>
-                <TextBox Text="{Binding NewScriptName}"></TextBox>
+                <TextBox Text="{Binding NewScriptName}"/>
                 <StackPanel Orientation="Horizontal">
-                    <Button Click="NewScriptOk" Margin="4">Ok</Button>
-                    <Button Click="NewScriptCancel" Margin="4">Cancel</Button>
+                    <Button Click="NewScriptPopupOk_Click" Margin="4">Ok</Button>
+                    <Button Click="NewScriptPopupCancel_Click" Margin="4">Cancel</Button>
                 </StackPanel>
             </StackPanel>
         </Popup>

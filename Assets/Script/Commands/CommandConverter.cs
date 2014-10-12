@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Assets.Map;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,12 @@ using System.Text;
 namespace Assets.Script.Commands {
     public class CommandConverter : JsonConverter {
 
+        public CommandConverter() {
+            _map = CompositionRoot.Map ?? new Assets.Map.Map();
+        }
+
+        IMap _map;
+
         public override bool CanConvert(Type objectType) {
             return objectType.IsSubclassOf(typeof(Command)) || objectType == typeof(Command);
         }
@@ -15,30 +22,32 @@ namespace Assets.Script.Commands {
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
             JObject jObject = JObject.Load(reader);
             Command target;
-            var type = (string)jObject.Property("type");
+            //var type = (ObjectCommand)jObject.Property("ObjectCommand").Value.Value<Int64>();
+            var typeString = (string)jObject.Property("ObjectCommand");
+            var type = (ObjectCommand)Enum.Parse(typeof(ObjectCommand), typeString);
 
             switch (type) {
-                case "Create":
-                    target = new CreateCommand(CompositionRoot.Map);
+                case ObjectCommand.Create:
+                    target = new CreateCommand(_map);
                     break;
 
-                case "Destroy":
-                    target = new DestroyCommand(CompositionRoot.Map);
+                case ObjectCommand.Destroy:
+                    target = new DestroyCommand(_map);
                     break;
 
-                case "Disable":
+                case ObjectCommand.Disable:
                     target = new DisableCommand();
                     break;
 
-                case "Enable":
+                case ObjectCommand.Enable:
                     target = new EnableCommand();
                     break;
 
-                case "LookAt":
-                    target = new LookAtCommand(CompositionRoot.Map);
+                case ObjectCommand.LookAt:
+                    target = new LookAtCommand(_map);
                     break;
 
-                case "Sfx":
+                case ObjectCommand.Sfx:
                     target = new SfxCommand();
                     break;
 

@@ -1,5 +1,6 @@
 ﻿using Assets.Script;
 using Assets.Script.Commands;
+using Newtonsoft.Json;
 using ScriptBuilder.Extensions;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,20 @@ namespace ScriptBuilder {
         public MainformViewModel() {
             Scripts = new ObservableCollection<string>();          
             Commands = new ObservableCollection<Command>();
-            _scriptList = new Dictionary<string, IList<Command>>();
+            ScriptList = new Dictionary<string, IList<Command>>();
         }
 
         Dictionary<string, IList<Command>> _scriptList;
+        public Dictionary<string, IList<Command>> ScriptList {
+            get { return _scriptList; }
+            set {
+                _scriptList = value;
+                Scripts.Clear();
+                _scriptList.Keys.ToList().ForEach(
+                    x => { Scripts.Add(x); }
+                );
+            }
+        }
 
         public ObservableCollection<string> Scripts { get; set; }
         public ObservableCollection<Command> Commands { get; set; }
@@ -45,26 +56,41 @@ namespace ScriptBuilder {
 
                 //save the script that is about to be deselected
                 if (!string.IsNullOrEmpty(_selectedScriptName)) {
-                    _scriptList.Remove(_selectedScriptName);
-                    List<Command> commandList = new List<Command>(Commands);
-                    _scriptList.Add(_selectedScriptName, commandList);
-                    
+                    StoreCurrentScriptData(_selectedScriptName);          
                 }
 
                 Commands.Clear();
 
                 //see if the newly selected has already been created
-                if (_scriptList.Keys.Where(x => x == value).FirstOrDefault() != null) {
-                    var commands = _scriptList.Where(x => x.Key == value).First();
+                if (ScriptList.Keys.Where(x => x == value).FirstOrDefault() != null) {
+                    var commands = ScriptList.Where(x => x.Key == value).First();
 
                     commands.Value.ToList().ForEach(x => {
                         Commands.Add(x);
                     });
                 }
-
+                else
+                    //this is a brand new script
+                    ScriptList.Add(value, new List<Command>());
                 _selectedScriptName = value;
                 RaisePropertyChanged("SelectedScriptName");
             }
+        }
+
+        public string Serialize() {
+            StoreCurrentScriptData(SelectedScriptName);
+
+            return JsonConvert.SerializeObject(ScriptList);
+        }
+
+        public void Deserialize(string json) {
+            ScriptList = (Dictionary<string, IList<Command>>)JsonConvert.DeserializeObject(json, ScriptList.GetType());
+        }
+
+        public void StoreCurrentScriptData(string scriptName) {
+            ScriptList.Remove(_selectedScriptName);
+            List<Command> commandList = new List<Command>(Commands);
+            ScriptList.Add(_selectedScriptName, commandList);       
         }
 
         public void RemoveSelectedScript() {
@@ -115,7 +141,5 @@ namespace ScriptBuilder {
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-        
     }
 }

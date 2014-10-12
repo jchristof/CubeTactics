@@ -21,56 +21,139 @@ using System.Diagnostics;
 using Xceed.Wpf.Toolkit.Primitives;
 using Assets.Script.Commands;
 using Assets.Script;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace ScriptBuilder {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
 public partial class MainWindow : Window {
+    #region Constructor
+
     public MainWindow(){
         InitializeComponent();
         DataContext = new MainformViewModel();
     }
 
-MainformViewModel ViewModel {
-    get {
-        return DataContext as MainformViewModel;
-        }
+    #endregion
+
+    #region View Model
+
+    MainformViewModel ViewModel {
+        get {
+            return DataContext as MainformViewModel;
+            }
     }
 
-    void NewScriptCancel(object sender, RoutedEventArgs e) {
+    #endregion
+
+    #region New Script Popup
+
+    void NewScriptPopupCancel_Click(object sender, RoutedEventArgs e) {
         NewScriptPopup.IsOpen = false;
     }
 
-    void NewScriptOk(object sender, RoutedEventArgs e) {
+    void NewScriptPopupOk_Click(object sender, RoutedEventArgs e) {
         ViewModel.NewScript();
         NewScriptPopup.IsOpen = false;
     }
 
-    void NewScript_Click(object sender, RoutedEventArgs e) {
+    #endregion
+
+    #region Script List Context
+
+    void NewScriptContext_Click(object sender, RoutedEventArgs e) {
         NewScriptPopup.IsOpen = true;
     }
 
-    void DeleteScript_Click(object sender, RoutedEventArgs e) {
+    void DeleteScriptContext_Click(object sender, RoutedEventArgs e) {
         ViewModel.RemoveSelectedScript();
     }
 
-    private void NewCommand_Click(object sender, RoutedEventArgs e) {
-        NewCommandPopup.IsOpen = true;
-    }
+    #endregion
 
-    private void NewCommand_Ok(object sender, RoutedEventArgs e) {
+
+    #region New Command Popup
+
+    void NewCommandPopupOk_Click(object sender, RoutedEventArgs e) {
         ViewModel.CreateNewCommandObject();
         NewCommandPopup.IsOpen = false;
     }
 
-    void NewCommand_Cancel(object sender, RoutedEventArgs e) {
+    void NewCommandPopupCancel_Click(object sender, RoutedEventArgs e) {
         NewCommandPopup.IsOpen = false;
     }
 
-    void DeleteCommand_Click(object sender, RoutedEventArgs e) {
+    #endregion
+
+    void NewCommandContext_Click(object sender, RoutedEventArgs e) {
+        NewCommandPopup.IsOpen = true;
+    }
+
+    void DeleteCommandContext_Click(object sender, RoutedEventArgs e) {
         ViewModel.DeleteSelectedCommandObject();
     }
+
+    #region Menu Items
+
+    string _filename;
+    void MenuOpen_Click(object sender, RoutedEventArgs e) {
+        Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+        dlg.DefaultExt = ".script";
+        dlg.Filter = "CT Script (.script)|*.script";
+
+        Nullable<bool> result = dlg.ShowDialog();
+
+        if (result == true) {
+  
+            _filename = dlg.FileName;
+            StreamReader file = File.OpenText(_filename);
+
+            string json = file.ReadToEnd();
+            ViewModel.Deserialize(json);
+        }
+    }
+
+    void MenuSave_Click(object sender, RoutedEventArgs e) {
+
+        if (!string.IsNullOrEmpty(_filename)) {
+            var json = ViewModel.Serialize();
+
+            using (StreamWriter writer = new StreamWriter(_filename)) {
+                writer.Write(json);
+            }
+        }
+        else
+            MenuSaveAs_Click(sender, e);
+    }
+
+    void MenuSaveAs_Click(object sender, RoutedEventArgs e) {
+
+        var json = ViewModel.Serialize();
+
+        Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+        dlg.FileName = _filename;
+        dlg.DefaultExt = ".script";
+        dlg.Filter = "CT Script (.script)|*.script";
+
+        Nullable<bool> result = dlg.ShowDialog();
+
+        if (result == true) {
+            _filename = dlg.FileName;
+
+            using (StreamWriter writer = new StreamWriter(_filename)) {
+                writer.Write(json);
+            }
+        }
+    }
+
+    void MenuExit_Click(object sender, RoutedEventArgs e) {
+        Application.Current.Shutdown();
+    }
+
+    #endregion
 }
 
 

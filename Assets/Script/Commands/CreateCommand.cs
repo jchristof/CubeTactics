@@ -1,10 +1,12 @@
 ﻿using Assets.Map;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Assets.Script.Commands {
+    [JsonConverter(typeof(CommandConverter))]
     public class CreateCommand : Command {
         public CreateCommand() { }
         public CreateCommand(IMap map) {

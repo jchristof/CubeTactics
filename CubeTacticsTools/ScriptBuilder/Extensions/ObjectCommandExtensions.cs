@@ -26,6 +26,8 @@ namespace ScriptBuilder.Extensions {
                     throw new NotImplementedException();
                 case ObjectCommand.Wait:
                     return new WaitCommand();
+                case ObjectCommand.Sfx:
+                    return new SfxCommand();
                 default:
                     throw new NotImplementedException();
             }

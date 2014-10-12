@@ -7,14 +7,16 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B9FD7C63-5A9D-2182-05AB-8DFC3C30103D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -454,6 +456,7 @@
     <Compile Include="Assets\Script\IScriptExecutor.cs" />
     <Compile Include="Assets\Script\MapTarget.cs" />
     <Compile Include="Assets\Script\ObjectCommand.cs" />
+    <Compile Include="Assets\Script\ObjectType.cs" />
     <Compile Include="Assets\Script\Script.cs" />
     <Compile Include="Assets\Script\ScriptExecutor.cs" />
     <None Include="Assets\JsonDotNet\ReadMe.txt" />

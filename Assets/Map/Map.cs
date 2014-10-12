@@ -19,11 +19,6 @@ namespace Assets.Map {
             index = -1
         };
 
-        //IMapObjectFactory _objectFactory;
-        public Map() {
-            //_objectFactory = new MapObjectFactory();
-        }
-
         public void LoadMap(string filename){
             TextAsset temp = Resources.Load(filename) as TextAsset;
             try {
@@ -57,7 +52,6 @@ namespace Assets.Map {
             ReorderObjects(GetLayerByName(MapLayerName.Object));
 
             MapObjects = GetLayerByName(MapLayerName.Object).objects;
-            //BuildMapObjects(MapObjects);
 
             SpawnPoint = MapObjects.Where(x => x.Type == MapObjectType.SpawnPoint).Cast<SpawnPoint>().First().Position;
         }
@@ -95,22 +89,6 @@ namespace Assets.Map {
 
            var list =  mapLayer.objects.Select(x => { x.Y = (_mapModel.height * _mapModel.tilewidth) - x.Y; return x; }).ToList();
            list.AsEnumerable();
-        }
-
-        void BuildMapObjects(IList<MapObject> mapObjects) {
-
-            //SpawnPoint = _objectFactory.CreatePlayerSpawnPoint(mapObjects, this);
-
-            //Triggers = new List<Trigger>();
-            //IScriptExecutor scriptExecutor = CompositionRoot.ScriptExecutor;
-
-            //IEnumerable<Trigger> teleporters = _objectFactory.CreateTeleporters(this, scriptExecutor, mapObjects, new ReadOnlyCollection<Trigger>(Triggers));
-            //Triggers.AddRange(teleporters);
-
-            //Scripts = _objectFactory.CreateScripts(mapObjects);
-
-            //IEnumerable<Trigger> EnterExit = _objectFactory.CreateEnterExitTriggers(this, scriptExecutor, mapObjects, new ReadOnlyCollection<Trigger>(Triggers));
-            //Triggers.AddRange(EnterExit);
         }
 
         int ImageWidthInTiles {get; set;}

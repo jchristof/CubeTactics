@@ -113,7 +113,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CubeTactics\UnityVS.CubeTactics.CSharp.csproj">
+    <ProjectReference Include="..\..\UnityVS.CubeTactics.CSharp.csproj">
       <Project>{b9fd7c63-5a9d-2182-05ab-8dfc3c30103d}</Project>
       <Name>UnityVS.CubeTactics.CSharp</Name>
     </ProjectReference>
