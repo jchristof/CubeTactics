@@ -5,6 +5,7 @@
   <property name="Description" value="BlockOutDescription"/>
   <property name="Music" value="Adam Szabo - One Day (Funky Mix)"/>
   <property name="Name" value="BlockOutLevelName"/>
+  <property name="Scripts" value="BlockOut.script"/>
  </properties>
  <tileset firstgid="1" source="tilemap.tsx"/>
  <layer name="Board" width="10" height="10">
@@ -128,7 +129,7 @@
   <object name="Trigger1" type="EnterExit" x="14" y="146" width="39" height="32">
    <properties>
     <property name="Enabled" value="true"/>
-    <property name="OnEnter" value="pressureplate trigger"/>
+    <property name="OnEnter" value="pressureplatetrigger"/>
    </properties>
   </object>
   <object name="pressureplatetrigger" type="Script" x="-113" y="58" width="87" height="66">

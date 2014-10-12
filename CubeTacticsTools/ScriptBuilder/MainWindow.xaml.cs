@@ -41,9 +41,7 @@ public partial class MainWindow : Window {
     #region View Model
 
     MainformViewModel ViewModel {
-        get {
-            return DataContext as MainformViewModel;
-            }
+        get { return DataContext as MainformViewModel; }
     }
 
     #endregion
@@ -115,11 +113,13 @@ public partial class MainWindow : Window {
     #region Menu Items
 
     string _filename;
+    readonly string _scriptExtension = ".json";
+    readonly string _scriptFilter = "CT Script (.script)|*.json";
     void MenuOpen_Click(object sender, RoutedEventArgs e) {
         Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
-        dlg.DefaultExt = ".script";
-        dlg.Filter = "CT Script (.script)|*.script";
+        dlg.DefaultExt = _scriptExtension;
+        dlg.Filter = _scriptFilter;
 
         Nullable<bool> result = dlg.ShowDialog();
 
@@ -152,8 +152,8 @@ public partial class MainWindow : Window {
 
         Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
         dlg.FileName = _filename;
-        dlg.DefaultExt = ".script";
-        dlg.Filter = "CT Script (.script)|*.script";
+        dlg.DefaultExt = _scriptExtension;
+        dlg.Filter = _scriptFilter;
 
         Nullable<bool> result = dlg.ShowDialog();
 

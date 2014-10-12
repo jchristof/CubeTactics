@@ -1,4 +1,5 @@
 ﻿
+using Assets.Language;
 using Assets.Locale;
 using Assets.Map;
 using Assets.Script;
@@ -13,8 +14,10 @@ namespace Assets {
         static Assets.Game.Game _game;
         public static Assets.Game.Game Game {
             get {
-                if (_game == null)
+                if (_game == null) {
                     _game = GameObject.Find("GameManager").GetComponent<Assets.Game.Game>();
+                    InitializeGame();
+                }
                 return _game;
             }
         }
@@ -83,17 +86,13 @@ namespace Assets {
             }
         }
 
-        static void Invoke(Action action) {
-            action();
-        }
-
         public static void RunOnMainThread(Action action){
-            _context.Post(e=>Invoke((Action)e), action);
+            _invoker.Add(action);
         }
 
-        static SynchronizationContext _context;
+        static Invoker _invoker;
         public static void InitializeGame(){
-            var sc = SynchronizationContext.Current; 
+            _invoker = GameObject.Find("Invoker").GetComponent<Invoker>();
         }
     }
 }

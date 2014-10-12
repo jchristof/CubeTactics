@@ -10,5 +10,6 @@ namespace Assets.Map {
         public string Description { get; set; }
         public string Trail { get; set; }
         public string Music { get; set; }
+        public string Scripts { get; set; }
     }
 }

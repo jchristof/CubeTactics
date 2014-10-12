@@ -62,7 +62,7 @@
                  "properties":
                     {
                      "Enabled":"true",
-                     "OnEnter":"pressureplate trigger"
+                     "OnEnter":"pressureplatetrigger"
                     },
                  "type":"EnterExit",
                  "visible":true,
@@ -135,7 +135,8 @@
      "Conditions":"DemoWallsTeleportsPressurePlatesConditions",
      "Description":"BlockOutDescription",
      "Music":"Adam Szabo - One Day (Funky Mix)",
-     "Name":"BlockOutLevelName"
+     "Name":"BlockOutLevelName",
+     "Scripts":"BlockOut.script"
     },
  "tileheight":64,
  "tilesets":[

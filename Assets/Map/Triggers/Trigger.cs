@@ -26,7 +26,7 @@ namespace Assets.Map {
 
 
 
-        protected void ExecuteScript(CommandList commandList) {
+        protected void ExecuteScript(IList<Command> commandList) {
              _scriptExecutor.Execute(commandList);
         }
 

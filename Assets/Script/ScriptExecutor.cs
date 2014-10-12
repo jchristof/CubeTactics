@@ -16,13 +16,13 @@ namespace Assets.Script {
             set { _map = value; }
         }
 
-        public void Execute(CommandList commandList){
-            if (commandList == null || commandList.Commands == null)
+        public void Execute(IList<Command> commandList){
+            if (commandList == null)
                 return;
-            StartCoroutine(ExecuteAsync(commandList));
+            //StartCoroutine(ExecuteAsync(commandList));
 
             var t = new Thread(() => {
-                commandList.Commands.ToList().ForEach(x => x.Execute());
+                commandList.ToList().ForEach(x => x.Execute());
             });
             t.Start();
         }
@@ -30,9 +30,9 @@ namespace Assets.Script {
         //public void ExecuteAsync(CommandList commandList) {
         //}
 
-        public IEnumerator ExecuteAsync(CommandList commandList) {
+        public IEnumerator ExecuteAsync(IList<Command> commandList) {
 
-            foreach (var cmd in commandList.Commands) {
+            foreach (var cmd in commandList) {
                 if (cmd.ObjectCommand == ObjectCommand.Destroy) {
                     MapObject mapObject = _map.MapObjects.Where(x => x.Name == cmd.ObjectName).First();
                     if (mapObject.Type == MapObjectType.Tile) {

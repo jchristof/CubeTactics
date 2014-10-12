@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Assets.Script {
     public interface IScriptExecutor {
-        void Execute(CommandList commandList);
-        IEnumerator ExecuteAsync(CommandList commandList);
+        void Execute(IList<Command> commandLis);
+        IEnumerator ExecuteAsync(IList<Command> commandList);
     }
 }

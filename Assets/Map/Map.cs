@@ -12,7 +12,7 @@ using UnityEngine;
 using Assets.Extensions;
 
 namespace Assets.Map {
-    public class Map : IMap{
+    public class Map : IMap {
         MapModel _mapModel;
         Dictionary<int, Tile> tilelist = new Dictionary<int, Tile>();
         Tile emptyTile = new Tile {
@@ -20,9 +20,9 @@ namespace Assets.Map {
         };
 
         public void LoadMap(string filename){
-            TextAsset temp = Resources.Load(filename) as TextAsset;
+            TextAsset mapJson = Resources.Load(filename) as TextAsset;
             try {
-                _mapModel = JsonConvert.DeserializeObject<MapModel>(temp.text);
+                _mapModel = JsonConvert.DeserializeObject<MapModel>(mapJson.text);
             }
             catch (Exception e) {
                 MonoBehaviour.print(e.Message);
@@ -38,7 +38,7 @@ namespace Assets.Map {
                 }
             }
 
-            MonoBehaviour.print(temp.text);
+            MonoBehaviour.print(mapJson.text);
 
             ValidateMapLoad();
 
@@ -52,6 +52,17 @@ namespace Assets.Map {
             ReorderObjects(GetLayerByName(MapLayerName.Object));
 
             MapObjects = GetLayerByName(MapLayerName.Object).objects;
+
+            if (!string.IsNullOrEmpty(_mapModel.properties.Scripts)) {
+                TextAsset scriptsJson = Resources.Load("Scripts/BlockOut") as TextAsset;
+
+                try {
+                    ScriptList = (Dictionary<string, IList<Command>>)JsonConvert.DeserializeObject(scriptsJson.text, typeof(Dictionary<string, IList<Command>>));
+                }
+                catch (Exception e) {
+                    MonoBehaviour.print(e.Message);
+                }
+            }
 
             SpawnPoint = MapObjects.Where(x => x.Type == MapObjectType.SpawnPoint).Cast<SpawnPoint>().First().Position;
         }
@@ -69,9 +80,8 @@ namespace Assets.Map {
         }
 
         public Vector3 SpawnPoint { get; set; }
-        public List<Trigger> Triggers { get; set; }
-        public IEnumerable<Assets.Map.Script.Script> Scripts { get; set; }
         public IList<MapObject> MapObjects { get; set; }
+        public Dictionary<string, IList<Command>> ScriptList { get; set; }
 
         void ReorderTiles(MapLayer mapLayer) {
             int[] mapdata = mapLayer.data.ToArray();

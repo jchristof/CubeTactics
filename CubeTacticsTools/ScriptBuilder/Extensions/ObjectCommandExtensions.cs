@@ -11,7 +11,7 @@ namespace ScriptBuilder.Extensions {
         public static Command ClassOfEnumType(this ObjectCommand self) {
             switch (self) {
                 case ObjectCommand.Activate:
-                    throw new NotImplementedException();
+                    return new ActivateCommand();
                 case ObjectCommand.Create:
                     return new CreateCommand();
                 case ObjectCommand.Destroy:

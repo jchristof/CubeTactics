@@ -27,6 +27,11 @@ namespace Assets.Script.Commands {
             var type = (ObjectCommand)Enum.Parse(typeof(ObjectCommand), typeString);
 
             switch (type) {
+
+                case ObjectCommand.Activate:
+                    target = new ActivateCommand(_map);
+                    break;
+
                 case ObjectCommand.Create:
                     target = new CreateCommand(_map);
                     break;
