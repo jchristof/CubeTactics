@@ -19,6 +19,20 @@
 
         <converters:NullToBoolConverter x:Key="nullToBoolConverter" />
 
+        <Style x:Key="alternatingStyle" TargetType="{x:Type ListViewItem}">
+            <Style.Triggers>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="LightSkyBlue"></Setter>
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="LightGray"></Setter>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="Orange"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
     </Window.Resources>
     
     <Grid>
@@ -44,10 +58,12 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
-
+            <Label>Script Name</Label>
             <ListView Grid.Column="0"
+                      Margin="0,24,0,0"
                       ItemsSource="{Binding Path=Scripts}"
                       SelectedItem="{Binding Path=SelectedScriptName, Mode=TwoWay}"
+                      ItemContainerStyle="{StaticResource alternatingStyle}" AlternationCount="2"
                       >
                 <ListView.ContextMenu>
                     <ContextMenu DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}">
@@ -69,10 +85,13 @@
               HorizontalAlignment="Stretch" 
               ShowsPreview="true"
               Width="5"/>
-            
+            <Label Grid.Column="2">Script Commands</Label>
             <ListView Grid.Column="2"
+                      Margin="0,24,0,0"
                       ItemsSource="{Binding Path=Commands}"
                       SelectedItem="{Binding Path=SelectedCommand, Mode=TwoWay}"
+                      SelectedIndex="{Binding SelectedCommandIndex}"
+                      ItemContainerStyle="{StaticResource alternatingStyle}" AlternationCount="2"
                       >
                 <ListView.ContextMenu>
                     <ContextMenu DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}"
@@ -80,6 +99,9 @@
                         <MenuItem Header="New" Click="NewCommandContext_Click" />
                         <MenuItem Header="Delete" IsEnabled="{Binding SelectedCommand, Converter={StaticResource nullToBoolConverter}}" 
                                   Click="DeleteCommandContext_Click"/>
+                        <MenuItem Header="Insert" IsEnabled="{Binding CanInsertCommand}" Click="InsertCommandContext_Click"/>
+                        <MenuItem Header="Move Up" IsEnabled="{Binding SelectedCommandIsNotFirst}" Click="MoveCommandUp_Click"/>
+                        <MenuItem Header="Move Down" IsEnabled="{Binding SelectedCommandIsNotLast}" Click="MoveCommandDown_Click"/>
                         
                     </ContextMenu>
                 </ListView.ContextMenu>

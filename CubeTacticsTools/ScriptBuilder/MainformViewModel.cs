@@ -47,6 +47,35 @@ namespace ScriptBuilder {
             }
         }
 
+        int _selectedCommandIndex;
+        public int SelectedCommandIndex {
+            get { return _selectedCommandIndex; }
+            set {
+                if (_selectedCommandIndex == value)
+                    return;
+                _selectedCommandIndex = value;
+                RaisePropertyChanged("SelectedCommandIndex");
+                RaisePropertyChanged("SelectedCommandIsNotFirst");
+                RaisePropertyChanged("SelectedCommandIsNotLast");
+            }
+        }
+
+        public bool SelectedCommandIsNotFirst {
+            get { return SelectedCommandIndex != 0; }
+        }
+
+        public bool SelectedCommandIsNotLast {
+            get { return SelectedCommandIndex < Commands.Count - 1; }
+        }
+
+        public void MoveSelectedCommandUp(){
+            Commands.Swap(Commands[SelectedCommandIndex], Commands[SelectedCommandIndex - 1]);
+        }
+
+        public void MoveSelectedCommandDown() {
+            Commands.Swap(Commands[SelectedCommandIndex], Commands[SelectedCommandIndex + 1]);
+        }
+
         string _selectedScriptName;
         public string SelectedScriptName {
             get { return _selectedScriptName; }
@@ -121,16 +150,24 @@ namespace ScriptBuilder {
             }
         }
 
-        public void CreateNewCommandObject() {
+        public void CreateNewCommandObject(int index = -1) {
             Command command = SelectedNewCommandType.ClassOfEnumType();
             command.ObjectCommand = SelectedNewCommandType;
-            Commands.Add(command);
+
+            if (index == -1)
+                Commands.Add(command);
+            else
+                Commands.Insert(index, command);
         }
 
         public string SelectedScript { get; set; }
 
         public void DeleteSelectedCommandObject() {
             Commands.Remove(SelectedCommand);
+        }
+
+        public bool CanInsertCommand {
+            get { return SelectedCommandIndex > 0; }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

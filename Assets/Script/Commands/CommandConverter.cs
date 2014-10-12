@@ -51,6 +51,10 @@ namespace Assets.Script.Commands {
                     target = new SfxCommand();
                     break;
 
+                case ObjectCommand.Wait:
+                    target = new WaitCommand();
+                    break;
+
                 default:
                     target = new Command();
                     throw new NotImplementedException("CommandConverter");

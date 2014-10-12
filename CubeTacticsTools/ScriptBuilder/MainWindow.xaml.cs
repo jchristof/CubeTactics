@@ -77,7 +77,9 @@ public partial class MainWindow : Window {
     #region New Command Popup
 
     void NewCommandPopupOk_Click(object sender, RoutedEventArgs e) {
-        ViewModel.CreateNewCommandObject();
+        int insertIndex = NewCommandPopup.Tag == null ? -1 : (int)NewCommandPopup.Tag;
+        ViewModel.CreateNewCommandObject(insertIndex);
+        NewCommandPopup.Tag = null; 
         NewCommandPopup.IsOpen = false;
     }
 
@@ -87,6 +89,7 @@ public partial class MainWindow : Window {
 
     #endregion
 
+    #region Command Context Menu
     void NewCommandContext_Click(object sender, RoutedEventArgs e) {
         NewCommandPopup.IsOpen = true;
     }
@@ -95,6 +98,20 @@ public partial class MainWindow : Window {
         ViewModel.DeleteSelectedCommandObject();
     }
 
+    void InsertCommandContext_Click(object sender, RoutedEventArgs e) {
+        NewCommandPopup.IsOpen = true;
+        NewCommandPopup.Tag = ViewModel.SelectedCommandIndex;
+    }
+
+    void MoveCommandUp_Click(object sender, RoutedEventArgs e) {
+        ViewModel.MoveSelectedCommandUp();
+    }
+
+    void MoveCommandDown_Click(object sender, RoutedEventArgs e) {
+        ViewModel.MoveSelectedCommandDown();
+    }
+
+    #endregion
     #region Menu Items
 
     string _filename;
