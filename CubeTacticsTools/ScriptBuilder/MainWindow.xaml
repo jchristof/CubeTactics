@@ -5,7 +5,8 @@
         xmlns:local="clr-namespace:Assets.Script;assembly=Assembly-CSharp"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:converters="clr-namespace:ScriptBuilder.Converters"
-        Title="MainWindow" Height="300" Width="600">
+        Title="Cube Tactics Scriptor" Height="600" Width="800"
+        Background="Black">
 
     <Window.Resources>
 
@@ -22,17 +23,48 @@
         <Style x:Key="alternatingStyle" TargetType="{x:Type ListViewItem}">
             <Style.Triggers>
                 <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                    <Setter Property="Background" Value="LightSkyBlue"></Setter>
+                    <Setter Property="Background" Value="#AA404040"></Setter>
                 </Trigger>
                 <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                    <Setter Property="Background" Value="LightGray"></Setter>
+                    <Setter Property="Background" Value="#AA303030"></Setter>
                 </Trigger>
                 <Trigger Property="IsSelected" Value="True">
                     <Setter Property="Background" Value="Orange"/>
                 </Trigger>
             </Style.Triggers>
+
+             <Setter Property="Foreground" Value="White"/>
+
         </Style>
-        
+
+        <Style TargetType="{x:Type ContextMenu}">
+            <Style.Resources>
+                <Style TargetType="MenuItem">
+                    <Setter Property="Foreground" Value="Black" />
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style TargetType="{x:Type xctk:PropertyGrid}">
+            <Style.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="Black"/>
+                </Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Background" Value="#AA303030"/>
+                </Style>
+                <Style TargetType="ScrollViewer">
+                    <Setter Property="Background" Value="#AA303030"/>
+                </Style>
+                <Style TargetType="Expander">
+                    <Setter Property="Background" Value="Brown"/>
+                    <Setter Property="Foreground" Value="Brown"/>
+                </Style>
+            </Style.Resources>
+            <Setter Property="Background" Value="DarkGray"/>
+
+        </Style>
+
     </Window.Resources>
     
     <Grid>
@@ -82,6 +114,7 @@
             </ListView>
             
             <GridSplitter Grid.Column="1" 
+              Background="#AA303030"
               HorizontalAlignment="Stretch" 
               ShowsPreview="true"
               Width="5"/>
@@ -116,16 +149,20 @@
             </ListView>
             
             <GridSplitter Grid.Column="3" 
+                          Background="#AA303030"
               HorizontalAlignment="Stretch" 
               ShowsPreview="true"
               Width="5"/>
             
             <xctk:PropertyGrid x:Name="_propertyGrid" 
+                               Background="#AA303030"
                                 Grid.Column="4"
-
                                 SelectedObject="{Binding SelectedCommand}"
                                 VerticalAlignment="Stretch"
-                                HorizontalAlignment="Stretch"/>
+                                HorizontalAlignment="Stretch">
+                
+                
+            </xctk:PropertyGrid>
 
         </Grid>
         
