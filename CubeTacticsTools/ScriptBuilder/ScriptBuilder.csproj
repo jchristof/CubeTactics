@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;OBJECTEDITOR</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -80,6 +80,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PropertyGridEditors\Controls\PositionEditoryControl.xaml.cs">
+      <DependentUpon>PositionEditoryControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyGridEditors\PositionEditor.cs" />
+    <Compile Include="ScriptCommands\Commands\SfxCommand.cs" />
+    <Compile Include="PropertyGridEditors\PositionEditorViewModel.cs" />
+    <Page Include="PropertyGridEditors\Controls\PositionEditoryControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -91,7 +101,17 @@
     <Compile Include="Converters\NullToBoolConverter.cs" />
     <Compile Include="Extensions\ObjectCommandExtensions.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
-    <Compile Include="MainformViewModel.cs" />
+    <Compile Include="ScriptCommands\Commands\ActivateCommand.cs" />
+    <Compile Include="ScriptCommands\Commands\Command.cs" />
+    <Compile Include="ScriptCommands\Commands\CommandConverter.cs" />
+    <Compile Include="ScriptCommands\Commands\CreateCommand.cs" />
+    <Compile Include="ScriptCommands\Commands\DestroyCommand.cs" />
+    <Compile Include="ScriptCommands\Commands\DisableCommand.cs" />
+    <Compile Include="ScriptCommands\Commands\EnableCommand.cs" />
+    <Compile Include="ScriptCommands\Commands\LookAtCommand.cs" />
+    <Compile Include="ScriptCommands\Commands\WaitCommand.cs" />
+    <Compile Include="ScriptCommands\Positioning\Position.cs" />
+    <Compile Include="ViewModels\MainformViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -160,7 +180,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ICommands\" />
+    <Folder Include="PropertyGridEditors\EditableCommands\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

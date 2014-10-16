@@ -1,5 +1,6 @@
 ﻿using Assets.Script;
-using Assets.Script.Commands;
+using ScriptBuilder.ScriptCommands.Commands;
+using ScriptBuilder.ScriptCommands.Positioning;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ScriptBuilder.Extensions {
     public static class ObjectCommandExtensions {
-        public static Command ClassOfEnumType(this ObjectCommand self) {
+        public static ScriptBuilder.Command ClassOfEnumType(this ObjectCommand self) {
             switch (self) {
                 case ObjectCommand.Activate:
                     return new ActivateCommand();
@@ -27,7 +28,9 @@ namespace ScriptBuilder.Extensions {
                 case ObjectCommand.Wait:
                     return new WaitCommand();
                 case ObjectCommand.Sfx:
-                    return new SfxCommand();
+                    SfxCommand command = new SfxCommand();
+                    command.Position = new Position();
+                    return command;
                 default:
                     throw new NotImplementedException();
             }

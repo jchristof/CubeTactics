@@ -5,7 +5,8 @@
         xmlns:local="clr-namespace:Assets.Script;assembly=Assembly-CSharp"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:converters="clr-namespace:ScriptBuilder.Converters"
-        Title="Cube Tactics Scriptor" Height="600" Width="800"
+        Title="{Binding Filename, StringFormat=Cube Tactics Scrip-tor: {0}}"
+        Height="600" Width="800"
         Background="Black">
 
     <Window.Resources>
@@ -64,7 +65,9 @@
             <Setter Property="Background" Value="DarkGray"/>
 
         </Style>
-
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Visibility" Value="Collapsed" />
+        </Style>
     </Window.Resources>
     
     <Grid>
@@ -132,7 +135,7 @@
                         <MenuItem Header="New" Click="NewCommandContext_Click" />
                         <MenuItem Header="Delete" IsEnabled="{Binding SelectedCommand, Converter={StaticResource nullToBoolConverter}}" 
                                   Click="DeleteCommandContext_Click"/>
-                        <MenuItem Header="Insert" IsEnabled="{Binding CanInsertCommand}" Click="InsertCommandContext_Click"/>
+                        <MenuItem Header="Insert" Click="InsertCommandContext_Click"/>
                         <MenuItem Header="Move Up" IsEnabled="{Binding SelectedCommandIsNotFirst}" Click="MoveCommandUp_Click"/>
                         <MenuItem Header="Move Down" IsEnabled="{Binding SelectedCommandIsNotLast}" Click="MoveCommandDown_Click"/>
                         
@@ -142,7 +145,7 @@
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="{Binding ObjectCommand}"></TextBlock>
-                            <TextBlock Text="{Binding ObjectName}"></TextBlock>
+                            <TextBlock Text="{Binding SecondaryInfo}"></TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

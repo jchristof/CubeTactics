@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Assets {
     public class AudioPlayer {
@@ -29,7 +30,7 @@ namespace Assets {
             teleportSound.release();
         }
 
-        public void PlaySfx(SfxType type) {
+        public void PlaySfx(SfxType type, Vector3 position) {
             switch(type){
                 case SfxType.PressurePlateClick:
                     PlayTriggerSound();

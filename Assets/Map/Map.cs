@@ -94,6 +94,10 @@ namespace Assets.Map {
             return (y * _mapModel.height) + x;
         }
 
+        public Vector3 FromFlatTileIndex(int index) {
+            return new Vector3((index % Width)*TileWidth, 0, (index / Width)*TileHeight);
+        }
+
         public Vector2[] UVForTileType(int tileIndex, Mesh mesh) {
             //mesh.uv[0] = 0.125f * xIndex);
             Vector2[] uvs = new Vector2[mesh.vertices.Length];

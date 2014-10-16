@@ -1,7 +1,8 @@
-﻿using Assets.Script;
-using Assets.Script.Commands;
+﻿
+using Assets.Script;
 using Newtonsoft.Json;
 using ScriptBuilder.Extensions;
+using ScriptBuilder.ScriptCommands.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,16 +17,18 @@ namespace ScriptBuilder {
     public class MainformViewModel : INotifyPropertyChanged  {
         public MainformViewModel() {
             Scripts = new ObservableCollection<string>();          
-            Commands = new ObservableCollection<Command>();
-            ScriptList = new Dictionary<string, IList<Command>>();
+            Commands = new ObservableCollection<ScriptBuilder.Command>();
+            ScriptList = new Dictionary<string, IList<ScriptBuilder.Command>>();
         }
 
-        Dictionary<string, IList<Command>> _scriptList;
-        public Dictionary<string, IList<Command>> ScriptList {
+        Dictionary<string, IList<ScriptBuilder.Command>> _scriptList;
+        public Dictionary<string, IList<ScriptBuilder.Command>> ScriptList {
             get { return _scriptList; }
             set {
                 _scriptList = value;
+                _selectedScriptName = null;
                 Scripts.Clear();
+                
                 _scriptList.Keys.ToList().ForEach(
                     x => { Scripts.Add(x); }
                 );
@@ -33,10 +36,10 @@ namespace ScriptBuilder {
         }
 
         public ObservableCollection<string> Scripts { get; set; }
-        public ObservableCollection<Command> Commands { get; set; }
+        public ObservableCollection<ScriptBuilder.Command> Commands { get; set; }
 
-        Command _selectedCommand;
-        public Command SelectedCommand {
+        ScriptBuilder.Command _selectedCommand;
+        public ScriptBuilder.Command SelectedCommand {
             get { return _selectedCommand; }
             set {
                 if (_selectedCommand == value)
@@ -80,8 +83,6 @@ namespace ScriptBuilder {
         public string SelectedScriptName {
             get { return _selectedScriptName; }
             set {
-                if (_selectedScriptName == value)
-                    return;
 
                 //save the script that is about to be deselected
                 if (!string.IsNullOrEmpty(_selectedScriptName)) {
@@ -89,6 +90,9 @@ namespace ScriptBuilder {
                 }
 
                 Commands.Clear();
+
+                if (string.IsNullOrEmpty(value))
+                    return;
 
                 //see if the newly selected has already been created
                 if (ScriptList.Keys.Where(x => x == value).FirstOrDefault() != null) {
@@ -113,12 +117,15 @@ namespace ScriptBuilder {
         }
 
         public void Deserialize(string json) {
-            ScriptList = (Dictionary<string, IList<Command>>)JsonConvert.DeserializeObject(json, ScriptList.GetType());
+            ScriptList = (Dictionary<string, IList<ScriptBuilder.Command>>)JsonConvert.DeserializeObject(json, ScriptList.GetType());
+
+            if(Scripts.Count > 0)
+                SelectedScriptName = Scripts[0];
         }
 
         public void StoreCurrentScriptData(string scriptName) {
             ScriptList.Remove(_selectedScriptName);
-            List<Command> commandList = new List<Command>(Commands);
+            List<ScriptBuilder.Command> commandList = new List<ScriptBuilder.Command>(Commands);
             ScriptList.Add(_selectedScriptName, commandList);       
         }
 
@@ -151,7 +158,7 @@ namespace ScriptBuilder {
         }
 
         public void CreateNewCommandObject(int index = -1) {
-            Command command = SelectedNewCommandType.ClassOfEnumType();
+            ScriptBuilder.Command command = SelectedNewCommandType.ClassOfEnumType();
             command.ObjectCommand = SelectedNewCommandType;
 
             if (index == -1)
@@ -166,8 +173,16 @@ namespace ScriptBuilder {
             Commands.Remove(SelectedCommand);
         }
 
-        public bool CanInsertCommand {
-            get { return SelectedCommandIndex > 0; }
+        string _scriptFilename;
+        public string Filename {
+            get { return _scriptFilename; }
+            set {
+                if (_scriptFilename != value)
+                    _scriptFilename = value;
+
+                _scriptFilename = value;
+                RaisePropertyChanged("Filename");
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

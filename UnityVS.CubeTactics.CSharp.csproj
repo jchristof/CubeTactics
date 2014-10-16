@@ -460,6 +460,7 @@
     <Compile Include="Assets\Script\MapTarget.cs" />
     <Compile Include="Assets\Script\ObjectCommand.cs" />
     <Compile Include="Assets\Script\ObjectType.cs" />
+    <Compile Include="Assets\Script\Positioning\Position.cs" />
     <Compile Include="Assets\Script\Script.cs" />
     <Compile Include="Assets\Script\ScriptExecutor.cs" />
     <None Include="Assets\JsonDotNet\ReadMe.txt" />

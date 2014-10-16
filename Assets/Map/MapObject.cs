@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Assets.Map {
     [JsonConverter(typeof(MapObjectConverter))]
@@ -38,6 +39,19 @@ namespace Assets.Map {
         public int X { get; set; }
         [JsonProperty("y")]
         public int Y { get; set; }
+
+        public int Z { get { return 0; } }
+
+        Vector3 _position;
+        public Vector3 Position {
+            get {
+                _position.x = X;
+                _position.y = Y;
+                _position.z = Z;
+
+                return _position;
+            }
+        }
 
         public virtual void OnEnter() { }
         public virtual void OnExit() { }

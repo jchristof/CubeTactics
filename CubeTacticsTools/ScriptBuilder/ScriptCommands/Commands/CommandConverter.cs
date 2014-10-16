@@ -1,4 +1,4 @@
-﻿using Assets.Map;
+﻿using Assets.Script;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -6,14 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Assets.Script.Commands {
+namespace ScriptBuilder.ScriptCommands.Commands {
     public class CommandConverter : JsonConverter {
-
-        public CommandConverter() {
-            _map = CompositionRoot.Map ?? new Assets.Map.Map();
-        }
-
-        IMap _map;
 
         public override bool CanConvert(Type objectType) {
             return objectType.IsSubclassOf(typeof(Command)) || objectType == typeof(Command);
@@ -29,17 +23,17 @@ namespace Assets.Script.Commands {
             switch (type) {
 
                 case ObjectCommand.Activate:
-                    ActivateCommand activateCommand = new ActivateCommand(_map);
+                    ActivateCommand activateCommand = new ActivateCommand();
                     serializer.Populate(jObject.CreateReader(), activateCommand);
                     return activateCommand;
 
                 case ObjectCommand.Create:
-                    CreateCommand createCommand = new CreateCommand(_map);
+                    CreateCommand createCommand = new CreateCommand();
                     serializer.Populate(jObject.CreateReader(), createCommand);
                     return createCommand;
 
                 case ObjectCommand.Destroy:
-                    DestroyCommand destroyCommand = new DestroyCommand(_map);
+                    DestroyCommand destroyCommand = new DestroyCommand();
                     serializer.Populate(jObject.CreateReader(), destroyCommand);
                     return destroyCommand;
 
@@ -54,12 +48,12 @@ namespace Assets.Script.Commands {
                     return enableCommand;
 
                 case ObjectCommand.LookAt:
-                    LookAtCommand lookAtCommand = new LookAtCommand(_map);
+                    LookAtCommand lookAtCommand = new LookAtCommand();
                     serializer.Populate(jObject.CreateReader(), lookAtCommand);
                     return lookAtCommand;
 
                 case ObjectCommand.Sfx:
-                    SfxCommand sfxCommand = new SfxCommand();          
+                    SfxCommand sfxCommand = new SfxCommand();
                     serializer.Populate(jObject.CreateReader(), sfxCommand);
                     return sfxCommand;
 

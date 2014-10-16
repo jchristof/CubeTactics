@@ -32,8 +32,9 @@ public partial class MainWindow : Window {
     #region Constructor
 
     public MainWindow(){
-        InitializeComponent();
         DataContext = new MainformViewModel();
+        InitializeComponent();
+        
     }
 
     #endregion
@@ -70,7 +71,6 @@ public partial class MainWindow : Window {
     }
 
     #endregion
-
 
     #region New Command Popup
 
@@ -112,7 +112,6 @@ public partial class MainWindow : Window {
     #endregion
     #region Menu Items
 
-    string _filename;
     readonly string _scriptExtension = ".json";
     readonly string _scriptFilter = "CT Script (.script)|*.json";
     void MenuOpen_Click(object sender, RoutedEventArgs e) {
@@ -125,8 +124,8 @@ public partial class MainWindow : Window {
 
         if (result == true) {
   
-            _filename = dlg.FileName;
-            StreamReader file = File.OpenText(_filename);
+            ViewModel.Filename = dlg.FileName;
+            StreamReader file = File.OpenText(ViewModel.Filename);
 
             string json = file.ReadToEnd();
             ViewModel.Deserialize(json);
@@ -135,10 +134,10 @@ public partial class MainWindow : Window {
 
     void MenuSave_Click(object sender, RoutedEventArgs e) {
 
-        if (!string.IsNullOrEmpty(_filename)) {
+        if (!string.IsNullOrEmpty(ViewModel.Filename)) {
             var json = ViewModel.Serialize();
 
-            using (StreamWriter writer = new StreamWriter(_filename)) {
+            using (StreamWriter writer = new StreamWriter(ViewModel.Filename)) {
                 writer.Write(json);
             }
         }
@@ -151,16 +150,16 @@ public partial class MainWindow : Window {
         var json = ViewModel.Serialize();
 
         Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-        dlg.FileName = _filename;
+        dlg.FileName = ViewModel.Filename;
         dlg.DefaultExt = _scriptExtension;
         dlg.Filter = _scriptFilter;
 
         Nullable<bool> result = dlg.ShowDialog();
 
         if (result == true) {
-            _filename = dlg.FileName;
+            ViewModel.Filename = dlg.FileName;
 
-            using (StreamWriter writer = new StreamWriter(_filename)) {
+            using (StreamWriter writer = new StreamWriter(ViewModel.Filename)) {
                 writer.Write(json);
             }
         }
