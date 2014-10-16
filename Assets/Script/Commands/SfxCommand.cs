@@ -20,8 +20,8 @@ namespace Assets.Script.Commands {
 
         public override void Execute() {
             CompositionRoot.RunOnMainThread(() => {
-                Position = (Position == null ? new Position() : Position); 
-                Vector3 position = Position.Vector;
+
+                Vector3 position = Position == null ? Vector3.zero : Position.Vector;
                 if (ObjectType == Script.ObjectType.GameObject)
                     position = GameObject.Find(ObjectName).transform.position + position;
                 else if (ObjectType == Script.ObjectType.MapObject)
