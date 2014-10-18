@@ -137,7 +137,7 @@ namespace ScriptBuilder {
         public string Serialize() {
             StoreCurrentScriptData(SelectedScriptName);
 
-            return JsonConvert.SerializeObject(ScriptList);
+            return JsonConvert.SerializeObject(ScriptList, Formatting.Indented);
         }
 
         public void Deserialize(string json) {

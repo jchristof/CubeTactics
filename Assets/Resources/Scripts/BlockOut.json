@@ -1,1 +1,229 @@
-{"pressureplatetrigger":[{"SfxType":1,"Volume":1.0,"Position":{"X":0.0,"Y":0.0,"Z":0.0},"SecondaryInfo":1,"Identifier":{"ObjectName":null,"ObjectType":0},"ObjectCommand":"Sfx"},{"Identifier":{"ObjectName":"Player","ObjectType":3},"ObjectCommand":"Disable","SecondaryInfo":"Player"},{"Identifier":{"ObjectName":"removetile","ObjectType":2},"ObjectCommand":"LookAt","SecondaryInfo":"removetile"},{"Milliseconds":2000,"SecondaryInfo":2000,"Identifier":{"ObjectName":null,"ObjectType":0},"ObjectCommand":"Wait"},{"Identifier":{"ObjectName":"removetile","ObjectType":1},"ObjectCommand":"Destroy","SecondaryInfo":"removetile"},{"Identifier":{"ObjectName":"addtile","ObjectType":2},"ObjectCommand":"Create","SecondaryInfo":"addtile"},{"Identifier":{"ObjectName":"goal","ObjectType":2},"ObjectCommand":"LookAt","SecondaryInfo":"goal"},{"Milliseconds":2000,"SecondaryInfo":2000,"Identifier":{"ObjectName":null,"ObjectType":0},"ObjectCommand":"Wait"},{"Identifier":{"ObjectName":"goal","ObjectType":2},"ObjectCommand":"Activate","SecondaryInfo":"goal"},{"Milliseconds":2000,"SecondaryInfo":2000,"Identifier":{"ObjectName":null,"ObjectType":0},"ObjectCommand":"Wait"},{"Identifier":{"ObjectName":"Player","ObjectType":3},"ObjectCommand":"LookAt","SecondaryInfo":"Player"},{"Milliseconds":2000,"SecondaryInfo":2000,"Identifier":{"ObjectName":null,"ObjectType":0},"ObjectCommand":"Wait"},{"Identifier":{"ObjectName":"Player","ObjectType":3},"ObjectCommand":"Enable","SecondaryInfo":"Player"}],"Teleport1":[{"Identifier":{"ObjectName":"Player","ObjectType":3},"ObjectCommand":"Disable","SecondaryInfo":"Player"},{"Direction":1,"Milliseconds":2000,"Identifier":{"ObjectName":"Player","ObjectType":3},"ObjectCommand":"Fade","SecondaryInfo":"Player"},{"Position":{"X":0.0,"Y":0.0,"Z":0.0},"DestinationObject":{"ObjectName":"teleport2","ObjectType":2},"Identifier":{"ObjectName":"Player","ObjectType":3},"ObjectCommand":"MoveObject","SecondaryInfo":"Player"},{"Direction":0,"Milliseconds":2000,"Identifier":{"ObjectName":"Player","ObjectType":3},"ObjectCommand":"Fade","SecondaryInfo":"Player"},{"Identifier":{"ObjectName":"Player","ObjectType":3},"ObjectCommand":"Enable","SecondaryInfo":"Player"}],"Teleport2":[{"Identifier":{"ObjectName":"Player","ObjectType":3},"ObjectCommand":"Disable","SecondaryInfo":"Player"},{"Direction":1,"Milliseconds":2000,"Identifier":{"ObjectName":"Player","ObjectType":3},"ObjectCommand":"Fade","SecondaryInfo":"Player"},{"Position":{"X":0.0,"Y":0.0,"Z":0.0},"DestinationObject":{"ObjectName":"teleport1","ObjectType":2},"Identifier":{"ObjectName":"Player","ObjectType":3},"ObjectCommand":"MoveObject","SecondaryInfo":"Player"},{"Direction":0,"Milliseconds":2000,"Identifier":{"ObjectName":"Player","ObjectType":3},"ObjectCommand":"Fade","SecondaryInfo":"Player"},{"Identifier":{"ObjectName":"Player","ObjectType":3},"ObjectCommand":"Enable","SecondaryInfo":"Player"}]}
+{
+  "pressureplatetrigger": [
+    {
+      "SfxType": 1,
+      "Volume": 1.0,
+      "Position": {
+        "X": 0.0,
+        "Y": 0.0,
+        "Z": 0.0
+      },
+      "SecondaryInfo": 1,
+      "Identifier": {
+        "ObjectName": null,
+        "ObjectType": 0
+      },
+      "ObjectCommand": "Sfx"
+    },
+    {
+      "Identifier": {
+        "ObjectName": "Player",
+        "ObjectType": 3
+      },
+      "ObjectCommand": "Disable",
+      "SecondaryInfo": "Player"
+    },
+    {
+      "Identifier": {
+        "ObjectName": "removetile",
+        "ObjectType": 2
+      },
+      "ObjectCommand": "LookAt",
+      "SecondaryInfo": "removetile"
+    },
+    {
+      "Milliseconds": 2000,
+      "SecondaryInfo": 2000,
+      "Identifier": {
+        "ObjectName": null,
+        "ObjectType": 0
+      },
+      "ObjectCommand": "Wait"
+    },
+    {
+      "Identifier": {
+        "ObjectName": "removetile",
+        "ObjectType": 1
+      },
+      "ObjectCommand": "Destroy",
+      "SecondaryInfo": "removetile"
+    },
+    {
+      "Identifier": {
+        "ObjectName": "addtile",
+        "ObjectType": 2
+      },
+      "ObjectCommand": "Create",
+      "SecondaryInfo": "addtile"
+    },
+    {
+      "Identifier": {
+        "ObjectName": "goal",
+        "ObjectType": 2
+      },
+      "ObjectCommand": "LookAt",
+      "SecondaryInfo": "goal"
+    },
+    {
+      "Milliseconds": 2000,
+      "SecondaryInfo": 2000,
+      "Identifier": {
+        "ObjectName": null,
+        "ObjectType": 0
+      },
+      "ObjectCommand": "Wait"
+    },
+    {
+      "Identifier": {
+        "ObjectName": "goal",
+        "ObjectType": 2
+      },
+      "ObjectCommand": "Activate",
+      "SecondaryInfo": "goal"
+    },
+    {
+      "Milliseconds": 2000,
+      "SecondaryInfo": 2000,
+      "Identifier": {
+        "ObjectName": null,
+        "ObjectType": 0
+      },
+      "ObjectCommand": "Wait"
+    },
+    {
+      "Identifier": {
+        "ObjectName": "Player",
+        "ObjectType": 3
+      },
+      "ObjectCommand": "LookAt",
+      "SecondaryInfo": "Player"
+    },
+    {
+      "Milliseconds": 2000,
+      "SecondaryInfo": 2000,
+      "Identifier": {
+        "ObjectName": null,
+        "ObjectType": 0
+      },
+      "ObjectCommand": "Wait"
+    },
+    {
+      "Identifier": {
+        "ObjectName": "Player",
+        "ObjectType": 3
+      },
+      "ObjectCommand": "Enable",
+      "SecondaryInfo": "Player"
+    }
+  ],
+  "Teleport1": [
+    {
+      "Identifier": {
+        "ObjectName": "Player",
+        "ObjectType": 3
+      },
+      "ObjectCommand": "Disable",
+      "SecondaryInfo": "Player"
+    },
+    {
+      "Direction": 1,
+      "Milliseconds": 2000,
+      "Identifier": {
+        "ObjectName": "Player",
+        "ObjectType": 3
+      },
+      "ObjectCommand": "Fade",
+      "SecondaryInfo": "Player"
+    },
+    {
+      "Position": {
+        "X": 0.0,
+        "Y": 0.0,
+        "Z": 0.0
+      },
+      "DestinationObject": {
+        "ObjectName": "teleport2",
+        "ObjectType": 2
+      },
+      "Identifier": {
+        "ObjectName": "Player",
+        "ObjectType": 3
+      },
+      "ObjectCommand": "MoveObject",
+      "SecondaryInfo": "Player"
+    },
+    {
+      "Direction": 0,
+      "Milliseconds": 2000,
+      "Identifier": {
+        "ObjectName": "Player",
+        "ObjectType": 3
+      },
+      "ObjectCommand": "Fade",
+      "SecondaryInfo": "Player"
+    },
+    {
+      "Identifier": {
+        "ObjectName": "Player",
+        "ObjectType": 3
+      },
+      "ObjectCommand": "Enable",
+      "SecondaryInfo": "Player"
+    }
+  ],
+  "Teleport2": [
+    {
+      "Identifier": {
+        "ObjectName": "Player",
+        "ObjectType": 3
+      },
+      "ObjectCommand": "Disable",
+      "SecondaryInfo": "Player"
+    },
+    {
+      "Direction": 1,
+      "Milliseconds": 2000,
+      "Identifier": {
+        "ObjectName": "Player",
+        "ObjectType": 3
+      },
+      "ObjectCommand": "Fade",
+      "SecondaryInfo": "Player"
+    },
+    {
+      "Position": {
+        "X": 0.0,
+        "Y": 0.0,
+        "Z": 0.0
+      },
+      "DestinationObject": {
+        "ObjectName": "teleport1",
+        "ObjectType": 2
+      },
+      "Identifier": {
+        "ObjectName": "Player",
+        "ObjectType": 3
+      },
+      "ObjectCommand": "MoveObject",
+      "SecondaryInfo": "Player"
+    },
+    {
+      "Direction": 0,
+      "Milliseconds": 2000,
+      "Identifier": {
+        "ObjectName": "Player",
+        "ObjectType": 3
+      },
+      "ObjectCommand": "Fade",
+      "SecondaryInfo": "Player"
+    },
+    {
+      "Identifier": {
+        "ObjectName": "Player",
+        "ObjectType": 3
+      },
+      "ObjectCommand": "Enable",
+      "SecondaryInfo": "Player"
+    }
+  ]
+}

@@ -34,9 +34,10 @@
                  "properties":
                     {
                      "Enabled":"true",
-                     "LinkTo":"teleport2"
+                     "LinkTo":"teleport2",
+                     "OnEnter":"Teleport1"
                     },
-                 "type":"Teleporter",
+                 "type":"EnterExit",
                  "visible":true,
                  "width":34,
                  "x":142,
@@ -48,9 +49,10 @@
                  "properties":
                     {
                      "Enabled":"true",
-                     "LinkTo":"teleport1"
+                     "LinkTo":"teleport1",
+                     "OnEnter":"Teleport2"
                     },
-                 "type":"Teleporter",
+                 "type":"EnterExit",
                  "visible":true,
                  "width":40,
                  "x":77,
@@ -142,7 +144,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/Tiles\/tilemap.bmp",
+         "image":"..\/..\/Tiles\/tilemap.bmp",
          "imageheight":512,
          "imagewidth":512,
          "margin":0,

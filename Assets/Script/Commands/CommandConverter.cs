@@ -77,6 +77,7 @@ namespace Assets.Script.Commands {
                     FadeCommand fadeCommand = new FadeCommand();
                     serializer.Populate(jObject.CreateReader(), fadeCommand);
                     return fadeCommand;
+
                 default:
                     Command target = new Command();
                     throw new NotImplementedException("CommandConverter");
