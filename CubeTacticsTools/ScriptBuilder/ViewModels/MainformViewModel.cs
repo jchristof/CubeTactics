@@ -63,6 +63,17 @@ namespace ScriptBuilder {
             }
         }
 
+        public void CloneSelectedScript(){
+            string commandsJson = JsonConvert.SerializeObject(Commands);
+            string newScriptName = SelectedScriptName + "Copy";
+            while (ScriptList.Keys.Where(x => x == newScriptName).FirstOrDefault() != null) {
+                newScriptName += "Copy";
+            }
+            List<ScriptBuilder.Command> newCommandList = (List<ScriptBuilder.Command>)JsonConvert.DeserializeObject(commandsJson, typeof(List<ScriptBuilder.Command>));
+            ScriptList.Add(newScriptName, newCommandList);
+            Scripts.Add(newScriptName);
+        }
+
         public bool SelectedCommandIsNotFirst {
             get { return SelectedCommandIndex != 0; }
         }
@@ -79,6 +90,17 @@ namespace ScriptBuilder {
             Commands.Swap(Commands[SelectedCommandIndex], Commands[SelectedCommandIndex + 1]);
         }
 
+        public void RenameCurrentScript(string oldName, string newName) {
+            ScriptList.RenameKey(oldName, newName);
+            _selectedScriptName = null;
+            SelectedScript = newName;
+           // IList<ScriptBuilder.Command> commands = ScriptList[oldName];
+            //ScriptList.Remove(oldName);
+            Scripts.Remove(oldName);
+            //ScriptList.Add(newName, commands);
+            Scripts.Add(newName);
+        }
+
         string _selectedScriptName;
         public string SelectedScriptName {
             get { return _selectedScriptName; }
@@ -91,8 +113,10 @@ namespace ScriptBuilder {
 
                 Commands.Clear();
 
-                if (string.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value)) {
+                    _selectedScriptName = null;
                     return;
+                }
 
                 //see if the newly selected has already been created
                 if (ScriptList.Keys.Where(x => x == value).FirstOrDefault() != null) {
@@ -130,7 +154,13 @@ namespace ScriptBuilder {
         }
 
         public void RemoveSelectedScript() {
-            Scripts.Remove(SelectedScriptName);
+            string selectedScript = SelectedScriptName;
+            SelectedScriptName = null;
+            if (string.IsNullOrEmpty(selectedScript))
+                return;
+
+            ScriptList.Remove(selectedScript);
+            Scripts.Remove(selectedScript);        
         }
 
         string _newScriptName;

@@ -20,7 +20,7 @@ namespace Assets.Script.Commands {
 
         public override void Execute(){
             CompositionRoot.RunOnMainThread(() => {
-                MapObject mapObject = _map.MapObjects.Where(x => x.Name == ObjectName).FirstOrDefault();
+                MapObject mapObject = _map.MapObjects.Where(x => x.Name == Identifier.ObjectName).FirstOrDefault();
                 if (mapObject != null)
                     mapObject.OnActivate();
             });

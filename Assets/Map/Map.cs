@@ -82,8 +82,17 @@ namespace Assets.Map {
             return y / TileHeight;
         }
 
+        public int TileXToPixelX(int x){
+            return x*TileWidth;
+        }
+
+        public int TileYToPixelY(int y) {
+            return y * TileHeight;
+        }
+
         public int Height { get { return _mapModel.height; } }
         public int Width { get { return _mapModel.width; } }
+
         public PropertiesMap MapProperties {
             get {
                 return _mapModel.properties;
@@ -96,6 +105,11 @@ namespace Assets.Map {
 
         public Vector3 FromFlatTileIndex(int index) {
             return new Vector3((index % Width)*TileWidth, 0, (index / Width)*TileHeight);
+        }
+
+        public Vector3 FromTileIndex(Vector3 position) {
+
+            return new Vector3(position.x * TileWidth, 0, (_mapModel.height - position.z) * TileHeight);
         }
 
         public Vector2[] UVForTileType(int tileIndex, Mesh mesh) {

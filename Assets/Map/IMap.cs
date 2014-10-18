@@ -17,6 +17,7 @@ namespace Assets.Map {
         int Width { get; }
         int FlatTileIndex(int x, int y);
         Vector3 FromFlatTileIndex(int index);
+        Vector3 FromTileIndex(Vector3 position);
         bool PositionWithinMapBounds(UnityEngine.Vector3 position);
         void CreateTileAt(Vector3 position, MapLayerName layerName);
         void CreateTileAt(int x, int y, int tileIndex);

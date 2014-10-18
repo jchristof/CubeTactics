@@ -62,6 +62,16 @@ namespace ScriptBuilder.ScriptCommands.Commands {
                     serializer.Populate(jObject.CreateReader(), waitCommand);
                     return waitCommand;
 
+                case ObjectCommand.MoveObject:
+                    MoveObjectCommand moveObjectCommand = new MoveObjectCommand();
+                    serializer.Populate(jObject.CreateReader(), moveObjectCommand);
+                    return moveObjectCommand;
+
+                case ObjectCommand.Fade:
+                    FadeCommand fadeCommand = new FadeCommand();
+                    serializer.Populate(jObject.CreateReader(), fadeCommand);
+                    return fadeCommand;
+
                 default:
                     Command target = new Command();
                     throw new NotImplementedException("CommandConverter");

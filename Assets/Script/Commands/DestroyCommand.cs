@@ -20,9 +20,9 @@ namespace Assets.Script.Commands {
         readonly IMap _map;
         public override void Execute() {
             CompositionRoot.RunOnMainThread(() => {
-                MapObject mapObject = _map.MapObjects.Where(x => x.Name == ObjectName).FirstOrDefault();
+                MapObject mapObject = _map.MapObjects.Where(x => x.Name == Identifier.ObjectName).FirstOrDefault();
                 if (mapObject == null) {
-                    GameObject go = GameObject.Find(ObjectName);
+                    GameObject go = GameObject.Find(Identifier.ObjectName);
                     GameObject.Destroy(go);
                 }
                 else if (mapObject.Type == MapObjectType.Tile) {

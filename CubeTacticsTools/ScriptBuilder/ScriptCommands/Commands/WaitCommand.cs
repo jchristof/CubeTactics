@@ -1,5 +1,6 @@
-﻿using Assets.Script;
+﻿
 using Newtonsoft.Json;
+using ScriptBuilder.ScriptCommands.Positioning;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,9 +20,6 @@ namespace ScriptBuilder.ScriptCommands.Commands {
         }
 
         [Browsable(false)]
-        public override string ObjectName { get; set; }
-
-        [Browsable(false)]
-        public override ObjectType ObjectType { get; set; }
+        public override Identifier Identifier { get; set; }
     }
 }

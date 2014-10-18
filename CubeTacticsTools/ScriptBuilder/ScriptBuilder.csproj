@@ -80,10 +80,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="PropertyGridEditors\Controls\PositionEditoryControl.xaml.cs">
       <DependentUpon>PositionEditoryControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="PropertyGridEditors\PositionEditor.cs" />
+    <Compile Include="ScriptCommands\Commands\FadeCommand.cs" />
     <Compile Include="ScriptCommands\Commands\SfxCommand.cs" />
     <Compile Include="PropertyGridEditors\PositionEditorViewModel.cs" />
     <Page Include="PropertyGridEditors\Controls\PositionEditoryControl.xaml">
@@ -110,6 +112,8 @@
     <Compile Include="ScriptCommands\Commands\EnableCommand.cs" />
     <Compile Include="ScriptCommands\Commands\LookAtCommand.cs" />
     <Compile Include="ScriptCommands\Commands\WaitCommand.cs" />
+    <Compile Include="ScriptCommands\Commands\MoveObjectCommand.cs" />
+    <Compile Include="ScriptCommands\Positioning\Identifier.cs" />
     <Compile Include="ScriptCommands\Positioning\Position.cs" />
     <Compile Include="ViewModels\MainformViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">

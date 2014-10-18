@@ -22,7 +22,7 @@ namespace Assets.Script.Commands {
 
         public override void Execute() {
             CompositionRoot.RunOnMainThread(() => {
-                MapObject mapObject = _map.MapObjects.Where(x => x.Name == ObjectName).FirstOrDefault();
+                MapObject mapObject = _map.MapObjects.Where(x => x.Name == Identifier.ObjectName).FirstOrDefault();
                 //_map.MapObjects.ToList().ForEach(x => { print(x.Name); });
 
                 if (mapObject != null) {
@@ -35,7 +35,7 @@ namespace Assets.Script.Commands {
                     //}
                 }
                 else {
-                    GameObject go = GameObject.Find(ObjectName);
+                    GameObject go = GameObject.Find(Identifier.ObjectName);
                     UnityEngine.Camera.main.GetComponent<CameraScript>().Target = go.transform;
                     //print(string.Format("Look at tile name {0}, flat index {1}", cmd.ObjectName, go.name));
                 }

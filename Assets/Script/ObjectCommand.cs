@@ -13,6 +13,8 @@ namespace Assets.Script {
         Reset,
         LookAt,
         Wait,
-        Sfx
+        Sfx,
+        MoveObject,
+        Fade,
     }
 }

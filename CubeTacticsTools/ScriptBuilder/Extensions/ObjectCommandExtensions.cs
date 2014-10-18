@@ -1,4 +1,5 @@
 ﻿using Assets.Script;
+using ScriptBuilder.ScriptCommands;
 using ScriptBuilder.ScriptCommands.Commands;
 using ScriptBuilder.ScriptCommands.Positioning;
 using System;
@@ -28,9 +29,11 @@ namespace ScriptBuilder.Extensions {
                 case ObjectCommand.Wait:
                     return new WaitCommand();
                 case ObjectCommand.Sfx:
-                    SfxCommand command = new SfxCommand();
-                    command.Position = new Position();
-                    return command;
+                    return new SfxCommand();
+                case ObjectCommand.MoveObject:
+                    return new MoveObjectCommand();
+                case ObjectCommand.Fade:
+                    return new FadeCommand();
                 default:
                     throw new NotImplementedException();
             }

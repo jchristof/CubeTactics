@@ -20,7 +20,7 @@ namespace Assets.Script.Commands {
 
         public override void Execute(){
             CompositionRoot.RunOnMainThread(() => {
-                MapObject mapObject = _map.MapObjects.Where(x => x.Name == ObjectName).First();
+                MapObject mapObject = _map.MapObjects.Where(x => x.Name == Identifier.ObjectName).First();
                 if (mapObject.Type == MapObjectType.Tile) {
                     int x = _map.PixelXToTileX(mapObject.X);
                     int y = _map.PixelYToTileY(mapObject.Y);

@@ -106,6 +106,12 @@
                         <MenuItem Header="Delete" 
                                   IsEnabled="{Binding SelectedScriptName, Converter={StaticResource nullToBoolConverter}}" 
                                   Click="DeleteScriptContext_Click"/>
+                        <MenuItem Header="Clone"
+                                  IsEnabled="{Binding SelectedScriptName, Converter={StaticResource nullToBoolConverter}}"
+                                  Click="CloneScriptContext_Click"/>
+                        <MenuItem Header="Rename"
+                                  IsEnabled="{Binding SelectedScriptName, Converter={StaticResource nullToBoolConverter}}"
+                                  Click="RenameScriptContext_Click"/>
                         
                     </ContextMenu>
                 </ListView.ContextMenu>
@@ -192,6 +198,15 @@
                 </StackPanel>
             </StackPanel>
         </Popup>
-           
+        <Popup Name="RenameScriptPopup" Placement="Center">
+            <StackPanel Background="LightGray" Margin="1">
+                <Label HorizontalAlignment="Center">Rename Script Name</Label>
+                <TextBox x:Name="RenamedText" Text="{Binding SelectedScriptName, Mode=OneWay}"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Click="RenameScriptPopupOk_Click" Margin="4">Ok</Button>
+                    <Button Click="RenameScriptPopupCancel_Click" Margin="4">Cancel</Button>
+                </StackPanel>
+            </StackPanel>
+        </Popup>
     </Grid>
 </Window>

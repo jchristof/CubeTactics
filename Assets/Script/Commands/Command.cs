@@ -1,5 +1,6 @@
 ﻿using Assets.Map;
 using Assets.Script.Commands;
+using Assets.Script.Positioning;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -12,8 +13,7 @@ namespace Assets.Script {
     [JsonConverter(typeof(CommandConverter))]
     public class Command {
 
-        public virtual string ObjectName { get; set; }
-        public virtual ObjectType ObjectType { get; set; }
+        public Indentifier Identifier { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
         public ObjectCommand ObjectCommand { get; set; }

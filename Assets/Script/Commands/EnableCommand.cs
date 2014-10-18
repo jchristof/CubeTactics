@@ -10,7 +10,7 @@ namespace Assets.Script.Commands {
     public class EnableCommand : Command {
         public override void Execute() {
             CompositionRoot.RunOnMainThread(() => {
-                GameObject.Find(ObjectName).GetComponent<PlayerController>().enabled = true;
+                GameObject.Find(Identifier.ObjectName).GetComponent<PlayerController>().enabled = true;
             });
         }
     }

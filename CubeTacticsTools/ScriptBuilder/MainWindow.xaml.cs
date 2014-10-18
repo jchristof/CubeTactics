@@ -70,6 +70,15 @@ public partial class MainWindow : Window {
         ViewModel.RemoveSelectedScript();
     }
 
+    void CloneScriptContext_Click(object sender, RoutedEventArgs e) {
+        ViewModel.CloneSelectedScript();
+    }
+
+    void RenameScriptContext_Click(object sender, RoutedEventArgs e) {
+        RenameScriptPopup.IsOpen = true;
+        _originalScriptName = ViewModel.SelectedScriptName;
+    }
+
     #endregion
 
     #region New Command Popup
@@ -110,6 +119,7 @@ public partial class MainWindow : Window {
     }
 
     #endregion
+
     #region Menu Items
 
     readonly string _scriptExtension = ".json";
@@ -167,6 +177,24 @@ public partial class MainWindow : Window {
 
     void MenuExit_Click(object sender, RoutedEventArgs e) {
         Application.Current.Shutdown();
+    }
+
+    #endregion
+
+    #region Rename Script Popup
+    string _originalScriptName;
+
+    void RenameScriptPopupOk_Click(object sender, RoutedEventArgs e) {
+        string newName = RenamedText.Text;
+        //rename and close the popup if the new name is unique
+        if (ViewModel.Scripts.Where(x => x == newName).FirstOrDefault() == null) {
+            ViewModel.RenameCurrentScript(_originalScriptName, newName);
+            RenameScriptPopup.IsOpen = false;
+        }
+    }
+
+    void RenameScriptPopupCancel_Click(object sender, RoutedEventArgs e) {
+        RenameScriptPopup.IsOpen = false;
     }
 
     #endregion

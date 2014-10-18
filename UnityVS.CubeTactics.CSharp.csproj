@@ -59,6 +59,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Actors\GameObjectActor.cs" />
+    <Compile Include="Assets\Actors\IActor.cs" />
+    <Compile Include="Assets\Actors\MapObjectActor.cs" />
     <Compile Include="Assets\Audio\AudioPlayer.cs" />
     <Compile Include="Assets\Audio\SfxType.cs" />
     <Compile Include="Assets\Camera\CameraScript.cs" />
@@ -453,13 +456,18 @@
     <Compile Include="Assets\Script\Commands\DestroyCommand.cs" />
     <Compile Include="Assets\Script\Commands\DisableCommand.cs" />
     <Compile Include="Assets\Script\Commands\EnableCommand.cs" />
+    <Compile Include="Assets\Script\Commands\FadeCommand.cs" />
     <Compile Include="Assets\Script\Commands\LookAtCommand.cs" />
+    <Compile Include="Assets\Script\Commands\MoveObjectCommand.cs" />
     <Compile Include="Assets\Script\Commands\SfxCommand.cs" />
     <Compile Include="Assets\Script\Commands\WaitCommand.cs" />
+    <Compile Include="Assets\Script\Direction.cs" />
     <Compile Include="Assets\Script\IScriptExecutor.cs" />
     <Compile Include="Assets\Script\MapTarget.cs" />
     <Compile Include="Assets\Script\ObjectCommand.cs" />
     <Compile Include="Assets\Script\ObjectType.cs" />
+    <Compile Include="Assets\Script\Positioning\IdentifierExtensions.cs" />
+    <Compile Include="Assets\Script\Positioning\Indentifier.cs" />
     <Compile Include="Assets\Script\Positioning\Position.cs" />
     <Compile Include="Assets\Script\Script.cs" />
     <Compile Include="Assets\Script\ScriptExecutor.cs" />
