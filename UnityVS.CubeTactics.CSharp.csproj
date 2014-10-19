@@ -460,6 +460,7 @@
     <Compile Include="Assets\Script\Commands\LookAtCommand.cs" />
     <Compile Include="Assets\Script\Commands\MoveObjectCommand.cs" />
     <Compile Include="Assets\Script\Commands\MovePlayerCommand.cs" />
+    <Compile Include="Assets\Script\Commands\PlayerInputCommand.cs" />
     <Compile Include="Assets\Script\Commands\SfxCommand.cs" />
     <Compile Include="Assets\Script\Commands\WaitCommand.cs" />
     <Compile Include="Assets\Script\Direction.cs" />
@@ -467,6 +468,7 @@
     <Compile Include="Assets\Script\MapTarget.cs" />
     <Compile Include="Assets\Script\ObjectCommand.cs" />
     <Compile Include="Assets\Script\ObjectType.cs" />
+    <Compile Include="Assets\Script\PlayerInputState.cs" />
     <Compile Include="Assets\Script\Positioning\IdentifierExtensions.cs" />
     <Compile Include="Assets\Script\Positioning\Indentifier.cs" />
     <Compile Include="Assets\Script\Positioning\Position.cs" />
@@ -475,6 +477,7 @@
     <None Include="Assets\JsonDotNet\ReadMe.txt" />
     <None Include="Assets\PlaneShader.shader" />
     <None Include="Assets\StreamingAssets\FMOD_bank_list.txt" />
+    <None Include="Assets\UnlitTextureAlpha.shader" />
     <None Include="Assets\JsonDotNet\Examples\Tests\TestModels\SampleClassLibrary.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />

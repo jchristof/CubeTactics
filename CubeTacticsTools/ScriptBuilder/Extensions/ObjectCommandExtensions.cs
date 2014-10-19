@@ -36,6 +36,8 @@ namespace ScriptBuilder.Extensions {
                     return new FadeCommand();
                 case ObjectCommand.MovePlayer:
                     return new MovePlayerCommand();
+                case ObjectCommand.PlayerInputState:
+                    return new PlayerInputCommand();
                 default:
                     throw new NotImplementedException();
             }

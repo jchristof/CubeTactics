@@ -5,6 +5,7 @@ using Assets;
 using Assets.Movement.PlayerMovement;
 using Assets.Movement;
 using Assets.Camera;
+using Assets.Script;
 
 public class PlayerController : MonoBehaviour {
 
@@ -17,21 +18,18 @@ public class PlayerController : MonoBehaviour {
 
     AutomatedMove automatedMove;
     SwipeInputDirection _swipeInputDirection;
-    //Transform easingCamTarget;
-    //Assets.Movement.Interpolate.Function ease;
-
+    PlayerInputState _playerInputState;
 
     bool rotating = false;
     float angle = 0.0f;
     bool _keyHeld;
 
     void Start() {
+
         rotator = (new GameObject("Rotator")).transform;
         _swipeInputDirection = new SwipeInputDirection();
         MoveToFinished();
-        //ease = Interpolate.Ease(Interpolate.EaseType.Linear);
-        //Transform camTarget = GameObject.Find("CameraLookAt").transform;
-        //easingCamTarget = Instantiate(camTarget, camTarget.position, camTarget.rotation) as Transform;
+
         Camera.main.GetComponent<CameraScript>().Height = 10.0f;
         Camera.main.GetComponent<CameraScript>().Distance = 4.0f;
         Camera.main.GetComponent<CameraScript>().Target = GameObject.Find("CameraLookAt").transform;
@@ -138,50 +136,6 @@ public class PlayerController : MonoBehaviour {
         MoveToFinished();
     }
 
-    //float distance = 4.0f;
-    //float height = 10.5f;
-    //float heightDamping = 2.0f;
-    //float elapsedTime = 0.0f;
-    //void LateUpdate() {
-    //    if (Input.GetAxis("Mouse ScrollWheel") < 0) // back
-    //        height = Mathf.Max(height + .1f, 10);
-    //    else if (Input.GetAxis("Mouse ScrollWheel") > 0) // forward
-    //        height = Mathf.Min(height - .1f, 5);
-
-    //    Vector3 cameraTarget = GameObject.Find("Player").transform.position;
-
-    //    if (Vector3.Distance(cameraTarget, easingCamTarget.position) > .01f) {
-    //        easingCamTarget.position = Interpolate.Ease(ease, easingCamTarget.position, cameraTarget - easingCamTarget.position, elapsedTime, 50.0f);
-    //        elapsedTime += Time.deltaTime;
-    //    }
-    //    else {
-    //        elapsedTime = 0.0f;
-    //        easingCamTarget.position = cameraTarget;
-    //    }
-    //    // Calculate the current rotation angles
-    //    //float wantedRotationAngle = cameraTarget.eulerAngles.y;
-    //    float wantedHeight = /*cameraTarget.position.y +*/ height;
-
-    //    float currentRotationAngle = Camera.main.transform.eulerAngles.y;
-    //    float currentHeight = Camera.main.transform.position.y;
-
-    //    // Damp the rotation around the y-axis
-    //    //currentRotationAngle = Mathf.LerpAngle(currentRotationAngle, wantedRotationAngle, rotationDamping * Time.deltaTime);
-
-    //    // Damp the height
-    //    currentHeight = Mathf.Lerp(currentHeight, wantedHeight, heightDamping * Time.deltaTime);
-
-    //    // Convert the angle into a rotation
-    //    Quaternion currentRotation = Quaternion.Euler(0, currentRotationAngle, 0);
-
-    //    // Set the position of the camera on the x-z plane to:
-    //    // distance meters behind the target
-    //    Vector3 desiredPosition = easingCamTarget.position - currentRotation * Vector3.forward * distance;
-    //    desiredPosition.y = currentHeight;
-
-    //    Camera.main.transform.position = desiredPosition;
-    //    Camera.main.transform.LookAt(easingCamTarget.transform);
-    //}
 
     void RotateCube(Vector3 refPoint, Vector3 rotationAxis) {
         rotator.localRotation = Quaternion.identity;

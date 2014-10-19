@@ -118,12 +118,10 @@
   ],
   "Teleport1": [
     {
-      "Identifier": {
-        "ObjectName": "Player",
-        "ObjectType": 3
-      },
-      "ObjectCommand": "Disable",
-      "SecondaryInfo": "Player"
+      "PlayerInputState": 0,
+      "Identifier": null,
+      "SecondaryInfo": 0,
+      "ObjectCommand": "PlayerInputState"
     },
     {
       "SfxType": 1,
@@ -142,7 +140,7 @@
     },
     {
       "Direction": 1,
-      "Milliseconds": 2000,
+      "Milliseconds": 500,
       "Identifier": {
         "ObjectName": "Player",
         "ObjectType": 3
@@ -168,8 +166,17 @@
       "ObjectCommand": "MovePlayer"
     },
     {
+      "Milliseconds": 1000,
+      "SecondaryInfo": 1000,
+      "Identifier": {
+        "ObjectName": null,
+        "ObjectType": 0
+      },
+      "ObjectCommand": "Wait"
+    },
+    {
       "Direction": 0,
-      "Milliseconds": 2000,
+      "Milliseconds": 500,
       "Identifier": {
         "ObjectName": "Player",
         "ObjectType": 3
@@ -178,22 +185,18 @@
       "SecondaryInfo": "Player"
     },
     {
-      "Identifier": {
-        "ObjectName": "Player",
-        "ObjectType": 3
-      },
-      "ObjectCommand": "Enable",
-      "SecondaryInfo": "Player"
+      "PlayerInputState": 1,
+      "Identifier": null,
+      "SecondaryInfo": 1,
+      "ObjectCommand": "PlayerInputState"
     }
   ],
   "Teleport2": [
     {
-      "Identifier": {
-        "ObjectName": "Player",
-        "ObjectType": 3
-      },
-      "ObjectCommand": "Disable",
-      "SecondaryInfo": "Player"
+      "PlayerInputState": 0,
+      "Identifier": null,
+      "SecondaryInfo": 0,
+      "ObjectCommand": "PlayerInputState"
     },
     {
       "SfxType": 1,
@@ -212,7 +215,7 @@
     },
     {
       "Direction": 1,
-      "Milliseconds": 2000,
+      "Milliseconds": 500,
       "Identifier": {
         "ObjectName": "Player",
         "ObjectType": 3
@@ -238,8 +241,17 @@
       "ObjectCommand": "MovePlayer"
     },
     {
+      "Milliseconds": 1000,
+      "SecondaryInfo": 1000,
+      "Identifier": {
+        "ObjectName": null,
+        "ObjectType": 0
+      },
+      "ObjectCommand": "Wait"
+    },
+    {
       "Direction": 0,
-      "Milliseconds": 2000,
+      "Milliseconds": 500,
       "Identifier": {
         "ObjectName": "Player",
         "ObjectType": 3
@@ -248,12 +260,10 @@
       "SecondaryInfo": "Player"
     },
     {
-      "Identifier": {
-        "ObjectName": "Player",
-        "ObjectType": 3
-      },
-      "ObjectCommand": "Enable",
-      "SecondaryInfo": "Player"
+      "PlayerInputState": 1,
+      "Identifier": null,
+      "SecondaryInfo": 1,
+      "ObjectCommand": "PlayerInputState"
     }
   ]
 }

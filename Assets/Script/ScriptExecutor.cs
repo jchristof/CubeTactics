@@ -21,7 +21,7 @@ namespace Assets.Script {
                 return;
 
             var t = new Thread(() => {
-                commandList.ToList().ForEach(x => x.Execute());
+                commandList.ToList().ForEach(x => { x.Execute(); Thread.Sleep(1); });
             });
             t.Start();
         }

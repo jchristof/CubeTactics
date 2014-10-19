@@ -76,6 +76,7 @@
     <None Include="Assets\JsonDotNet\ReadMe.txt" />
     <None Include="Assets\PlaneShader.shader" />
     <None Include="Assets\StreamingAssets\FMOD_bank_list.txt" />
+    <None Include="Assets\UnlitTextureAlpha.shader" />
     <None Include="Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll" />
     <None Include="Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Messaging.dll" />
     <None Include="Assets\UnityVS\Editor\UnityVS.VersionSpecific.dll" />

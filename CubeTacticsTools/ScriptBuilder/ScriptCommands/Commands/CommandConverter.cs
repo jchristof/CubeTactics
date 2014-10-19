@@ -77,6 +77,11 @@ namespace ScriptBuilder.ScriptCommands.Commands {
                     serializer.Populate(jObject.CreateReader(), movePlayerCommand);
                     return movePlayerCommand;
 
+                case ObjectCommand.PlayerInputState:
+                    PlayerInputCommand playerInputStateCommand = new PlayerInputCommand();
+                    serializer.Populate(jObject.CreateReader(), playerInputStateCommand);
+                    return playerInputStateCommand;
+
                 default:
                     Command target = new Command();
                     throw new NotImplementedException("CommandConverter");
