@@ -126,6 +126,21 @@
       "SecondaryInfo": "Player"
     },
     {
+      "SfxType": 1,
+      "Volume": 1.0,
+      "Position": {
+        "X": 0.0,
+        "Y": 0.0,
+        "Z": 0.0
+      },
+      "SecondaryInfo": 1,
+      "Identifier": {
+        "ObjectName": null,
+        "ObjectType": 0
+      },
+      "ObjectCommand": "Sfx"
+    },
+    {
       "Direction": 1,
       "Milliseconds": 2000,
       "Identifier": {
@@ -136,6 +151,10 @@
       "SecondaryInfo": "Player"
     },
     {
+      "Identifier": {
+        "ObjectName": null,
+        "ObjectType": 0
+      },
       "Position": {
         "X": 0.0,
         "Y": 0.0,
@@ -145,12 +164,8 @@
         "ObjectName": "teleport2",
         "ObjectType": 2
       },
-      "Identifier": {
-        "ObjectName": "Player",
-        "ObjectType": 3
-      },
-      "ObjectCommand": "MoveObject",
-      "SecondaryInfo": "Player"
+      "SecondaryInfo": "Player",
+      "ObjectCommand": "MovePlayer"
     },
     {
       "Direction": 0,
@@ -181,6 +196,21 @@
       "SecondaryInfo": "Player"
     },
     {
+      "SfxType": 1,
+      "Volume": 1.0,
+      "Position": {
+        "X": 0.0,
+        "Y": 0.0,
+        "Z": 0.0
+      },
+      "SecondaryInfo": 1,
+      "Identifier": {
+        "ObjectName": null,
+        "ObjectType": 0
+      },
+      "ObjectCommand": "Sfx"
+    },
+    {
       "Direction": 1,
       "Milliseconds": 2000,
       "Identifier": {
@@ -191,6 +221,10 @@
       "SecondaryInfo": "Player"
     },
     {
+      "Identifier": {
+        "ObjectName": null,
+        "ObjectType": 0
+      },
       "Position": {
         "X": 0.0,
         "Y": 0.0,
@@ -200,12 +234,8 @@
         "ObjectName": "teleport1",
         "ObjectType": 2
       },
-      "Identifier": {
-        "ObjectName": "Player",
-        "ObjectType": 3
-      },
-      "ObjectCommand": "MoveObject",
-      "SecondaryInfo": "Player"
+      "SecondaryInfo": "Player",
+      "ObjectCommand": "MovePlayer"
     },
     {
       "Direction": 0,

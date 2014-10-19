@@ -459,6 +459,7 @@
     <Compile Include="Assets\Script\Commands\FadeCommand.cs" />
     <Compile Include="Assets\Script\Commands\LookAtCommand.cs" />
     <Compile Include="Assets\Script\Commands\MoveObjectCommand.cs" />
+    <Compile Include="Assets\Script\Commands\MovePlayerCommand.cs" />
     <Compile Include="Assets\Script\Commands\SfxCommand.cs" />
     <Compile Include="Assets\Script\Commands\WaitCommand.cs" />
     <Compile Include="Assets\Script\Direction.cs" />

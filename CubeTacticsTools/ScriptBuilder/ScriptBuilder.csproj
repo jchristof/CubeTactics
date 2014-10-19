@@ -86,6 +86,7 @@
     </Compile>
     <Compile Include="PropertyGridEditors\PositionEditor.cs" />
     <Compile Include="ScriptCommands\Commands\FadeCommand.cs" />
+    <Compile Include="ScriptCommands\Commands\MovePlayerCommand.cs" />
     <Compile Include="ScriptCommands\Commands\SfxCommand.cs" />
     <Compile Include="PropertyGridEditors\PositionEditorViewModel.cs" />
     <Page Include="PropertyGridEditors\Controls\PositionEditoryControl.xaml">

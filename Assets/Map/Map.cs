@@ -82,6 +82,10 @@ namespace Assets.Map {
             return y / TileHeight;
         }
 
+        public Vector3 PixelPositionToMapPosition(float x, float y, float z) {
+            return new Vector3(Convert.ToInt32(x)/ TileWidth, y, Convert.ToInt32(z) / TileHeight);
+        }
+
         public int TileXToPixelX(int x){
             return x*TileWidth;
         }

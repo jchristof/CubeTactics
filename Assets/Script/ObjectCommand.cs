@@ -16,5 +16,6 @@ namespace Assets.Script {
         Sfx,
         MoveObject,
         Fade,
+        MovePlayer
     }
 }

@@ -72,6 +72,11 @@ namespace ScriptBuilder.ScriptCommands.Commands {
                     serializer.Populate(jObject.CreateReader(), fadeCommand);
                     return fadeCommand;
 
+                case ObjectCommand.MovePlayer:
+                    MovePlayerCommand movePlayerCommand = new MovePlayerCommand();
+                    serializer.Populate(jObject.CreateReader(), movePlayerCommand);
+                    return movePlayerCommand;
+
                 default:
                     Command target = new Command();
                     throw new NotImplementedException("CommandConverter");

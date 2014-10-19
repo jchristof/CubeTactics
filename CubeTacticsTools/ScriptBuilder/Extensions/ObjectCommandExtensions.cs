@@ -34,6 +34,8 @@ namespace ScriptBuilder.Extensions {
                     return new MoveObjectCommand();
                 case ObjectCommand.Fade:
                     return new FadeCommand();
+                case ObjectCommand.MovePlayer:
+                    return new MovePlayerCommand();
                 default:
                     throw new NotImplementedException();
             }

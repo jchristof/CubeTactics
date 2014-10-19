@@ -25,7 +25,7 @@ namespace Assets.Script.Commands {
         public override void Execute() {
             CompositionRoot.RunOnMainThread(() => {
                 IActor actor = base.Identifier.ActorFor();
-                actor.SetPosition(base.Identifier.PositionOf(_map) + Position.Vector);
+                actor.SetPosition(DestinationObject.PositionOf(_map) + Position.Vector);
             });
         }
     }

@@ -13,6 +13,7 @@ namespace Assets.Map {
         IList<MapObject> MapObjects { get; set; }
         int PixelXToTileX(int x);
         int PixelYToTileY(int y);
+        Vector3 PixelPositionToMapPosition(float x, float y, float z);
         int Height { get; }
         int Width { get; }
         int FlatTileIndex(int x, int y);
