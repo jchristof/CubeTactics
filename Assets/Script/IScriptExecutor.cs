@@ -6,6 +6,6 @@ using System.Text;
 
 namespace Assets.Script {
     public interface IScriptExecutor {
-        void Execute(IList<Command> commandLis);
+        void Execute(string script);
     }
 }

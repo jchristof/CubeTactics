@@ -26,14 +26,7 @@ public class PlayfieldScript : MonoBehaviour {
         _map.ForeachTile(new Action<int, int, int>(CreateTileVisualAt), MapLayerName.Board);
          
         CompositionRoot.PlayerController.SpawnAt(_map.SpawnPoint);
-
-       
 	}
-
-     Vector3 PlayerPositionFromXY(int x, int y) {
-        return new Vector3(x, 0.5f, y);
-    }
-
 
      public void CreateTileVisualAt(int xPosition, int yPosition, int tileSetIndex) {
         if (tileSetIndex == -1)

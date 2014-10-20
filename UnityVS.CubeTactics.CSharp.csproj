@@ -437,7 +437,6 @@
     <Compile Include="Assets\Map\TileType.cs" />
     <Compile Include="Assets\Map\Triggers\EnterExit.cs" />
     <Compile Include="Assets\Map\Triggers\Goal.cs" />
-    <Compile Include="Assets\Map\Triggers\Teleporter.cs" />
     <Compile Include="Assets\Map\Triggers\Trigger.cs" />
     <Compile Include="Assets\Movement\Interpolate.cs" />
     <Compile Include="Assets\Movement\PlayerMovement\AutomatedMove.cs" />

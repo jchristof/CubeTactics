@@ -32,5 +32,6 @@ namespace Assets.Map {
         int TileIndexAt(int x, int y, MapLayerName layerName);
         int TileIndexAt(UnityEngine.Vector3 position, MapLayerName layerName);
         UnityEngine.Vector2[] UVForTileType(int tileIndex, UnityEngine.Mesh mesh);
+        IList<Command> GetScriptCommands(string script); 
     }
 }

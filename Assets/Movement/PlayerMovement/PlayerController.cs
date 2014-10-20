@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void SpawnAt(Vector3 position) {
+        position.y += 0.5f;
         transform.position = position;
         MoveToFinished();
     }
@@ -88,7 +89,6 @@ public class PlayerController : MonoBehaviour {
             automatedMove = null;
             return;
         }
-
 
         if (!rotating) {
             if (!InputEnabled)
@@ -154,6 +154,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void AutoMatedMoveTo(Vector3 moveTo) {
+        //cube center is a half tile above the tile level
+        moveTo.y += 0.5f;
         automatedMove = new AutomatedMove { moveTo = moveTo };
     }
 

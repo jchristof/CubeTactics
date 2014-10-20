@@ -24,10 +24,6 @@ namespace Assets.Map {
                     target = new EnterExit(CompositionRoot.Map, CompositionRoot.ScriptExecutor);
                     break;
 
-                case "Teleporter":
-                    target = new Teleporter(CompositionRoot.Map, CompositionRoot.ScriptExecutor);
-                    break;
-
                 case "SpawnPoint":
                     target = new SpawnPoint(CompositionRoot.Map, CompositionRoot.ScriptExecutor);
                     break;

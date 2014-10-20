@@ -16,13 +16,27 @@ namespace Assets.Script {
             set { _map = value; }
         }
 
-        public void Execute(IList<Command> commandList){
-            if (commandList == null)
+        public void Execute(string script){
+
+            if(string.IsNullOrEmpty(script)){
+                print("Cannot execute empty or null script");
                 return;
+            }
+
+            IList<Command> commandList = _map.GetScriptCommands(script);
+            if (commandList == null) {
+                print("Script not found: " + script);
+                return;
+            }
 
             var t = new Thread(() => {
-                commandList.ToList().ForEach(x => { x.Execute(); Thread.Sleep(1); });
+                commandList.ToList().ForEach(
+                    x => { 
+                        x.Execute(); 
+                        Thread.Sleep(1); 
+                    });
             });
+
             t.Start();
         }
     }

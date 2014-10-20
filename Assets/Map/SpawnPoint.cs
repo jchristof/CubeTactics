@@ -12,7 +12,7 @@ namespace Assets.Map {
         }
         public Vector3 Position {
             get {
-                return new Vector3(MapX, 0.5f, MapY);
+                return new Vector3(MapX, 0.0f, MapY);
             }
         }
     }

@@ -20,7 +20,7 @@ namespace Assets.Script.Commands {
         public override void Execute() {
             CompositionRoot.RunOnMainThread(() => {
                 Vector3 position = DestinationObject.PositionOf(_map);
-                CompositionRoot.PlayerController.AutoMatedMoveTo(_map.PixelPositionToMapPosition(position.x, 0.5f, position.y));
+                CompositionRoot.PlayerController.AutoMatedMoveTo(_map.PixelPositionToMapPosition(position.x, 0.0f, position.y));
             });
         }
     }

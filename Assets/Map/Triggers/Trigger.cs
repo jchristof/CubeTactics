@@ -24,10 +24,8 @@ namespace Assets.Map {
         readonly IMap _map;
         readonly IScriptExecutor _scriptExecutor;
 
-
-
-        protected void ExecuteScript(IList<Command> commandList) {
-             _scriptExecutor.Execute(commandList);
+        protected void ExecuteScript(string script) {
+            _scriptExecutor.Execute(script);
         }
 
         public IMap Map { get { return _map; } }

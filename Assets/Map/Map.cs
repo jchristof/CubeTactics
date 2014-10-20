@@ -116,6 +116,13 @@ namespace Assets.Map {
             return new Vector3(position.x * TileWidth, 0, (_mapModel.height - position.z) * TileHeight);
         }
 
+        public IList<Command> GetScriptCommands(string script) {
+            if(!ScriptList.Keys.Contains(script))
+                return null;
+
+            return ScriptList[script];
+        }
+
         public Vector2[] UVForTileType(int tileIndex, Mesh mesh) {
             //mesh.uv[0] = 0.125f * xIndex);
             Vector2[] uvs = new Vector2[mesh.vertices.Length];
