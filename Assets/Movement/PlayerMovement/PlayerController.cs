@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour {
             transform.position = automatedMove.moveTo;
             automatedMove = null;
             return;
-        }
+        }   
 
         if (!rotating) {
             if (!InputEnabled)

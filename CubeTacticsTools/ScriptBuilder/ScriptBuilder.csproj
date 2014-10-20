@@ -86,7 +86,8 @@
     </Compile>
     <Compile Include="PropertyGridEditors\PositionEditor.cs" />
     <Compile Include="ScriptCommands\Commands\FadeCommand.cs" />
-    <Compile Include="ScriptCommands\Commands\MovePlayerCommand.cs" />
+    <Compile Include="ScriptCommands\Commands\LevelExitCommand.cs" />
+    <Compile Include="ScriptCommands\Commands\PlayerMoveCommand.cs" />
     <Compile Include="ScriptCommands\Commands\PlayerInputCommand.cs" />
     <Compile Include="ScriptCommands\Commands\SfxCommand.cs" />
     <Compile Include="PropertyGridEditors\PositionEditorViewModel.cs" />
@@ -113,8 +114,10 @@
     <Compile Include="ScriptCommands\Commands\DisableCommand.cs" />
     <Compile Include="ScriptCommands\Commands\EnableCommand.cs" />
     <Compile Include="ScriptCommands\Commands\LookAtCommand.cs" />
+    <Compile Include="ScriptCommands\Commands\LevelCompletionShowCommand.cs" />
     <Compile Include="ScriptCommands\Commands\WaitCommand.cs" />
     <Compile Include="ScriptCommands\Commands\MoveObjectCommand.cs" />
+    <Compile Include="ScriptCommands\Commands\CameraZoomCommand.cs" />
     <Compile Include="ScriptCommands\Positioning\Identifier.cs" />
     <Compile Include="ScriptCommands\Positioning\Position.cs" />
     <Compile Include="ViewModels\MainformViewModel.cs" />

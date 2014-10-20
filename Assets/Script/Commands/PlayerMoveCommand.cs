@@ -7,8 +7,8 @@ using System.Text;
 using UnityEngine;
 
 namespace Assets.Script.Commands {
-    public class MovePlayerCommand : Command {
-        public MovePlayerCommand(IMap map) {
+    public class PlayerMoveCommand : Command {
+        public PlayerMoveCommand(IMap map) {
             _map = map;
         }
 

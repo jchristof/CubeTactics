@@ -449,6 +449,7 @@
     <Compile Include="Assets\Movement\PlayerMovement\TouchAbstractor.cs" />
     <Compile Include="Assets\PlayfieldScript.cs" />
     <Compile Include="Assets\Script\Commands\ActivateCommand.cs" />
+    <Compile Include="Assets\Script\Commands\CameraZoomCommand.cs" />
     <Compile Include="Assets\Script\Commands\Command.cs" />
     <Compile Include="Assets\Script\Commands\CommandConverter.cs" />
     <Compile Include="Assets\Script\Commands\CreateCommand.cs" />
@@ -456,9 +457,11 @@
     <Compile Include="Assets\Script\Commands\DisableCommand.cs" />
     <Compile Include="Assets\Script\Commands\EnableCommand.cs" />
     <Compile Include="Assets\Script\Commands\FadeCommand.cs" />
+    <Compile Include="Assets\Script\Commands\LevelCompletionShowCommand.cs" />
+    <Compile Include="Assets\Script\Commands\LevelExitCommand.cs" />
     <Compile Include="Assets\Script\Commands\LookAtCommand.cs" />
     <Compile Include="Assets\Script\Commands\MoveObjectCommand.cs" />
-    <Compile Include="Assets\Script\Commands\MovePlayerCommand.cs" />
+    <Compile Include="Assets\Script\Commands\PlayerMoveCommand.cs" />
     <Compile Include="Assets\Script\Commands\PlayerInputCommand.cs" />
     <Compile Include="Assets\Script\Commands\SfxCommand.cs" />
     <Compile Include="Assets\Script\Commands\WaitCommand.cs" />

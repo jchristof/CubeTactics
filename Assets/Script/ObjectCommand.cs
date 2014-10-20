@@ -12,11 +12,14 @@ namespace Assets.Script {
         Activate,
         Reset,
         LookAt,
+        CameraZoom,
         Wait,
         Sfx,
-        MoveObject,
         Fade,
-        MovePlayer,
+        MoveObject,      
+        PlayerMove,
         PlayerInputState,
+        LevelExit,    
+        LevelCompletionShow,
     }
 }

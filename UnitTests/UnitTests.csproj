@@ -54,7 +54,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="EnterExitTest.cs" />
-    <Compile Include="MapObjectFactoryTest.cs" />
     <Compile Include="Script\CommandTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,9 +62,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Assembly-CSharp-vs.csproj">
-      <Project>{01b43ce5-1965-9847-0f55-fd994a520328}</Project>
-      <Name>Assembly-CSharp-vs</Name>
+    <ProjectReference Include="..\CubeTacticsTools\ScriptBuilder\ScriptBuilder.csproj">
+      <Project>{b5de2190-a620-4048-9740-080198cb0bee}</Project>
+      <Name>ScriptBuilder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UnityVS.CubeTactics.CSharp.csproj">
+      <Project>{b9fd7c63-5a9d-2182-05ab-8dfc3c30103d}</Project>
+      <Name>UnityVS.CubeTactics.CSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

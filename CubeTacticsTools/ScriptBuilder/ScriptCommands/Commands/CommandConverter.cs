@@ -72,8 +72,8 @@ namespace ScriptBuilder.ScriptCommands.Commands {
                     serializer.Populate(jObject.CreateReader(), fadeCommand);
                     return fadeCommand;
 
-                case ObjectCommand.MovePlayer:
-                    MovePlayerCommand movePlayerCommand = new MovePlayerCommand();
+                case ObjectCommand.PlayerMove:
+                    PlayerMoveCommand movePlayerCommand = new PlayerMoveCommand();
                     serializer.Populate(jObject.CreateReader(), movePlayerCommand);
                     return movePlayerCommand;
 
@@ -81,6 +81,21 @@ namespace ScriptBuilder.ScriptCommands.Commands {
                     PlayerInputCommand playerInputStateCommand = new PlayerInputCommand();
                     serializer.Populate(jObject.CreateReader(), playerInputStateCommand);
                     return playerInputStateCommand;
+
+                case ObjectCommand.LevelExit:
+                    LevelExitCommand levelExitCommand = new LevelExitCommand();
+                    serializer.Populate(jObject.CreateReader(), levelExitCommand);
+                    return levelExitCommand;
+
+                case ObjectCommand.CameraZoom:
+                    CameraZoomCommand cameraZoomCommand = new CameraZoomCommand();
+                    serializer.Populate(jObject.CreateReader(), cameraZoomCommand);
+                    return cameraZoomCommand;
+
+                case ObjectCommand.LevelCompletionShow:
+                    LevelCompletionShowCommand levelCompleteShowCommand = new LevelCompletionShowCommand();
+                    serializer.Populate(jObject.CreateReader(), levelCompleteShowCommand);
+                    return levelCompleteShowCommand;
 
                 default:
                     Command target = new Command();

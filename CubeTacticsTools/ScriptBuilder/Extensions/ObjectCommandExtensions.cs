@@ -34,10 +34,16 @@ namespace ScriptBuilder.Extensions {
                     return new MoveObjectCommand();
                 case ObjectCommand.Fade:
                     return new FadeCommand();
-                case ObjectCommand.MovePlayer:
-                    return new MovePlayerCommand();
+                case ObjectCommand.PlayerMove:
+                    return new PlayerMoveCommand();
                 case ObjectCommand.PlayerInputState:
                     return new PlayerInputCommand();
+                case ObjectCommand.LevelExit:
+                    return new LevelExitCommand();
+                case ObjectCommand.CameraZoom:
+                    return new CameraZoomCommand();
+                case ObjectCommand.LevelCompletionShow:
+                    return new LevelCompletionShowCommand();
                 default:
                     throw new NotImplementedException();
             }

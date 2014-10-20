@@ -163,7 +163,7 @@
         "ObjectType": 2
       },
       "SecondaryInfo": "Player",
-      "ObjectCommand": "MovePlayer"
+      "ObjectCommand": "PlayerMove"
     },
     {
       "Milliseconds": 1000,
@@ -238,7 +238,7 @@
         "ObjectType": 2
       },
       "SecondaryInfo": "Player",
-      "ObjectCommand": "MovePlayer"
+      "ObjectCommand": "PlayerMove"
     },
     {
       "Milliseconds": 1000,

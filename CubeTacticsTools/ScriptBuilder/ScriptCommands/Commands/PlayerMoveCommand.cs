@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace ScriptBuilder.ScriptCommands.Commands {
-    public class MovePlayerCommand : Command {
-        public MovePlayerCommand() {
+    public class PlayerMoveCommand : Command {
+        public PlayerMoveCommand() {
             Position = new Position();
             DestinationObject = new Identifier();
         }
