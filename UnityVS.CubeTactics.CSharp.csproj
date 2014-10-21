@@ -67,6 +67,7 @@
     <Compile Include="Assets\Camera\CameraScript.cs" />
     <Compile Include="Assets\CompositionRoot.cs" />
     <Compile Include="Assets\Extensions\ArrayExtensions.cs" />
+    <Compile Include="Assets\Extensions\FloatExtensions.cs" />
     <Compile Include="Assets\Extensions\MapModelExtensions.cs" />
     <Compile Include="Assets\Extensions\RectExtensions.cs" />
     <Compile Include="Assets\Game\Conditions\Condition.cs" />

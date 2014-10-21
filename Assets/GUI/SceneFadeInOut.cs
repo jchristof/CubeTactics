@@ -48,15 +48,15 @@ public class SceneFadeInOut : MonoBehaviour
         Level = fadeSpeed * Time.deltaTime;
         guiTexture.color = Color.Lerp(guiTexture.color, Color.black, Level);
 
-        FMOD_StudioEventEmitter emitter = GameObject.Find("Cube").GetComponent<FMOD_StudioEventEmitter>();
-        FMOD.Studio.ParameterInstance param = emitter.getParameter("Progression");
+        //FMOD_StudioEventEmitter emitter = GameObject.Find("Cube").GetComponent<FMOD_StudioEventEmitter>();
+        //FMOD.Studio.ParameterInstance param = emitter.getParameter("Progression");
 
-        FMOD.Studio.System system = FMOD_StudioSystem.instance.System;
-        FMOD.Studio.EventDescription zoom;
-        system.getEvent("event:/Music/Music", out zoom);
-        FMOD.Studio.EventInstance musicInstance;
-        zoom.createInstance(out musicInstance);
-        musicInstance.setVolume(Level);
+        //FMOD.Studio.System system = FMOD_StudioSystem.instance.System;
+        //FMOD.Studio.EventDescription zoom;
+        //system.getEvent("event:/Music/Music", out zoom);
+        //FMOD.Studio.EventInstance musicInstance;
+        //zoom.createInstance(out musicInstance);
+        //musicInstance.setVolume(Level);
     }
     
     

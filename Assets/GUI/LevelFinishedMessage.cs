@@ -12,6 +12,7 @@ namespace Assets.GUI {
         Rect _guiBox;
         Rect _button;
 
+        public bool Finished { get; set; }
         void Start() {
             Rect _fullScreenRect = new Rect(0, 0, Screen.width, Screen.height);
             _guiBox = new Rect(0, 0, 300, 100);
@@ -26,7 +27,7 @@ namespace Assets.GUI {
             UnityEngine.GUI.Box(_guiBox, complete ? LocaleText.Text["LevelComplete"] : LocaleText.Text["LevelFailed"]);
             if (UnityEngine.GUI.Button(_button, LocaleText.Text["ButtonOk"]) || Input.anyKey) {
                 this.enabled = false;
-                CompositionRoot.PlayerController.InputEnabled = true;
+                Finished = true;
             }
 
         }

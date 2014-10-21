@@ -265,5 +265,33 @@
       "SecondaryInfo": 1,
       "ObjectCommand": "PlayerInputState"
     }
+  ],
+  "OnEnterGoal": [
+    {
+      "PlayerInputState": 0,
+      "Identifier": null,
+      "SecondaryInfo": 0,
+      "ObjectCommand": "PlayerInputState"
+    },
+    {
+      "Height": 5,
+      "Milliseconds": 1000,
+      "SecondaryInfo": "Camera",
+      "Identifier": {
+        "ObjectName": null,
+        "ObjectType": 0
+      },
+      "ObjectCommand": "CameraZoom"
+    },
+    {
+      "Identifier": null,
+      "ObjectCommand": "LevelCompletionShow",
+      "SecondaryInfo": null
+    },
+    {
+      "Identifier": null,
+      "ObjectCommand": "LevelExit",
+      "SecondaryInfo": null
+    }
   ]
 }

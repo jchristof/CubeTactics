@@ -20,6 +20,14 @@ namespace Assets.Map.Triggers {
             goal.GetComponent<ParticleSystem>().loop = true;
             goal.GetComponent<ParticleSystem>().Play();
 
+            Properties.Enabled = true;
+
+        }
+
+        public override void OnEnter() {
+            base.OnEnter();
+
+            ExecuteScript("OnEnterGoal");
         }
     }
 }
