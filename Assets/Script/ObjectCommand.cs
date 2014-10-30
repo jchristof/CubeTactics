@@ -21,5 +21,8 @@ namespace Assets.Script {
         PlayerInputState,
         LevelExit,    
         LevelCompletionShow,
+        EvaluateExpression,
+        VarAssignment,
+        VarDecalare,
     }
 }
