@@ -24,11 +24,6 @@ public class PlayerController : MonoBehaviour {
     float angle = 0.0f;
     bool _keyHeld;
 
-    class MessageContext {
-        public object Input;
-        public object Output;
-    }
-
     void Start() {
 
         rotator = (new GameObject("Rotator")).transform;
@@ -38,22 +33,6 @@ public class PlayerController : MonoBehaviour {
         Camera.main.GetComponent<CameraScript>().Height = 10.0f;
         Camera.main.GetComponent<CameraScript>().Distance = 4.0f;
         Camera.main.GetComponent<CameraScript>().Target = GameObject.Find("CameraLookAt").transform;
-
-        var evaluator = GameObject.Find("GameManager").GetComponent("Evaluator");
-
-        MessageContext mc = new MessageContext();
-        //mc.Input = "a + b";
-        //evaluator.SendMessage("Eval", mc);
-
-        //mc.Input = "var z = 0";
-        //evaluator.SendMessage("Eval", mc);
-
-        //mc.Input = "z + 1";
-        //evaluator.SendMessage("Eval", mc);
-
-        //mc.Input = "z";
-        //evaluator.SendMessage("Eval", mc);
-
     }
 
     public void SpawnAt(Vector3 position) {
