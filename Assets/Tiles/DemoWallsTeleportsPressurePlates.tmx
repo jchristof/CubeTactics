@@ -8,7 +8,7 @@
   <property name="Scripts" value="BlockOut.script"/>
  </properties>
  <tileset firstgid="1" source="tilemap.tsx"/>
- <layer name="Board" width="10" height="10">
+ <layer name="Board" width="10" height="10" visible="0">
   <data>
    <tile gid="12"/>
    <tile gid="12"/>
@@ -156,6 +156,12 @@
   <object name="addtile" type="Tile" x="485" y="410" width="11" height="20">
    <properties>
     <property name="TileIndex" value="12"/>
+   </properties>
+  </object>
+  <object name="text" type="EnterExit" x="79" y="526" width="29" height="32">
+   <properties>
+    <property name="Enabled" value="true"/>
+    <property name="OnEnter" value="Test"/>
    </properties>
   </object>
  </objectgroup>

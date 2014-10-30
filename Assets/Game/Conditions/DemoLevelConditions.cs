@@ -26,11 +26,5 @@ namespace Assets.Game.Conditions {
                 s.Activate();
             });     
         }
-
-        public override void ExecutePlayerMove(Vector3 position) {
-            foreach (Condition c in Conditions) {
-                c.ExecutePlayerMove(position);
-            }
-        }
     }
 }
