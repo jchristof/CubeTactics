@@ -11,7 +11,6 @@ namespace Assets.Game.Conditions {
             _value = value;
         }
 
-        string _instructions;
         string _type;
         string _value;
 
