@@ -26,9 +26,12 @@ namespace Assets.Game {
         public bool Failed { get; set; }
         
         public bool Complete { get; set; }
-        
+
 
         public virtual void ExecutePlayerMove(Vector3 position) {
+            foreach (Condition c in Conditions) {
+                c.ExecutePlayerMove(position);
+            }
         }
 
         public virtual void Update() {
