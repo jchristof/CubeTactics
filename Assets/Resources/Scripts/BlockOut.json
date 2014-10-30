@@ -293,5 +293,46 @@
       "ObjectCommand": "LevelExit",
       "SecondaryInfo": null
     }
+  ],
+  "Test": [
+    {
+      "Variable": [
+        {
+          "Name": "TestValue0",
+          "Value": "5"
+        },
+        {
+          "Name": "TestValue1",
+          "Value": "Hello"
+        }
+      ],
+      "Identifier": {
+        "ObjectName": null,
+        "ObjectType": 0
+      },
+      "SecondaryInfo": null,
+      "ObjectCommand": "VarDecalare"
+    },
+    {
+      "Target": "MyTarget",
+      "Expression": "5",
+      "Identifier": {
+        "ObjectName": null,
+        "ObjectType": 0
+      },
+      "SecondaryInfo": null,
+      "ObjectCommand": "VarAssignment"
+    },
+    {
+      "False": "Teleport1",
+      "True": "Teleport2",
+      "Expression": "[MyTarget]",
+      "Identifier": {
+        "ObjectName": null,
+        "ObjectType": 0
+      },
+      "SecondaryInfo": null,
+      "ObjectCommand": "EvaluateExpression"
+    }
   ]
 }
