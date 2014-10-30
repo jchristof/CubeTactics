@@ -23,6 +23,16 @@ namespace Assets {
             }
         }
 
+        static ScriptExpression _scriptExpression;
+        public static ScriptExpression ScriptExpression {
+            get {
+                if (_scriptExpression == null)
+                    _scriptExpression = new ScriptExpression();
+
+                return _scriptExpression;
+            }
+        }
+
         static AudioSource _musicPlayer;
         public static AudioSource MusicPlayer {
             get {
