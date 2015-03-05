@@ -14,7 +14,6 @@ public class SceneFadeInOut : MonoBehaviour
     public bool SceneEnding { get; set; }
 
     public Action OnLevelLoad { get; set; }
-    FMOD.Studio.Bus masterBus;
 
     void Awake ()
     {

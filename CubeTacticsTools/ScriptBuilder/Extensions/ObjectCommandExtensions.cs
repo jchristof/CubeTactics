@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ScriptBuilder.Extensions {
     public static class ObjectCommandExtensions {
-        public static ScriptBuilder.Command ClassOfEnumType(this ObjectCommand self) {
+        public static Command ClassOfEnumType(this ObjectCommand self) {
             switch (self) {
                 case ObjectCommand.Activate:
                     return new ActivateCommand();
@@ -44,6 +44,12 @@ namespace ScriptBuilder.Extensions {
                     return new CameraZoomCommand();
                 case ObjectCommand.LevelCompletionShow:
                     return new LevelCompletionShowCommand();
+                case ObjectCommand.EvaluateExpression:
+                    return new EvaluateExpressionCommand();
+                case ObjectCommand.VarAssignment:
+                    return new VarAssignmentCommand();
+                case ObjectCommand.VarDecalare:
+                    return new VarDeclareCommand();
                 default:
                     throw new NotImplementedException();
             }

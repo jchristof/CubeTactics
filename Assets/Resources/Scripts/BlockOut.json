@@ -326,7 +326,7 @@
     {
       "False": "Teleport1",
       "True": "Teleport2",
-      "Expression": "[MyTarget]",
+      "Expression": "[MyTarget] == 5",
       "Identifier": {
         "ObjectName": null,
         "ObjectType": 0

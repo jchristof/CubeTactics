@@ -11,15 +11,6 @@ namespace Assets.Script.Commands {
         public string Target { set; get; }
         public string Expression { set; get; }
 
-#if OBJECTEDITOR 
-        [Browsable(false)]
-        public override Identifier Identifier { get; set; }
-
-        [Browsable(false)]
-        public override object SecondaryInfo {
-            get { return null; }
-        }
-#endif
         public override void Execute() {
             CompositionRoot.RunOnMainThread(() => {
                 CompositionRoot.ScriptExpression.Assignment(Target, Expression);

@@ -43,7 +43,7 @@ namespace Assets.Map {
         public int Z { get { return 0; } }
 
         Vector3 _position;
-        public Vector3 Position {
+        public virtual Vector3 Position {
             get {
                 _position.x = X;
                 _position.y = Y;

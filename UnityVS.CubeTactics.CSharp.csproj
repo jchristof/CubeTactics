@@ -7,16 +7,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B9FD7C63-5A9D-2182-05AB-8DFC3C30103D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -24,7 +22,7 @@
     <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_2;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_ANDROID;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;UNITY_ANDROID_API;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_2;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,7 +30,7 @@
     <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_2;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+    <DefineConstants>TRACE;UNITY_ANDROID;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;UNITY_ANDROID_API;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_2;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -50,6 +48,12 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="SampleClassLibrary">
       <HintPath>Assets\JsonDotNet\Examples\Tests\TestModels\SampleClassLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="NCalc">
+      <HintPath>Assets\NCalc.dll</HintPath>
+    </Reference>
+    <Reference Include="newzxing">
+      <HintPath>Assets\QRCamera\_Plugin\newzxing.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -449,6 +453,10 @@
     <Compile Include="Assets\Movement\PlayerMovement\SwipeType.cs" />
     <Compile Include="Assets\Movement\PlayerMovement\TouchAbstractor.cs" />
     <Compile Include="Assets\PlayfieldScript.cs" />
+    <Compile Include="Assets\QRCamera\_Script\CameraImageAccess.cs" />
+    <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\DataSetLoadBehaviour.cs" />
+    <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\DefaultInitializationErrorHandler.cs" />
+    <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\QCARBehaviour.cs" />
     <Compile Include="Assets\Script\Commands\ActivateCommand.cs" />
     <Compile Include="Assets\Script\Commands\CameraZoomCommand.cs" />
     <Compile Include="Assets\Script\Commands\Command.cs" />
@@ -457,16 +465,21 @@
     <Compile Include="Assets\Script\Commands\DestroyCommand.cs" />
     <Compile Include="Assets\Script\Commands\DisableCommand.cs" />
     <Compile Include="Assets\Script\Commands\EnableCommand.cs" />
+    <Compile Include="Assets\Script\Commands\EvaluateExpressionCommand.cs" />
     <Compile Include="Assets\Script\Commands\FadeCommand.cs" />
     <Compile Include="Assets\Script\Commands\LevelCompletionShowCommand.cs" />
     <Compile Include="Assets\Script\Commands\LevelExitCommand.cs" />
     <Compile Include="Assets\Script\Commands\LookAtCommand.cs" />
     <Compile Include="Assets\Script\Commands\MoveObjectCommand.cs" />
-    <Compile Include="Assets\Script\Commands\PlayerMoveCommand.cs" />
     <Compile Include="Assets\Script\Commands\PlayerInputCommand.cs" />
+    <Compile Include="Assets\Script\Commands\PlayerMoveCommand.cs" />
     <Compile Include="Assets\Script\Commands\SfxCommand.cs" />
+    <Compile Include="Assets\Script\Commands\VarAssignmentCommand.cs" />
+    <Compile Include="Assets\Script\Commands\VarDeclareCommand.cs" />
     <Compile Include="Assets\Script\Commands\WaitCommand.cs" />
     <Compile Include="Assets\Script\Direction.cs" />
+    <Compile Include="Assets\Script\Expressions\ScriptExpression.cs" />
+    <Compile Include="Assets\Script\Expressions\ScriptValueDecl.cs" />
     <Compile Include="Assets\Script\IScriptExecutor.cs" />
     <Compile Include="Assets\Script\MapTarget.cs" />
     <Compile Include="Assets\Script\ObjectCommand.cs" />
@@ -477,11 +490,14 @@
     <Compile Include="Assets\Script\Positioning\Position.cs" />
     <Compile Include="Assets\Script\Script.cs" />
     <Compile Include="Assets\Script\ScriptExecutor.cs" />
+    <Compile Include="Assets\Tools\DebugLog.cs" />
     <None Include="Assets\JsonDotNet\ReadMe.txt" />
     <None Include="Assets\PlaneShader.shader" />
     <None Include="Assets\StreamingAssets\FMOD_bank_list.txt" />
     <None Include="Assets\UnlitTextureAlpha.shader" />
     <None Include="Assets\JsonDotNet\Examples\Tests\TestModels\SampleClassLibrary.dll" />
+    <None Include="Assets\NCalc.dll" />
+    <None Include="Assets\QRCamera\_Plugin\newzxing.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
 </Project>

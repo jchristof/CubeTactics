@@ -85,6 +85,7 @@
       <DependentUpon>PositionEditoryControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="PropertyGridEditors\PositionEditor.cs" />
+    <Compile Include="ScriptCommands\Commands\EvaluateExpressionCommand.cs" />
     <Compile Include="ScriptCommands\Commands\FadeCommand.cs" />
     <Compile Include="ScriptCommands\Commands\LevelExitCommand.cs" />
     <Compile Include="ScriptCommands\Commands\PlayerMoveCommand.cs" />
@@ -115,6 +116,8 @@
     <Compile Include="ScriptCommands\Commands\EnableCommand.cs" />
     <Compile Include="ScriptCommands\Commands\LookAtCommand.cs" />
     <Compile Include="ScriptCommands\Commands\LevelCompletionShowCommand.cs" />
+    <Compile Include="ScriptCommands\Commands\VarAssignmentCommand.cs" />
+    <Compile Include="ScriptCommands\Commands\VarDeclareCommand.cs" />
     <Compile Include="ScriptCommands\Commands\WaitCommand.cs" />
     <Compile Include="ScriptCommands\Commands\MoveObjectCommand.cs" />
     <Compile Include="ScriptCommands\Commands\CameraZoomCommand.cs" />

@@ -97,10 +97,22 @@ namespace ScriptBuilder.ScriptCommands.Commands {
                     serializer.Populate(jObject.CreateReader(), levelCompleteShowCommand);
                     return levelCompleteShowCommand;
 
+                case ObjectCommand.VarAssignment:
+                    VarAssignmentCommand varAssignmentCommand = new VarAssignmentCommand();
+                    serializer.Populate(jObject.CreateReader(), varAssignmentCommand);
+                    return varAssignmentCommand;
+
+                case ObjectCommand.EvaluateExpression:
+                    EvaluateExpressionCommand evaluateExpressionCommand = new EvaluateExpressionCommand();
+                    serializer.Populate(jObject.CreateReader(), evaluateExpressionCommand);
+                    return evaluateExpressionCommand;
+
+                case ObjectCommand.VarDecalare:
+                    VarDeclareCommand varDeclareCommand = new VarDeclareCommand();
+                    serializer.Populate(jObject.CreateReader(), varDeclareCommand);
+                    return varDeclareCommand;
                 default:
-                    Command target = new Command();
                     throw new NotImplementedException("CommandConverter");
-                    return target;
             }
         }
 

@@ -11,16 +11,7 @@ namespace Assets.Script.Commands {
         public string False { get; set; }
         public string True { get; set; }
         public string Expression { get; set; }
-#if OBJECTEDITOR 
-        [Browsable(false)]
-        public override Identifier Identifier { get; set; }
 
-        [Browsable(false)]
-
-        public override object SecondaryInfo {
-            get { return null; }
-        }
-#endif
         public override void Execute() {
             CompositionRoot.RunOnMainThread(() => {
                 if (CompositionRoot.ScriptExpression.Evaluate(Expression))

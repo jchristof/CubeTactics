@@ -26,6 +26,7 @@ namespace Assets.Editor {
  #if UNITY_EDITOR
          return new Dictionary<string, bool>(tags);
  #endif
+         return null;
      }
      
      public static void SetTag(string tag, bool flag){

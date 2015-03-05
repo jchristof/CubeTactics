@@ -11,6 +11,6 @@ namespace ScriptBuilder.ScriptCommands.Commands {
     [JsonConverter(typeof(CommandConverter))]
     public class LevelExitCommand : Command {
         [Browsable(false)]
-        public virtual Identifier Identifier { get; set; }
+        public override Identifier Identifier { get; set; }
     }
 }

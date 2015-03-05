@@ -10,7 +10,7 @@ namespace Assets.Map {
         public SpawnPoint(IMap map, IScriptExecutor scriptExecutor)
             : base(map, scriptExecutor) {
         }
-        public Vector3 Position {
+        public override Vector3 Position {
             get {
                 return new Vector3(MapX, 0.0f, MapY);
             }

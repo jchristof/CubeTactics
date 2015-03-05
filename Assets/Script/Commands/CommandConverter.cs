@@ -119,9 +119,7 @@ namespace Assets.Script.Commands {
                     return varDeclareCommand;
 
                 default:
-                    Command target = new Command();
                     throw new NotImplementedException("CommandConverter");
-                    return target;
             }
         }
 

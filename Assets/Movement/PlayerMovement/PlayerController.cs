@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour {
 
     AutomatedMove automatedMove;
     SwipeInputDirection _swipeInputDirection;
-    PlayerInputState _playerInputState;
 
     bool rotating = false;
     float angle = 0.0f;

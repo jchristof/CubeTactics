@@ -15,9 +15,9 @@ namespace ScriptBuilder.ScriptCommands.Commands {
         public PlayerInputState PlayerInputState { get; set; }
 
         [Browsable(false)]
-        public virtual Identifier Identifier { get; set; }
+        public override Identifier Identifier { get; set; }
 
-        public virtual object SecondaryInfo {
+        public override object SecondaryInfo {
             get { return PlayerInputState; }
         }
     }
