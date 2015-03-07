@@ -18,7 +18,7 @@ public class SceneFadeInOut : MonoBehaviour
     void Awake ()
     {
         // Set the texture so that it is the the size of the screen and covers it.
-        guiTexture.pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
+        GetComponent<GUITexture>().pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
         
     }
     
@@ -37,7 +37,7 @@ public class SceneFadeInOut : MonoBehaviour
     void FadeToClear ()
     {
         // Lerp the colour of the texture between itself and transparent.
-        guiTexture.color = Color.Lerp(guiTexture.color, Color.clear, fadeSpeed * Time.deltaTime);
+        GetComponent<GUITexture>().color = Color.Lerp(GetComponent<GUITexture>().color, Color.clear, fadeSpeed * Time.deltaTime);
     }
     
     
@@ -45,7 +45,7 @@ public class SceneFadeInOut : MonoBehaviour
     {
         // Lerp the colour of the texture between itself and black.
         Level = fadeSpeed * Time.deltaTime;
-        guiTexture.color = Color.Lerp(guiTexture.color, Color.black, Level);
+        GetComponent<GUITexture>().color = Color.Lerp(GetComponent<GUITexture>().color, Color.black, Level);
 
         //FMOD_StudioEventEmitter emitter = GameObject.Find("Cube").GetComponent<FMOD_StudioEventEmitter>();
         //FMOD.Studio.ParameterInstance param = emitter.getParameter("Progression");
@@ -65,11 +65,11 @@ public class SceneFadeInOut : MonoBehaviour
         FadeToClear();
         
         // If the texture is almost clear...
-        if(guiTexture.color.a <= 0.05f)
+        if(GetComponent<GUITexture>().color.a <= 0.05f)
         {
             // ... set the colour to clear and disable the GUITexture.
-            guiTexture.color = Color.clear;
-            guiTexture.enabled = false;
+            GetComponent<GUITexture>().color = Color.clear;
+            GetComponent<GUITexture>().enabled = false;
             
             // The scene is no longer starting.
             sceneStarting = false;
@@ -80,13 +80,13 @@ public class SceneFadeInOut : MonoBehaviour
     public void EndScene ()
     {
         // Make sure the texture is enabled.
-        guiTexture.enabled = true;
+        GetComponent<GUITexture>().enabled = true;
         
         // Start fading towards black.
         FadeToBlack();
         
         // If the screen is almost black...
-        if (guiTexture.color.a >= 0.95f)
+        if (GetComponent<GUITexture>().color.a >= 0.95f)
             OnLevelLoad();
     }
 }

@@ -15,6 +15,9 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>Android:13</UnityBuildTarget>
+    <UnityVersion>5.0.0f4</UnityVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -22,7 +25,7 @@
     <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>DEBUG;TRACE;UNITY_ANDROID;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;UNITY_ANDROID_API;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_2;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_0_0;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,7 +33,7 @@
     <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>TRACE;UNITY_ANDROID;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;UNITY_ANDROID_API;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_2;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+    <DefineConstants>TRACE;UNITY_5_0_0;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -46,14 +49,14 @@
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
     <Reference Include="SampleClassLibrary">
       <HintPath>Assets\JsonDotNet\Examples\Tests\TestModels\SampleClassLibrary.dll</HintPath>
     </Reference>
     <Reference Include="NCalc">
       <HintPath>Assets\NCalc.dll</HintPath>
-    </Reference>
-    <Reference Include="newzxing">
-      <HintPath>Assets\QRCamera\_Plugin\newzxing.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +77,11 @@
     <Compile Include="Assets\Extensions\FloatExtensions.cs" />
     <Compile Include="Assets\Extensions\MapModelExtensions.cs" />
     <Compile Include="Assets\Extensions\RectExtensions.cs" />
+    <Compile Include="Assets\GUI\InstructionsGUI.cs" />
+    <Compile Include="Assets\GUI\IntroInstructionsGUI.cs" />
+    <Compile Include="Assets\GUI\LevelFinishedMessage.cs" />
+    <Compile Include="Assets\GUI\LevelMenuGUI.cs" />
+    <Compile Include="Assets\GUI\SceneFadeInOut.cs" />
     <Compile Include="Assets\Game\Conditions\Condition.cs" />
     <Compile Include="Assets\Game\Conditions\ConditionState.cs" />
     <Compile Include="Assets\Game\Conditions\DemoLevelConditions.cs" />
@@ -86,11 +94,6 @@
     <Compile Include="Assets\Game\Game.cs" />
     <Compile Include="Assets\Game\GameState.cs" />
     <Compile Include="Assets\GoalBehavior.cs" />
-    <Compile Include="Assets\GUI\InstructionsGUI.cs" />
-    <Compile Include="Assets\GUI\IntroInstructionsGUI.cs" />
-    <Compile Include="Assets\GUI\LevelFinishedMessage.cs" />
-    <Compile Include="Assets\GUI\LevelMenuGUI.cs" />
-    <Compile Include="Assets\GUI\SceneFadeInOut.cs" />
     <Compile Include="Assets\JsonDotNet\Examples\Serialization\1-BasicSerialization\JNSimpleObjectSample.cs" />
     <Compile Include="Assets\JsonDotNet\Examples\Serialization\2-Polymorphism\JNPolymorphismSample.cs" />
     <Compile Include="Assets\JsonDotNet\Examples\Serialization\3-BSON\JNBsonSample.cs" />
@@ -437,9 +440,9 @@
     <Compile Include="Assets\Map\SpawnPoint.cs" />
     <Compile Include="Assets\Map\Tile.cs" />
     <Compile Include="Assets\Map\TileConverter.cs" />
-    <Compile Include="Assets\Map\Tileset.cs" />
     <Compile Include="Assets\Map\TileSetConverter.cs" />
     <Compile Include="Assets\Map\TileType.cs" />
+    <Compile Include="Assets\Map\Tileset.cs" />
     <Compile Include="Assets\Map\Triggers\EnterExit.cs" />
     <Compile Include="Assets\Map\Triggers\Goal.cs" />
     <Compile Include="Assets\Map\Triggers\Trigger.cs" />
@@ -453,10 +456,6 @@
     <Compile Include="Assets\Movement\PlayerMovement\SwipeType.cs" />
     <Compile Include="Assets\Movement\PlayerMovement\TouchAbstractor.cs" />
     <Compile Include="Assets\PlayfieldScript.cs" />
-    <Compile Include="Assets\QRCamera\_Script\CameraImageAccess.cs" />
-    <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\DataSetLoadBehaviour.cs" />
-    <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\DefaultInitializationErrorHandler.cs" />
-    <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\QCARBehaviour.cs" />
     <Compile Include="Assets\Script\Commands\ActivateCommand.cs" />
     <Compile Include="Assets\Script\Commands\CameraZoomCommand.cs" />
     <Compile Include="Assets\Script\Commands\Command.cs" />
@@ -491,13 +490,12 @@
     <Compile Include="Assets\Script\Script.cs" />
     <Compile Include="Assets\Script\ScriptExecutor.cs" />
     <Compile Include="Assets\Tools\DebugLog.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Assets\JsonDotNet\ReadMe.txt" />
     <None Include="Assets\PlaneShader.shader" />
     <None Include="Assets\StreamingAssets\FMOD_bank_list.txt" />
     <None Include="Assets\UnlitTextureAlpha.shader" />
-    <None Include="Assets\JsonDotNet\Examples\Tests\TestModels\SampleClassLibrary.dll" />
-    <None Include="Assets\NCalc.dll" />
-    <None Include="Assets\QRCamera\_Plugin\newzxing.dll" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

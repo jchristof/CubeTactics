@@ -1,15 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.CubeTactics.CSharp", "UnityVS.CubeTactics.CSharp.csproj", "{B9FD7C63-5A9D-2182-05AB-8DFC3C30103D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.CubeTactics.CSharp.Plugins", "UnityVS.CubeTactics.CSharp.Plugins.csproj", "{5B123208-D45C-4D24-3BA4-1E97240B643B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.CubeTactics.CSharp.Editor", "UnityVS.CubeTactics.CSharp.Editor.csproj", "{1739343A-170C-D1CB-B85B-CC80DFC313BE}"
-EndProject
-Project("{1FAC5C55-277D-4884-94A4-83DBDAF57E56}") = "UnityVS.CubeTactics.UnityScript.Plugins", "UnityVS.CubeTactics.UnityScript.Plugins.unityproj", "{EF0E8AB8-0FA0-F5F2-A917-495599C1299B}"
-EndProject
-Project("{1FAC5C55-277D-4884-94A4-83DBDAF57E56}") = "UnityVS.CubeTactics.UnityScript", "UnityVS.CubeTactics.UnityScript.unityproj", "{D51AEDA7-6E25-51E4-41E1-EC463EFDFACD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,14 +25,6 @@ Global
 		{1739343A-170C-D1CB-B85B-CC80DFC313BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1739343A-170C-D1CB-B85B-CC80DFC313BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1739343A-170C-D1CB-B85B-CC80DFC313BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EF0E8AB8-0FA0-F5F2-A917-495599C1299B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF0E8AB8-0FA0-F5F2-A917-495599C1299B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF0E8AB8-0FA0-F5F2-A917-495599C1299B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF0E8AB8-0FA0-F5F2-A917-495599C1299B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D51AEDA7-6E25-51E4-41E1-EC463EFDFACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D51AEDA7-6E25-51E4-41E1-EC463EFDFACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D51AEDA7-6E25-51E4-41E1-EC463EFDFACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D51AEDA7-6E25-51E4-41E1-EC463EFDFACD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

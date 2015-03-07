@@ -71,7 +71,7 @@ public class FMOD_StudioEventEmitter : MonoBehaviour
 			CacheEventInstance();
 		}
 		
-		cachedRigidBody = rigidbody;
+		cachedRigidBody = GetComponent<Rigidbody>();
 		
 		if (startEventOnAwake)
 			StartEvent();

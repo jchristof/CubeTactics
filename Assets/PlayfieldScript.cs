@@ -39,7 +39,7 @@ public class PlayfieldScript : MonoBehaviour {
             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             cube.name = string.Format("{0}", flatIndex);
             cube.transform.position = new Vector3(xPosition, 0.5F, yPosition);
-            cube.renderer.material = Resources.Load("CubeWall", typeof(Material)) as Material;
+            cube.GetComponent<Renderer>().material = Resources.Load("CubeWall", typeof(Material)) as Material;
             playfiedGrid.Add(Tuple<Vector3, GameObject>.Create(cube.transform.position, cube));
         }
         

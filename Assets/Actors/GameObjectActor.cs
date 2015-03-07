@@ -26,9 +26,9 @@ namespace Assets.Actors {
         public void SetFade(float alpha) {
             if (!_gameObjectRef.IsAlive)
                 return;
-            Color color = ((GameObject)_gameObjectRef.Target).transform.renderer.material.color;
+            Color color = ((GameObject)_gameObjectRef.Target).transform.GetComponent<Renderer>().material.color;
             color.a = alpha;
-            ((GameObject)_gameObjectRef.Target).transform.renderer.material.color = color;
+            ((GameObject)_gameObjectRef.Target).transform.GetComponent<Renderer>().material.color = color;
         }
     }
 }

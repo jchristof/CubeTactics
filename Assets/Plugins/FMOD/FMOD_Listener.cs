@@ -166,7 +166,7 @@ public class FMOD_Listener : MonoBehaviour
             FMOD.Studio.UnityUtil.LogError("Cannot read " + bankListPath + ": " + e.Message + " : No banks loaded.");
         }
 		
-		cachedRigidBody = rigidbody;
+		cachedRigidBody = GetComponent<Rigidbody>();
 		
 		Update3DAttributes();
 	}

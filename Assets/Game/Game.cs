@@ -40,8 +40,8 @@ namespace Assets.Game {
             CompositionRoot.Playfield.CreateTrail = CompositionRoot.Map.MapProperties.Trail == "Solid";
 
             if(!string.IsNullOrEmpty(CompositionRoot.Map.MapProperties.Music)){
-                CompositionRoot.MusicPlayer.audio.clip = Resources.Load(string.Format("{0}/{1}", _musicRoot, CompositionRoot.Map.MapProperties.Music)) as AudioClip;
-                CompositionRoot.MusicPlayer.audio.Play();
+                CompositionRoot.MusicPlayer.GetComponent<AudioSource>().clip = Resources.Load(string.Format("{0}/{1}", _musicRoot, CompositionRoot.Map.MapProperties.Music)) as AudioClip;
+                CompositionRoot.MusicPlayer.GetComponent<AudioSource>().Play();
             }
         }
 
