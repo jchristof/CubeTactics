@@ -1,0 +1,90 @@
+Initialize engine version: 4.3.2f1 (0517a5ae8669)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvldumd.dll 23.21.13.8843]
+    Renderer: NVIDIA GeForce GTX 760
+    Vendor:   NVIDIA
+    VRAM:     2017 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Projects\CubeTactics\build_win\windows_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Projects\CubeTactics\build_win\windows_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Projects\CubeTactics\build_win\windows_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Projects\CubeTactics\build_win\windows_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Projects\CubeTactics\build_win\windows_Data\Managed\SampleClassLibrary.dll (this message is harmless)
+Loading D:\Projects\CubeTactics\build_win\windows_Data\Managed\SampleClassLibrary.dll into Unity Child Domain
+- Completed reload, in  0.170 seconds
+desktop: 1920x1080 60Hz; virtual: 3840x1455 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: D:\Projects\CubeTactics\build_win\windows_Data\Managed\System.dll (this message is harmless)
+Platform assembly: D:\Projects\CubeTactics\build_win\windows_Data\Managed\System.Core.dll (this message is harmless)
+UnloadTime: 0.228790 ms
+Platform assembly: D:\Projects\CubeTactics\build_win\windows_Data\Managed\System.Xml.dll (this message is harmless)
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 515.
+Total: 0.688127 ms (FindLiveObjects: 0.031597 ms CreateObjectMapping: 0.014043 ms MarkObjects: 0.303688 ms  DeleteObjects: 0.006436 ms)
+
+UnloadTime: 0.378879 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 64 unused Assets to reduce memory usage. Loaded Objects now: 515.
+Total: 0.846115 ms (FindLiveObjects: 0.038619 ms CreateObjectMapping: 0.021650 ms MarkObjects: 0.336164 ms  DeleteObjects: 0.114395 ms)
+
+UnloadTime: 0.440026 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 70 unused Assets to reduce memory usage. Loaded Objects now: 479.
+Total: 0.711532 ms (FindLiveObjects: 0.011410 ms CreateObjectMapping: 0.012287 ms MarkObjects: 0.346696 ms  DeleteObjects: 0.096841 ms)
+
+UnloadTime: 0.296374 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 515.
+Total: 1.022828 ms (FindLiveObjects: 0.035401 ms CreateObjectMapping: 0.013165 ms MarkObjects: 0.504392 ms  DeleteObjects: 0.009069 ms)
+
+Assets.Game.NumericSequenceCondition condition sequence update got #1 of 1 to 4
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+Assets.Game.NumericSequenceCondition condition sequence update got #2 of 1 to 4
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+Assets.Game.NumericSequenceCondition condition sequence update got #3 of 1 to 4
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+Assets.Game.NumericSequenceCondition complete
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+UnloadTime: 0.356351 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 516.
+Total: 0.952026 ms (FindLiveObjects: 0.021942 ms CreateObjectMapping: 0.012287 ms MarkObjects: 0.313343 ms  DeleteObjects: 0.136630 ms)
+
+Assets.Game.NumericSequenceCondition condition sequence update got #1 of 1 to 4
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+Assets.Game.NumericSequenceCondition condition sequence update got #2 of 1 to 4
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+Assets.Game.NumericSequenceCondition condition sequence update got #3 of 1 to 4
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+Assets.Game.NumericSequenceCondition complete
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+UnloadTime: 0.381512 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 44 unused Assets to reduce memory usage. Loaded Objects now: 480.
+Total: 0.782042 ms (FindLiveObjects: 0.015213 ms CreateObjectMapping: 0.023113 ms MarkObjects: 0.347866 ms  DeleteObjects: 0.082505 ms)
+

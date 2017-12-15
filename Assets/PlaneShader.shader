@@ -1,4 +1,6 @@
-﻿Shader "Custom/WindowCoordinates/Base" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/WindowCoordinates/Base" {
     SubShader {
         Pass {
             CGPROGRAM
@@ -10,7 +12,7 @@
             #include "UnityCG.cginc"
 
             float4 vert(appdata_base v) : POSITION {
-                return mul (UNITY_MATRIX_MVP, v.vertex);
+                return UnityObjectToClipPos (v.vertex);
             }
 
             fixed4 frag(float4 sp:WPOS) : COLOR {
